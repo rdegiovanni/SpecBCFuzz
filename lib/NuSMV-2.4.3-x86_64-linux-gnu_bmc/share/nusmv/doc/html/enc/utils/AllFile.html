@@ -1,0 +1,77 @@
+<HTML>
+<HEAD><TITLE>The  package: files</TITLE></HEAD>
+<BODY>
+
+<DL>
+ <DT> <A HREF="#OrdGroups.c"><CODE>OrdGroups.c</CODE></A>
+ <DD> Represents a list of groups of variables. Each group 
+  is expected to be kept grouped at encoder level
+ <DT> <A HREF="#utils.c"><CODE>utils.c</CODE></A>
+ <DD> Utilities for encodings stuff
+</DL><HR>
+<A NAME="OrdGroups.c"><H1>OrdGroups.c</H1></A>
+Represents a list of groups of variables. Each group 
+  is expected to be kept grouped at encoder level <P>
+<B>By: Roberto Cavada</B><P>
+When the order of bool vars is important, a list of 
+  of groups of vars is returned. All vars appearing into a group should be 
+  grouped by the specific encoding <P>
+<DL>
+ <DT> <A HREF="AllDet.html#OrdGroups_create" TARGET="MAIN"><CODE>OrdGroups_create()</CODE></A>
+ <DD> Class constructor
+
+ <DT> <A HREF="AllDet.html#OrdGroups_destroy" TARGET="MAIN"><CODE>OrdGroups_destroy()</CODE></A>
+ <DD> Class destructor
+
+ <DT> <A HREF="AllDet.html#OrdGroups_create_group" TARGET="MAIN"><CODE>OrdGroups_create_group()</CODE></A>
+ <DD> Creates a new group, and returns the group ID for 
+  future reference
+
+ <DT> <A HREF="AllDet.html#OrdGroups_add_variable" TARGET="MAIN"><CODE>OrdGroups_add_variable()</CODE></A>
+ <DD> Adds a new variable to the groups set.
+
+ <DT> <A HREF="AllDet.html#OrdGroups_add_variables" TARGET="MAIN"><CODE>OrdGroups_add_variables()</CODE></A>
+ <DD> Adds a list of variable to the groups set.
+
+ <DT> <A HREF="AllDet.html#OrdGroups_get_vars_in_group" TARGET="MAIN"><CODE>OrdGroups_get_vars_in_group()</CODE></A>
+ <DD> Returns the set of variables that belong to a given group
+
+ <DT> <A HREF="AllDet.html#OrdGroups_get_var_group" TARGET="MAIN"><CODE>OrdGroups_get_var_group()</CODE></A>
+ <DD> Given a var name, it returns the group that variable
+  belongs to.
+
+ <DT> <A HREF="AllDet.html#OrdGroups_get_size" TARGET="MAIN"><CODE>OrdGroups_get_size()</CODE></A>
+ <DD> Returns the number of available groups
+
+ <DT> <A HREF="AllDet.html#ord_groups_init" TARGET="MAIN"><CODE>ord_groups_init()</CODE></A>
+ <DD> Private class initializer
+
+ <DT> <A HREF="AllDet.html#ord_groups_deinit" TARGET="MAIN"><CODE>ord_groups_deinit()</CODE></A>
+ <DD> Private deinitializer
+
+ <DT> <A HREF="AllDet.html#ord_groups_allocate_new_group" TARGET="MAIN"><CODE>ord_groups_allocate_new_group()</CODE></A>
+ <DD> Creates a new group, and returns its ID
+
+ <DT> <A HREF="AllDet.html#ord_groups_name_to_group" TARGET="MAIN"><CODE>ord_groups_name_to_group()</CODE></A>
+ <DD> Given a variable name, it returns the group that variable 
+  belongs to, or -1 if the variable has not been added.
+
+ <DT> <A HREF="AllDet.html#ord_groups_associate_name_to_group" TARGET="MAIN"><CODE>ord_groups_associate_name_to_group()</CODE></A>
+ <DD> Associates a var name to an existing group, but only if
+  not already associated. An error occurs if the given name is already
+  associated to a different group
+
+</DL>
+<HR>
+<A NAME="utils.c"><H1>utils.c</H1></A>
+Utilities for encodings stuff <P>
+<B>By: Roberto Cavada</B><P>
+<DL>
+ <DT> <A HREF="AllDet.html#enc_utils_parse_ordering_file" TARGET="MAIN"><CODE>enc_utils_parse_ordering_file()</CODE></A>
+ <DD> Parses the given ordering file, and produces an OrdGroups 
+  instance.
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

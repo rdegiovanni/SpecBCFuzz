@@ -1,0 +1,168 @@
+<HTML>
+<HEAD><TITLE>The ltl package: files</TITLE></HEAD>
+<BODY>
+
+<DL>
+ <DT> <A HREF="#ltl.h"><CODE>ltl.h</CODE></A>
+ <DD> External header file
+ <DT> <A HREF="#ltlInt.h"><CODE>ltlInt.h</CODE></A>
+ <DD> Internal header file
+ <DT> <A HREF="#ltl.c"><CODE>ltl.c</CODE></A>
+ <DD> Routines to perform reduction of LTL model checking to
+  CTL model checking.
+ <DT> <A HREF="#ltlCmd.c"><CODE>ltlCmd.c</CODE></A>
+ <DD> Shell commands to deal with the LTL model checking.
+ <DT> <A HREF="#ltlCompassion.c"><CODE>ltlCompassion.c</CODE></A>
+ <DD> Routines to perform strongly fair LTL model checking
+ <DT> <A HREF="#ltlRewrite.c"><CODE>ltlRewrite.c</CODE></A>
+ <DD> Rewrite formula to keep track of possible inputs
+</DL><HR>
+<A NAME="ltl.h"><H1>ltl.h</H1></A>
+External header file <P>
+<B>By: Marco Roveri</B><P>
+<P><B>See Also</B><A HREF="#mc"><CODE>mc</CODE></A>
+<DL>
+</DL>
+<HR>
+<A NAME="ltlInt.h"><H1>ltlInt.h</H1></A>
+Internal header file <P>
+<B>By: Marco Roveri</B><P>
+<DL>
+</DL>
+<HR>
+<A NAME="ltl.c"><H1>ltl.c</H1></A>
+Routines to perform reduction of LTL model checking to
+  CTL model checking. <P>
+<B>By: Marco Roveri</B><P>
+Here we perform the reduction of LTL model checking to
+  CTL model checking. The technique adopted has been taken from [1 <P>
+<P><B>See Also</B><A HREF="#mc"><CODE>mc</CODE></A>
+<DL>
+ <DT> <A HREF="ltlAllDet.html#Ltl_CheckLtlSpec" TARGET="MAIN"><CODE>Ltl_CheckLtlSpec()</CODE></A>
+ <DD> The main routine to perform LTL model checking.
+
+ <DT> <A HREF="ltlAllDet.html#print_ltlspec" TARGET="MAIN"><CODE>print_ltlspec()</CODE></A>
+ <DD> Print the LTL specification.
+
+ <DT> <A HREF="ltlAllDet.html#ltlInsertModuleHashReadModule" TARGET="MAIN"><CODE>ltlInsertModuleHashReadModule()</CODE></A>
+ <DD> Add the tableau module to the list of know modules
+
+ <DT> <A HREF="ltlAllDet.html#ltlPropAddTableau" TARGET="MAIN"><CODE>ltlPropAddTableau()</CODE></A>
+ <DD> Main routine to add the tableau to the FSM
+
+ <DT> <A HREF="ltlAllDet.html#ltlBuildTableauAndPropFsm" TARGET="MAIN"><CODE>ltlBuildTableauAndPropFsm()</CODE></A>
+ <DD> Creates the tableau
+
+ <DT> <A HREF="ltlAllDet.html#ltl_remove_layer" TARGET="MAIN"><CODE>ltl_remove_layer()</CODE></A>
+ <DD> Private service that removes the given layer from 
+  the symbol table, and from both the boolean and bdd encodings.
+
+</DL>
+<HR>
+<A NAME="ltlCmd.c"><H1>ltlCmd.c</H1></A>
+Shell commands to deal with the LTL model checking. <P>
+<B>By: Marco Roveri</B><P>
+Shell commands to deal with the LTL model checking. <P>
+<P><B>See Also</B><A HREF="#mc"><CODE>mc</CODE></A>
+<DL>
+ <DT> <A HREF="ltlAllDet.html#Ltl_Init" TARGET="MAIN"><CODE>Ltl_Init()</CODE></A>
+ <DD> Initializes the ltl package.
+
+ <DT> <A HREF="ltlAllDet.html#CommandCheckLtlSpec" TARGET="MAIN"><CODE>CommandCheckLtlSpec()</CODE></A>
+ <DD> Performs LTL model checking
+
+</DL>
+<HR>
+<A NAME="ltlCompassion.c"><H1>ltlCompassion.c</H1></A>
+Routines to perform strongly fair LTL model checking <P>
+<B>By: Rik Eshuis</B><P>
+The technique adopted has been taken from [1 <P>
+<P><B>See Also</B><A HREF="#mc"><CODE>mc</CODE></A>
+<DL>
+ <DT> <A HREF="ltlAllDet.html#feasible" TARGET="MAIN"><CODE>feasible()</CODE></A>
+ <DD> Check for feasability
+
+ <DT> <A HREF="ltlAllDet.html#witness" TARGET="MAIN"><CODE>witness()</CODE></A>
+ <DD> Compute a withness of feasability
+
+ <DT> <A HREF="ltlAllDet.html#successor" TARGET="MAIN"><CODE>successor()</CODE></A>
+ <DD> Compute the direct successor of a state
+
+ <DT> <A HREF="ltlAllDet.html#successors" TARGET="MAIN"><CODE>successors()</CODE></A>
+ <DD> Compute the direct and indirect successors of a state
+
+ <DT> <A HREF="ltlAllDet.html#predecessor" TARGET="MAIN"><CODE>predecessor()</CODE></A>
+ <DD> Compute the direct predecessor of a state
+
+ <DT> <A HREF="ltlAllDet.html#predecessors" TARGET="MAIN"><CODE>predecessors()</CODE></A>
+ <DD> Compute the direct and indirect predecessors of a state
+
+ <DT> <A HREF="ltlAllDet.html#path" TARGET="MAIN"><CODE>path()</CODE></A>
+ <DD> Compute a path from source to destination
+
+ <DT> <A HREF="ltlAllDet.html#fill_path_with_inputs" TARGET="MAIN"><CODE>fill_path_with_inputs()</CODE></A>
+ <DD> Fill a path with inputs.
+
+</DL>
+<HR>
+<A NAME="ltlRewrite.c"><H1>ltlRewrite.c</H1></A>
+Rewrite formula to keep track of possible inputs <P>
+<B>By: Marco Roveri</B><P>
+This file provide a mechanism to rewrite an LTL formula
+  containing inputs in a way that the inputs are interpreted
+  correctly. Let us suppose that a formula Phi speak about an input
+  boolean variable i. The i refers to the input received to move from
+  the previous state if any to the current state. That is we observe
+  it in the next state as the result of the transition executed. Thus
+  we build a new formula Phi' such that Phi' = Phi[i/_pi <P>
+<P><B>See Also</B><A HREF="#optional"><CODE>optional</CODE></A>
+<DL>
+ <DT> <A HREF="ltlAllDet.html#ltlRewriteWffIfInputPresent" TARGET="MAIN"><CODE>ltlRewriteWffIfInputPresent()</CODE></A>
+ <DD> Rewrites an LTL formula if inputs are present
+
+ <DT> <A HREF="ltlAllDet.html#ltlHandleInputsVars" TARGET="MAIN"><CODE>ltlHandleInputsVars()</CODE></A>
+ <DD> Add the variables introduced by the rewriting
+
+ <DT> <A HREF="ltlAllDet.html#ltlFreeWFFR_TYPE" TARGET="MAIN"><CODE>ltlFreeWFFR_TYPE()</CODE></A>
+ <DD> Free memory in the rewrite structure
+
+ <DT> <A HREF="ltlAllDet.html#extract_inputs" TARGET="MAIN"><CODE>extract_inputs()</CODE></A>
+ <DD> Extracts the set of inputs from a formula
+
+ <DT> <A HREF="ltlAllDet.html#expand_input" TARGET="MAIN"><CODE>expand_input()</CODE></A>
+ <DD> Rewrites an LTL formula
+
+ <DT> <A HREF="ltlAllDet.html#expr_subst_all" TARGET="MAIN"><CODE>expr_subst_all()</CODE></A>
+ <DD> Subst occurrence of s with d
+
+ <DT> <A HREF="ltlAllDet.html#expr_is_wff" TARGET="MAIN"><CODE>expr_is_wff()</CODE></A>
+ <DD> checks wheter the formula is a wff
+
+ <DT> <A HREF="ltlAllDet.html#expr_is_term" TARGET="MAIN"><CODE>expr_is_term()</CODE></A>
+ <DD> checks wheter the formula is a term
+
+ <DT> <A HREF="ltlAllDet.html#expr_is_constant" TARGET="MAIN"><CODE>expr_is_constant()</CODE></A>
+ <DD> checks wheter the formula is a constant
+
+ <DT> <A HREF="ltlAllDet.html#build_input_vars_assoc" TARGET="MAIN"><CODE>build_input_vars_assoc()</CODE></A>
+ <DD> Builds assoc variables
+
+ <DT> <A HREF="ltlAllDet.html#get_var_values" TARGET="MAIN"><CODE>get_var_values()</CODE></A>
+ <DD> Retrieves values of new var associated to name
+
+ <DT> <A HREF="ltlAllDet.html#get_var_name" TARGET="MAIN"><CODE>get_var_name()</CODE></A>
+ <DD> Retrieves name of new var associated to name
+
+ <DT> <A HREF="ltlAllDet.html#get_var_trans" TARGET="MAIN"><CODE>get_var_trans()</CODE></A>
+ <DD> Retrieves transition relation of new var associated to name
+
+ <DT> <A HREF="ltlAllDet.html#get_digits" TARGET="MAIN"><CODE>get_digits()</CODE></A>
+ <DD> Retrieves numbers of digit of a number
+
+ <DT> <A HREF="ltlAllDet.html#free_assoc_data_aux" TARGET="MAIN"><CODE>free_assoc_data_aux()</CODE></A>
+ <DD> Retrieves numbers of digit of a number
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

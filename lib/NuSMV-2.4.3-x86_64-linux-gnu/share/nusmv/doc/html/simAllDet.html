@@ -1,0 +1,2618 @@
+<html>
+<head><title>The sim package: all functions </title></head>
+<body>
+
+Internal functions and data strucures of the SIM package.
+<HR>
+<DL>
+<dt><pre>
+<A NAME="CountBinaryNeg"></A>
+static int <I></I>
+<B>CountBinaryNeg</B>(
+  SimProp_t * <b>p</b> <i></i>
+)
+</pre>
+<dd> Evaluates how many times a propositions occurres in a
+               binary clause. If PURE LITERAL is defined 
+	       returns the number of occurrences in
+	       clauses of any length.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRelsatHeur">SimDllRelsatHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="CountBinaryPos"></A>
+static int <I></I>
+<B>CountBinaryPos</B>(
+  SimProp_t * <b>p</b> <i></i>
+)
+</pre>
+<dd> Evaluates how many times a propositions occurres in a
+               binary clause. If PURE LITERAL is defined 
+	       returns the number of occurrences in
+	       clauses of any length.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRelsatHeur">SimDllRelsatHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="CountNoBinaryNeg"></A>
+static int <I></I>
+<B>CountNoBinaryNeg</B>(
+  SimProp_t * <b>p</b> <i></i>
+)
+</pre>
+<dd> Uses a modified JW weighting function H(x):
+               for each open proposition x compute the sum H(x)
+               of the quantities 2^(2^(JW_MAX - |C|)) (which defaults to 1
+	       if |C| >= JW_MAX) for each clause C where l occurs.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRelsatHeur">SimDllRelsatHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="CountNoBinaryPos"></A>
+static int <I></I>
+<B>CountNoBinaryPos</B>(
+  SimProp_t * <b>p</b> <i></i>
+)
+</pre>
+<dd> Uses a modified JW weighting function H(x):
+               for each open proposition x compute the sum H(x)
+               of the quantities 2^(2^(JW_MAX - |C|)) (which defaults to 1
+	       if |C| >= JW_MAX) for each clause C where l occurs.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRelsatHeur">SimDllRelsatHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="DllMomsHeur"></A>
+static SimProp_t * <I></I>
+<B>DllMomsHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b>, <i></i>
+  SimProp_t ** <b>propList</b>, <i></i>
+  int  <b>signPos</b> <i></i>
+)
+</pre>
+<dd> For each open proposition x computes the score f(x) * f(-x),
+               where f is the number of occurrence in binary clauses.
+	       Chooses the proposition with the highest score. 
+	       The sign is `signPos' if f(x) > f(-x), and -`signPos' otherwise.
+	       If `propList' (a list of positive integers) is non-0,
+	       the heuristics looks at the contents of `propList' instead of 
+	       looking at the open propositions (in the spirit of SATO 3.2).
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllSatoHeur">SimDllSatoHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="Examine0"></A>
+static int <I></I>
+<B>Examine0</B>(
+  SimProp_t * <b>p</b>, <i></i>
+  int  <b>sign</b>, <i></i>
+  int * <b>reduced</b> <i></i>
+)
+</pre>
+<dd> Assigns the proposition p with a certain sign and then
+               performs unit propagation, collecting scores; at the end
+	       all the changes are undone. Returns SIM_UNSAT if p is a
+	       failed literal and SIM_SAT otherwise.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllSatzHeur">SimDllSatzHeur</a>
+<a href="#Examine">Examine</a>
+<a href="#ExtendProp">ExtendProp</a>
+<a href="#Bcp">Bcp</a>
+<a href="#ResetProps">ResetProps</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="Examine"></A>
+static int <I></I>
+<B>Examine</B>(
+  SimProp_t * <b>p</b>, <i></i>
+  int  <b>sign</b>, <i></i>
+  int * <b>reduced</b> <i></i>
+)
+</pre>
+<dd> Assigns the proposition p with a certain sign and then
+               performs unit propagation collecting, scores; at the end
+	       all the changes are undone. Returns SIM_UNSAT if p is a
+	       failed literal and SIM_SAT otherwise.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllSatzHeur">SimDllSatzHeur</a>
+<a href="#Examine0">Examine0</a>
+<a href="#ExtendProp">ExtendProp</a>
+<a href="#Bcp">Bcp</a>
+<a href="#ResetProps">ResetProps</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="Propagate"></A>
+static int <I></I>
+<B>Propagate</B>(
+  SimProp_t * <b>p</b>, <i></i>
+  int  <b>sign</b>, <i></i>
+  int * <b>score</b> <i></i>
+)
+</pre>
+<dd> Assigns the proposition p with a certain sign and then
+               performs unit propagation collecting scores; at the end
+	       all the changes are undone. Returns SIM_UNSAT if p is a
+	       failed literal and SIM_SAT otherwise.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRelsatHeur">SimDllRelsatHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimClauseClear"></A>
+void <I></I>
+<B>SimClauseClear</B>(
+  SimClause_t * <b>cl</b> <i></i>
+)
+</pre>
+<dd> Clears a clause.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simClause.c"TARGET="ABSTRACT"><CODE>simClause.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimClauseInit"></A>
+SimClause_t* <I></I>
+<B>SimClauseInit</B>(
+  int  <b>clId</b>, <i></i>
+  size_t  <b>clSize</b> <i></i>
+)
+</pre>
+<dd> Initializes a clause.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simClause.c"TARGET="ABSTRACT"><CODE>simClause.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDll2JWHeur"></A>
+SimProp_t * <I></I>
+<B>SimDll2JWHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Assign weight to propositions according to the
+               2 sided Jeroslow and Wang heuristics: JW(x) + JX(-x). 
+	       Suggest positive sign if JW(x) >= JW(-x), 
+	       negative sign otherwise.
+	       Break ties using a position argument: the first
+               proposition that scores highest is the best.  
+	       (From "Branching Rules for
+	       Satisfiability, by J. N. Hooker and V. Vinay, Journal
+	       of Automated Reasoning 15(3), 1995").
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllBackjumping"></A>
+SimProp_t * <I></I>
+<B>SimDllBackjumping</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Backtracks to the most recent open choice point that was
+               responsible for the contradiction, possibly skipping other 
+	       choice points. If LEARNING is defined, also stores working 
+	       reasons  with some criterion and propagates unit learned 
+               clauses. Returns a reference to the 
+	       proposition at the choice point or 0 when there 
+	       is no more choice, i.e., an attempt to backtrack beyond 
+	       the very first choice point is made.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+<a href="#SimDllRetractProp">SimDllRetractProp</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookBack.c"TARGET="ABSTRACT"><CODE>simLookBack.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllBcp"></A>
+int <I></I>
+<B>SimDllBcp</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Keeps propagating unit clauses until an empty clause is 
+               found or no more unit clauses are created. If
+	       BACKJUMPING is definded stores the reason of the unit
+	       propagation. If LEARNING is defined discards subsumed clauses.
+	       Returns SIM_UNSAT if an empty clause is found,
+	       SIM_SAT otherwise.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+<a href="#SimDllExtendProp">SimDllExtendProp</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookAhead.c"TARGET="ABSTRACT"><CODE>simLookAhead.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllBoehmHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllBoehmHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Select the proposition with the biggest weight vector
+               in lexicopgraphic order. For each proposition x the
+	       weight vector is (H(x),H'(x)), where 
+	       <ul>
+	       <li>H(x) = ALPHA * max(h(x), h(-x)) + 
+	                  BETA * min(h(x), h(-x))
+       	       <li>H'(x) = ALPHA * max(h'(x), h'(-x)) + 
+	                   BETA * min(h'(x), h'(-x))
+   	       </ul>
+               and h(x) is the number of occurrences of x in the
+	       shortest clauses, while h'(x) is the number of
+	       occurrences in all the clauses. From "Report on a SAT
+	       competition, by M.Buro and H. Kleine Buning, Bericht Nr.
+	       110, Reihe Informatik, November 1992", in the spirit of
+	       Boehm's solver version A 31/3/92.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllBuild"></A>
+void <I></I>
+<B>SimDllBuild</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Completes the initialization of the internal data structure
+               before the search begins.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllInit">Sim_DllInit</a>
+<a href="#Sim_DllClear">Sim_DllClear</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllCheck"></A>
+int <I></I>
+<B>SimDllCheck</B>(
+  int * <b>redundant</b> <i></i>
+)
+</pre>
+<dd> Reinitializes the number of open literals in each
+               clause and then propagates the stack contents throughout
+	       the formula (from stack bottom to stack top) using a simple
+	       algorithm. Returns SIM_UNSAT if:
+	       <ul>
+	           <li> the stack contains a proposition which has SIM_DC
+		        or SIM_NT in its teta field, or
+	           <li> an empty clause is found, or
+		   <li> the number of open clauses does not become
+              	        0 after the stack has been examined,
+			
+	       </ul>
+	       and SIM_SAT otherwise. If HORN_RELAXATION is defined checks
+	       the number of open non-Horn clauses. If LEARNING is
+	       defined checks also resolutions on learned clauses.
+<p>
+
+<dd> <b>Side Effects</b> redundant is set to the number of unnecessary assignments.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simSolve.c"TARGET="ABSTRACT"><CODE>simSolve.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllChronoBt"></A>
+SimProp_t * <I></I>
+<B>SimDllChronoBt</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Backtracks to the most recent open choice point, i.e.,
+               the most recent proposition assigned with SIMLSPLIT mode.
+	       Returns a reference to the proposition at the choice
+	       point or NULL when there is no more choice, i.e., an
+	       attempt to backtrack beyond the very first choice point
+	       is made.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+<a href="#SimDllRetractProp">SimDllRetractProp</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookBack.c"TARGET="ABSTRACT"><CODE>simLookBack.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllDelProp"></A>
+void <I></I>
+<B>SimDllDelProp</B>(
+  SimProp_t * <b>p</b> <i></i>
+)
+</pre>
+<dd> Removes a  literal from the DLL data structure.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllAddClause">Sim_DllAddClause</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllEndRelsatHeur"></A>
+void <I></I>
+<B>SimDllEndRelsatHeur</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Free auxiliary data for Relsat heuristics.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllInitRelsatHeur">SimDllInitRelsatHeur</a>
+<a href="#SimDllRelsatHeur">SimDllRelsatHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllEndSatoHeur"></A>
+void <I></I>
+<B>SimDllEndSatoHeur</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Free auxiliary data for Sato heuristics.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllInitSatoHeur">SimDllInitSatoHeur</a>
+<a href="#SimDllSatoHeur">SimDllSatoHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllEndSatzHeur"></A>
+void <I></I>
+<B>SimDllEndSatzHeur</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Free auxiliary data for Chu Min Li heuristics.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllInitSatzHeur">SimDllInitSatzHeur</a>
+<a href="#SimDllSatzHeur">SimDllSatzHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllEndUnitieHeur"></A>
+void <I></I>
+<B>SimDllEndUnitieHeur</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Free auxiliary data for Unitie heuristics.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllInitUnitieHeur">SimDllInitUnitieHeur</a>
+<a href="#SimDllUnitieHeur">SimDllUnitieHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllExtendPropFF"></A>
+int <I></I>
+<B>SimDllExtendPropFF</B>(
+  SimProp_t * <b>p</b>, <i></i>
+  int  <b>mode</b> <i></i>
+)
+</pre>
+<dd> Considers a proposition and its valuation:
+               propagates the valuation through the formula.
+	       Unit clauses are detected and pushed onto the Bcp
+	       stack. If HORN_RELAXATION is enabled, 
+	       the non-Horn to Horn transitions are monitored and the
+               non horn index is suitably updated. If BACKJUMPING is
+	       defined, stores the empty clauses causeed by conflicts.
+	       If LEARNING is defined, the valuation is propagated to
+	       the learned clauses (unit resolutions only).
+	       Returns SIM_UNSAT if an empty clause is found; SIM_SAT
+	       otherwise.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRetractProp">SimDllRetractProp</a>
+<a href="#SimDllBcp">SimDllBcp</a>
+<a href="#SimDllMlf">SimDllMlf</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simSolve.c"TARGET="ABSTRACT"><CODE>simSolve.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllExtendPropTT"></A>
+int <I></I>
+<B>SimDllExtendPropTT</B>(
+  SimProp_t * <b>p</b>, <i></i>
+  int  <b>mode</b> <i></i>
+)
+</pre>
+<dd> Considers a proposition and its valuation:
+               propagates the valuation through the formula.
+	       Unit clauses are detected and pushed onto the Bcp
+	       stack. If HORN_RELAXATION is enabled, 
+	       the non-Horn to Horn transitions are monitored and the
+               non horn index is suitably updated. If BACKJUMPING is
+	       defined, stores the empty clauses causeed by conflicts.
+	       If LEARNING is defined, the valuation is propagated to
+	       the learned clauses (unit resolutions only).
+	       Returns SIM_UNSAT if an empty clause is found; SIM_SAT
+	       otherwise.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRetractProp">SimDllRetractProp</a>
+<a href="#SimDllBcp">SimDllBcp</a>
+<a href="#SimDllMlf">SimDllMlf</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simSolve.c"TARGET="ABSTRACT"><CODE>simSolve.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllGetModelsHorn"></A>
+int <I></I>
+<B>SimDllGetModelsHorn</B>(
+  int * <b>stop</b> <i></i>
+)
+</pre>
+<dd> Consistency checking  with horn relaxation.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simCons.c"TARGET="ABSTRACT"><CODE>simCons.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllGetModels"></A>
+int <I></I>
+<B>SimDllGetModels</B>(
+  int * <b>stop</b> <i></i>
+)
+</pre>
+<dd> Consistency checking.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simCons.c"TARGET="ABSTRACT"><CODE>simCons.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllInitRelsatHeur"></A>
+void <I></I>
+<B>SimDllInitRelsatHeur</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate auxiliary data for Relsat heuristics.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRelsatHeur">SimDllRelsatHeur</a>
+<a href="#SimDllEndRelsatHeur">SimDllEndRelsatHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllInitSatoHeur"></A>
+void <I></I>
+<B>SimDllInitSatoHeur</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate auxiliary data for Sato 3.2 heuristics.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllSatoHeur">SimDllSatoHeur</a>
+<a href="#SimDllEndSatoHeur">SimDllEndSatoHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllInitSatzHeur"></A>
+void <I></I>
+<B>SimDllInitSatzHeur</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate auxiliary data for Chu Min Li heuristics.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllSatzHeur">SimDllSatzHeur</a>
+<a href="#SimDllEndSatzHeur">SimDllEndSatzHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllInitUnitieHeur"></A>
+void <I></I>
+<B>SimDllInitUnitieHeur</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate auxiliary data for Uniti heuristics.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllUnitieHeur">SimDllUnitieHeur</a>
+<a href="#SimDllEndUnitieHeur">SimDllEndUnitieHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllInitWr"></A>
+void <I></I>
+<B>SimDllInitWr</B>(
+  SimClause_t * <b>cl</b> <i></i>
+)
+</pre>
+<dd> Cleans the flags to test membership in the working reason and 
+              stores the literals of the conflict (empty) clause.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllBackjumping">SimDllBackjumping</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookBack.c"TARGET="ABSTRACT"><CODE>simLookBack.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllInsProp"></A>
+SimProp_t * <I></I>
+<B>SimDllInsProp</B>(
+  int  <b>lit</b>, <i></i>
+  SimClause_t * <b>cl</b> <i></i>
+)
+</pre>
+<dd> Inserts a new proposition in the DLL data structure.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllAddClause">Sim_DllAddClause</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllJWHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllJWHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> For each open literal l compute the sum J(l)
+               of the quantities 2^(JW_MAX - |C|) (which defaults to 1
+	       if |C| > JW_MAX) for each clause C where l occurs. 
+	       Branch to the literal l having the highest weight J(l).
+	       Break ties using a position argument: 
+	       the first literal that scores highest is the best
+	       (From "Branching Rules for Satisfiability, by
+	       J. N. Hooker and V. Vinay, Journal of Automated
+	       Reasoning 15(3), 1995").
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllLearnClause"></A>
+void <I></I>
+<B>SimDllLearnClause</B>(
+  SimClause_t * <b>cl</b> <i></i>
+)
+</pre>
+<dd> Adds the clause to the list of learned clauses and links the 
+               occurrences of propositions in the clause.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllBackjumping">SimDllBackjumping</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookBack.c"TARGET="ABSTRACT"><CODE>simLookBack.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllMakeClauseFromWr"></A>
+SimClause_t * <I></I>
+<B>SimDllMakeClauseFromWr</B>(
+  int  <b>optimize</b> <i></i>
+)
+</pre>
+<dd> Creates a clause from the working reason.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllBackjumping">SimDllBackjumping</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookBack.c"TARGET="ABSTRACT"><CODE>simLookBack.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllMlf"></A>
+void <I></I>
+<B>SimDllMlf</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Propagates all the pure literals in the MLF stack. If
+               the literal was propagate with another mode it is discarded.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+<a href="#SimDllExtendProp">SimDllExtendProp</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookAhead.c"TARGET="ABSTRACT"><CODE>simLookAhead.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllMomsHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllMomsHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> An interface to DllMomsHeur.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllSatoHeur">SimDllSatoHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllParseDimacsCls"></A>
+void <I></I>
+<B>SimDllParseDimacsCls</B>(
+  FILE * <b>inFile</b> <i></i>
+)
+</pre>
+<dd> Takes a reference to a file and tries to parse  
+               non tautolougus *sets* of literals (clauses). Duplicate
+	       literals are removed. Tautologies and empty clauses
+	       are discarded. The parsing is successfull only when the
+	       clause does not fall in the above categories. This
+	       function does not sort the literals in the clauses.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllParseDimacsFile">Sim_DllParseDimacsFile</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simParse.c"TARGET="ABSTRACT"><CODE>simParse.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllPrintClause"></A>
+void <I></I>
+<B>SimDllPrintClause</B>(
+  SimClause_t * <b>cl</b> <i></i>
+)
+</pre>
+<dd> Prints a clause structure.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllUsrHeur">Sim_DllUsrHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllPrintFormulaStruct"></A>
+void <I></I>
+<B>SimDllPrintFormulaStruct</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Print the formula in the DLL module using a special
+               format:
+	       <ul>
+	       <li> each clause sits in a single line;
+	       <li> the clause is headed by the number of open literals
+	            in angle brackets;
+	       <li> if the clause was simplified then a pair of square
+	            brackets surrounds it; 
+	       <li> if a literal was resolved it appears surrounded by
+	            normal parentheses.
+               </ul>		    
+	       Also the following internal state information is
+	       printed in a trailer:
+	       <ul>
+	       <li> search stack contents
+	       <li> maximum varibale index and currently open variables
+	       <li> total number of clauses, currently open clauses
+       	            and, if HORN_RELAXATION is enabled, currently open
+		    non-horn clauses.   
+	       </ul>
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintFormulaDimacs">Sim_DllPrintFormulaDimacs</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllPrintLearnedBW"></A>
+void <I></I>
+<B>SimDllPrintLearnedBW</B>(
+  int  <b>n</b> <i></i>
+)
+</pre>
+<dd> Prints learned clauses (last learned, first printed).
+               if n is less than the number of learned clauses, prints n
+               clauses from the bottom.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllPrintLearnedFW"></A>
+void <I></I>
+<B>SimDllPrintLearnedFW</B>(
+  int  <b>n</b> <i></i>
+)
+</pre>
+<dd> Prints learned clauses (first learned, first printed).
+               If n is less than the number of learned clauses prints n
+               learned clauses from the top.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllPrintOpen"></A>
+void <I></I>
+<B>SimDllPrintOpen</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Print the open propositions.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllUsrHeur">SimDllUsrHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllPrintPath"></A>
+void <I></I>
+<B>SimDllPrintPath</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Print the search path.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllPrintStack"></A>
+void <I></I>
+<B>SimDllPrintStack</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Print the search stack.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllRelsatHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllRelsatHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Scores the open propositions according to the number of their
+               binary occurrences. If a proposition fullfills some additional
+	       requirements then it is propagated and failed assignments are 
+	       detected. If no failed literal is detected, a pool of variables
+	       that scores in within RELSAT_FUDGEFACT of the best weight is 
+	       collected. A variable and a sign are then chosen randomly. (In 
+	       the spirit of Relsat 2.0 code)
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllResolveWithWr"></A>
+void <I></I>
+<B>SimDllResolveWithWr</B>(
+  SimClause_t * <b>cl</b>, <i></i>
+  SimProp_t * <b>pRes</b> <i></i>
+)
+</pre>
+<dd> Resolves the given clause with the working reason.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllBackjumping">SimDllBackjumping</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookBack.c"TARGET="ABSTRACT"><CODE>simLookBack.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllRetractPropFF"></A>
+void <I></I>
+<B>SimDllRetractPropFF</B>(
+  SimProp_t * <b>p</b> <i></i>
+)
+</pre>
+<dd> Considers a proposition: the effects of the propagations
+               are undone through the formula.
+	       Unit clauses are detected and pushed onto the Bcp
+	       stack. If HORN_RELAXATION is enabled, 
+               the non-horn to horn transitions are monitored and the 
+               non-horn index is suitably restored. If BACKJUMPING is
+	       enabled, removes the reason of failure driven
+	       assignments. If LEARNING is defined, updates learned
+	       clauses, and detects unit on learned clauses.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRetractProp">SimDllRetractProp</a>
+<a href="#SimDllBcp">SimDllBcp</a>
+<a href="#SimDllMlf">SimDllMlf</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simSolve.c"TARGET="ABSTRACT"><CODE>simSolve.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllRetractPropTT"></A>
+void <I></I>
+<B>SimDllRetractPropTT</B>(
+  SimProp_t * <b>p</b> <i></i>
+)
+</pre>
+<dd> Considers a proposition: the effects of the propagations
+               are undone through the formula.
+	       Unit clauses are detected and pushed onto the Bcp
+	       stack. If HORN_RELAXATION is enabled, 
+               the non-horn to horn transitions are monitored and the 
+               non-horn index is suitably restored. If BACKJUMPING is
+	       enabled, removes the reason of failure driven
+	       assignments. If LEARNING is defined, updates learned
+	       clauses, and detects unit on learned clauses.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllRetractProp">SimDllRetractProp</a>
+<a href="#SimDllBcp">SimDllBcp</a>
+<a href="#SimDllMlf">SimDllMlf</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simSolve.c"TARGET="ABSTRACT"><CODE>simSolve.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllRndHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllRndHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Draws a number r from 0 to the number of current
+               variables, i.e., open propositions. Then chooses the
+	       r-th open proposition with a random sign.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllSatoHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllSatoHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> If the percentage of non-Horn clauses is less than
+               certain rate: get the propositions that occur in the 
+	       shortest non-horn clauses, and select the best literal 
+	       according to MOMS heuristics. Select SATO_MAGIC open non-Horn
+	       clauses and SATO_MAGIC open propositions at most.
+	       If the percentage of non-Horn clauses is bigger
+	       than the above rate or if there are less than two
+	       non-Horn clauses use MOMS heuristics only. (From
+	       "SATO: an Efficient Propostional Prover, by Hantao
+	       Zhang, proceedings of CADE, 1996" and in the spirit of 
+	       SATO version 3.2).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+<a href="#MomsHeur">MomsHeur</a>
+<a href="#SimDllInitSatoHeur">SimDllInitSatoHeur</a>
+<a href="#SimDllEndSatoHeur">SimDllEndSatoHeur</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllSatzHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllSatzHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Compute the number of positive and
+               negative occurrences for each open proposition. 
+	       Then select all the propositions that have at least 
+               4 binary occurrences, of which at least 1 positive and 1
+               negative (PROP41). If there are less than T propositions 
+	       that satisfy this condition, then select also the 
+	       propositions that have at least 3 occurrences in binary
+	       clauses, of which at least 1 positive  and 1 negative
+	       (PROP31). If less than T propositions are collected,
+	       reset what has been done so far and compute weights for
+	       each open variable using BCP and a modified
+	       Jeroslow-Wang weighting function. (From "Heuristics
+	       Based on Unit Propagation for Satisfiability Problems,
+	       by Chu Min Li and Anbulagan, proceedings of AAAI, 1999"
+	       and in the spirit of SATZ, release September 1996).
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+<a href="#SimDllInitSatzHeur">SimDllInitSatzHeur</a>
+<a href="#SimDllEndSatzHeur">SimDllEndSatzHeur</a>
+<a href="#Examine">Examine</a>
+<a href="#Examine0">Examine0</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllSetMemout"></A>
+void <I></I>
+<B>SimDllSetMemout</B>(
+  int  <b>mmout</b> <i></i>
+)
+</pre>
+<dd> Sets the specified memeout using the CPU resource limit
+               mechanism.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simMemory.c"TARGET="ABSTRACT"><CODE>simMemory.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllSetTimeout"></A>
+void <I></I>
+<B>SimDllSetTimeout</B>(
+  int  <b>tmout</b> <i></i>
+)
+</pre>
+<dd> Sets the specified timeout using the CPU resource limit
+               mechanism.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simTime.c"TARGET="ABSTRACT"><CODE>simTime.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllStartMemory"></A>
+void <I></I>
+<B>SimDllStartMemory</B>(
+  int  <b>i</b> <i></i>
+)
+</pre>
+<dd> Sets the given counter to the current unshared data size.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simMemory.c"TARGET="ABSTRACT"><CODE>simMemory.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllStartTimer"></A>
+void <I></I>
+<B>SimDllStartTimer</B>(
+  int  <b>timer</b> <i></i>
+)
+</pre>
+<dd> Sets the specified timer to the current CPU resource usage.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simTime.c"TARGET="ABSTRACT"><CODE>simTime.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllStopMemory"></A>
+void <I></I>
+<B>SimDllStopMemory</B>(
+  int  <b>i</b> <i></i>
+)
+</pre>
+<dd> Sets the given counter to the current unshared data size
+               minus the old counter value.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simMemory.c"TARGET="ABSTRACT"><CODE>simMemory.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllStopTimer"></A>
+void <I></I>
+<B>SimDllStopTimer</B>(
+  int  <b>timer</b> <i></i>
+)
+</pre>
+<dd> Sets the specified timer to the current CPU resource usage
+               minus the old timer value.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simTime.c"TARGET="ABSTRACT"><CODE>simTime.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllThrow"></A>
+void <I></I>
+<B>SimDllThrow</B>(
+  Sim_ErrCode_c  <b>errCode</b>, <i></i>
+  Sim_ErrLocation_c  <b>errLoc</b>, <i></i>
+  char * <b>message</b> <i></i>
+)
+</pre>
+<dd> Takes an error type and the error location in the program.
+               Prompts the user on stderr and teminates raising the user 
+	       defined signal SIGUSR1.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simError.c"TARGET="ABSTRACT"><CODE>simError.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllTraceLeafs"></A>
+void <I></I>
+<B>SimDllTraceLeafs</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Each time the function is called a counter is decremented.
+               Once the number of ticks is reached, the functions outputs
+               data on the look-back algorithms.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simTrace.c"TARGET="ABSTRACT"><CODE>simTrace.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllTraceNodes"></A>
+void <I></I>
+<B>SimDllTraceNodes</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Each time the function is called a counter is decremented.
+               Once the number of ticks is reached, the functions outputs
+               data on the look-ahead algorithms.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simTrace.c"TARGET="ABSTRACT"><CODE>simTrace.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllUnitieHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllUnitieHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Selects all the variables that maximize the score:
+               binIfpos * binIfneg << 1 + unitIfpos + unitIfneg + 1
+	       and breaks ties selecting the variable that subsumes the
+	       largest number of clauses.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllUnlearnClause"></A>
+void <I></I>
+<B>SimDllUnlearnClause</B>(
+  SimClause_t * <b>cl</b> <i></i>
+)
+</pre>
+<dd> Delete clause from learned clauses database.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllBackjumping">SimDllBackjumping</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simLookBack.c"TARGET="ABSTRACT"><CODE>simLookBack.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimDllUsrHeur"></A>
+SimProp_t * <I></I>
+<B>SimDllUsrHeur</B>(
+  int * <b>sign</b>, <i></i>
+  int * <b>mode</b> <i></i>
+)
+</pre>
+<dd> Displays all the open literals and asks the user to choose among
+               them (mainly for debugging purposes).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimPropClear"></A>
+void <I></I>
+<B>SimPropClear</B>(
+  SimProp_t * <b>p</b> <i></i>
+)
+</pre>
+<dd> Clears a proposition.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simProp.c"TARGET="ABSTRACT"><CODE>simProp.c</CODE></A>
+
+<dt><pre>
+<A NAME="SimPropInit"></A>
+SimProp_t* <I></I>
+<B>SimPropInit</B>(
+  int  <b>prop</b>, <i></i>
+  short  <b>litSize</b> <i></i>
+)
+</pre>
+<dd> Initializes a proposition.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simProp.c"TARGET="ABSTRACT"><CODE>simProp.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllAddLit"></A>
+int <I></I>
+<B>Sim_DllAddLit</B>(
+  int  <b>clId</b>, <i></i>
+  int  <b>lit</b> <i></i>
+)
+</pre>
+<dd> If there is no pending clause in SimClauses,
+               or `lit' is not within reasonable bounds, exit
+	       with error condition -1.
+	       Check for tautologies and duplications using the list of
+	       occurrences for the proposition corresponding to `lit'.
+	       Return 0 on tautologies, 1 on duplications.
+	       If the literal is ok, add it to the clause and update
+	       the lists of occurrences of the corresponding proposition.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllNewCl">Sim_DllNewCl</a>
+<a href="#Sim_DllNewClSize">Sim_DllNewClSize</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllClear"></A>
+void <I></I>
+<B>Sim_DllClear</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Destroys the internal data structure.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllInit">Sim_DllInit</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllCommitCl"></A>
+int <I></I>
+<B>Sim_DllCommitCl</B>(
+  int  <b>clId</b> <i></i>
+)
+</pre>
+<dd> If there is no pending clause in SimClauses or it has 
+               not the same `clId', return -1.
+	       If the current clause is empty, reset the state and
+	       return 0.
+	       If the pending clause is ok, it is confirmed in the
+	       main clause index: if unary, it is pushed in the bcp
+	       stack. If HORN_RELAXATION is defined, non-Horn clauses
+	       are detected and pushed in the non-Horn index.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllInit">Sim_DllInit</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllGetSolution"></A>
+int * <I></I>
+<B>Sim_DllGetSolution</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate `result' to contain all propositions
+               indexes; scan the main propositions index and store in
+	       `result' the value of the corresponing literals.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllGetStack">Sim_DllGetStack</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllGetStack"></A>
+int * <I></I>
+<B>Sim_DllGetStack</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate `result' to contain all the propositions; scan
+               the stack and store in `result' the id 
+	       of the literal  with the sign of propagation.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllGetStack">Sim_DllGetStack</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllInit"></A>
+void <I></I>
+<B>Sim_DllInit</B>(
+  int * <b>params</b> <i></i>
+)
+</pre>
+<dd> Perform several initializations.
+               <ul>
+	       <li> the solver working parameters are set using the values 
+	            in the  input array `params'; 
+	       <li> timeout and memory out are fixed;
+	       <li> counters, statistics and timers are resetted;
+	       <li> the random seed is initialized;
+	       <li> the main propositions index and the propositions
+	            look-up table are initialized 
+		    (the look-up table is to accomodate up to the
+		    biggest variable index);  
+	       <li> the model propositions index is initialized to a 
+	            fraction (25%) of the number of propositions;
+	       <li> if PURE_LITERAL is defined, the pure literal stack
+	            is initialized to the number of propositions;
+	       <li> the main clause index and the unit clauses stack
+	            are initialized to the number of clauses;
+	       <li> if HORN_RELAXATION is defined, the non-Horn
+	            clauses index is initialized to the number of clauses.
+	       </ul>
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllClear">Sim_DllClear</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllNewClSize"></A>
+int <I></I>
+<B>Sim_DllNewClSize</B>(
+  short  <b>size</b> <i></i>
+)
+</pre>
+<dd> If there is a pending clause in SimClauses,
+               return -1, a failure code.
+               Otherwise, create a new empty clause and reference it
+	       with the last available index in SimClauses. The size
+	       of the clause will be `size'.
+	       Return the clause index (to be used in future operations with
+	       the clause).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllAddLit">Sim_DllAddLit</a>
+<a href="#Sim_DllCommitCl">Sim_DllCommitCl</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllNewCl"></A>
+int <I></I>
+<B>Sim_DllNewCl</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> If there is a pending clause in SimClauses,
+               return -1, a failure code.
+               Otherwise, create a new empty one and reference it
+	       with the last available index in SimClauses. The size
+	       of the clause will be the default SIMCL_SIZE.
+	       Return the clause index (to be used in future operations with
+	       the clause).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllAddLit">Sim_DllAddLit</a>
+<a href="#Sim_DllCommitCl">Sim_DllCommitCl</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllParseDimacs"></A>
+int <I></I>
+<B>Sim_DllParseDimacs</B>(
+  FILE * <b>inFile</b>, <i></i>
+  int * <b>params</b> <i></i>
+)
+</pre>
+<dd> Takes a pointer to a file and tries to parse (using
+               DIMACS format) a cnf problem. Takes also the initialization 
+	       parameters for the dll module. Returns a pointer to a
+	       DLL module if successfull; NULL if (i) the file does
+	       not exists, or (ii) there is no line starting with p,
+	       or (iii) such line does not define a DIMACS cnf
+	       problem.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllInit">Sim_DllInit</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simParse.c"TARGET="ABSTRACT"><CODE>simParse.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllPrintFormulaDimacs"></A>
+void <I></I>
+<B>Sim_DllPrintFormulaDimacs</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Print the formula in the DLL module using DIMACS format.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllPrintModel"></A>
+void <I></I>
+<B>Sim_DllPrintModel</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Print the model.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintStack">Sim_DllPrintStack</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllPrintParams"></A>
+void <I></I>
+<B>Sim_DllPrintParams</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Prints parameters (configuration).
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllPrintResult"></A>
+void <I></I>
+<B>Sim_DllPrintResult</B>(
+  int  <b>res</b> <i></i>
+)
+</pre>
+<dd> Prints the result (formatted).
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllPrintStats"></A>
+void <I></I>
+<B>Sim_DllPrintStats</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Prints internal statistics.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllPrintTimers"></A>
+void <I></I>
+<B>Sim_DllPrintTimers</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Prints internal timers.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simOutput.c"TARGET="ABSTRACT"><CODE>simOutput.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllPropMakeIndep"></A>
+void <I></I>
+<B>Sim_DllPropMakeIndep</B>(
+  int  <b>prop</b> <i></i>
+)
+</pre>
+<dd> If `prop' is a sensible value, then if the
+               corresponding proposition is not there, it is created and
+               inserted in the main proposition index. If the
+	       proposition was not declared as a model proposition, 
+	       set its back reference and push it in the model
+	       propositions index.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_DllSolve"></A>
+int <I></I>
+<B>Sim_DllSolve</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> A heuristic function (SimDllChooseLiteral) is used to choose
+               a literal at each node of the search tree; 
+	       SimDllCheckConsistency is used to (i) declare a formula
+	       satisfiable, and (ii) stop the search at some point; 
+	       the SimDllBacktracking function is responsible for
+	       restoring to a 
+	       previous choice point (if any) in the search tree when
+	       a dead end (SIM_UNSAT subproblem) is reached.  
+	       Returns SIM_SAT if the formula is satisifable;
+	       SIM_UNSAT otherwise.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllCheckConsistency">SimDllCheckConsistency</a>
+<a href="#SimDllChooseLiteral">SimDllChooseLiteral</a>
+<a href="#SimDllBacktrack">SimDllBacktrack</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simSolve.c"TARGET="ABSTRACT"><CODE>simSolve.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_GetErrorCode"></A>
+Sim_ErrCode_c <I></I>
+<B>Sim_GetErrorCode</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the error code (if any).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simError.c"TARGET="ABSTRACT"><CODE>simError.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_GetErrorLocation"></A>
+Sim_ErrLocation_c <I></I>
+<B>Sim_GetErrorLocation</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the error location (if any).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simError.c"TARGET="ABSTRACT"><CODE>simError.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_ParamInit"></A>
+int * <I></I>
+<B>Sim_ParamInit</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Creates a default parameter setup as follows:<br>
+	       <tt>
+                Idx  Default value  Parameter           Notes 
+		--------------------------------------------------------------
+                 0       unlimited  SIM_TIMEOUT         seconds
+		 1       unlimited  SIM_MEMOUT          megabytes
+		 2  SIM_BOEHM_HEUR  SIM_HEURISTICS      0..SIM_HEUR_NUM
+		 3               1  SIM_SOL_NUM         N >= 1
+		 4               3  SIM_LEARN_ORDER     N >= 2
+		 5   SIM_RELEVANCE  SIM_LEARN_TYPE      SIM_RELEVANCE/SIM_SIZE
+		 6               0  SIM_MODEL_PROPS     0/1
+		 7        SIM_NONE  SIM_PPROC_STRENGTH  0..SIM_RESOLVE
+		 8               0  SIM_RND_SEED        N >= 0
+		 9               0  SIM_VERBOSITY       0/1  
+		10               0  SIM_HEUR_PARAM      N >= 0
+	        11             100  SIM_MAX_VAR_NUM     N > 1
+		12            1000  SIM_MAX_CL_NUM      N > 1
+		--------------------------------------------------------------
+	       </tt>
+	       Notice that the actual number of variables and clauses in the
+	       formula *cannot* be greater than SIM_MAX_VAR_NUM and
+	       SIM_MAX_CL_NUM respectively. Failing to dimension these
+	       parameters correctly will cause the solver to crash.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_ParamSet">Sim_ParamSet</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sim_ParamSet"></A>
+int * <I></I>
+<B>Sim_ParamSet</B>(
+  int * <b>param</b>, <i></i>
+  int  <b>pName</b>, <i></i>
+  int  <b>pValue</b> <i></i>
+)
+</pre>
+<dd> Changes the value of a specific parameter.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_ParamInit">Sim_ParamInit</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simData.c"TARGET="ABSTRACT"><CODE>simData.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Adds a given number to a statistic.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllStatDec">SimDllStatDec</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Decrements the number of open literals (openLitNum) in
+                each clause. If the clause does not become unary, pushes 
+		its pointer into managedCls. If the clause becomes unary, 
+		pushes it in the BCP stack.
+<p>
+
+<dd> <b>Side Effects</b> Every times that a unit clause is found, it is pushed into 
+                Bcp stack, and localBcpIdx is incremented. If a contradiction
+		is found, the variable localBcpIdx is set to -1, and the 
+		propagation is stopped. Otherwise, score is
+		incremented.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#LeanBcp">LeanBcp</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Bit annotation in proposition pointers.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Call the selected heuristics.
+<p>
+
+<dd> <b>Side Effects</b> The heuristics assigns a value to s and m.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Checks if the number of open clauses is greater than 0.
+                If HORN_RELAXATION is defined, checks if the number of
+		open non-Horn clauses is greater than 0.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllMlf">SimDllMlf</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Calls the function that checks if the formula is empty, i.e., 
+                if the number of open clauses is 0. If HORN_RELAXATION is 
+		defined, calls the function that checks if the number of 
+		open non-Horn clauses is 0.
+<p>
+
+<dd> <b>Side Effects</b> The function assigns a value to s
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Decrements a statistic.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllStatInc">SimDllStatInc</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Empty macro.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Examine">Examine</a>
+<a href="#Examine0">Examine0</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Empty macro.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Examine">Examine</a>
+<a href="#Examine0">Examine0</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Increments a statistic.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllStatDec">SimDllStatDec</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Increments the unit counter (unit).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code>Propagate
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Increments the unit counter (unit).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code>Propagate
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Increments the unit counter (unit).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code>Propagate
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Keeps propagating the unit clauses until an empty
+                clause is found or there are no more unit clauses.
+		ScoringOp and BacktrackOp are in the form 
+		`void xxxOp(SimProp_t * p)' and define additional 
+		operations to be done with q.
+<p>
+
+<dd> <b>Side Effects</b> The function performing ExtendProp puts -1 into the index 
+                of BCP stack when an empty clause is found.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#LeanExtendPropTT">LeanExtendPropTT</a>
+<a href="#LeanExtendPropFF">LeanExtendPropFF</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes a proposition.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes a proposition and a level.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes a proposition, a value and a level.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes a proposition, the heuristics name and a weight.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes a proposition, a value, a level and the reason for the
+                implied assignment (e.g., unit, pure literal, etc.).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes parameters for SimDllPrintClause.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes a proposition, a value and a level.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes a list of literals and a temporary index.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Takes a list of literals and a temporary index.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Remove a clause.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Restores the number of open propositions
+		to the old value in the changed clauses.
+		Unassigns all the propositions in changedProps.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Return the absolute value of an integer.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns a long integer in the range [0, x-1
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Calls SimDllExtendPropTT or SimDllExtendPropFF, according
+                to the value of sign.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Calls SimDllExtendPropTT or SimDllExtendPropFF, according
+                to the value of sign.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> If BACKJUMPING is defined calls Backjumping instead of
+                Chronological backtracking.
+<p>
+
+<dd> <b>Side Effects</b> The function assigns a value to s and m.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Set the flags that witness an assignment.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code>Propagate
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> If the condition is not fullfilled raises the exception
+                SIM_INTERNAL_ERROR using the library own exception handling.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> If the second argument is NULL raises the exception
+                SIM_MEMORY_ERROR using the library own exception handling.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Calls the function only if TRACE is defined.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Store q reason.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code>Propagate
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Stores the random generation seed.
+<p>
+
+<dd> <b>Side Effects</b> If `x' is zero and `getpid()' is available, x is set
+                to the return value of `getpid()'.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Swaps two scalars.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Tests if the clause is open.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Unassigns all the propositions in changedProps.
+                Restores the number of open propositions
+		to the old value in the changed clauses Computes
+		working reason while restoring the counters.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simHeur.c"TARGET="ABSTRACT"><CODE>simHeur.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Compares the current value with the previous value
+                and updates the information when the current value is bigger.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllStatInc">SimDllStatInc</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Compares the current value with the previous value
+                and updates the information when the current value is smaller.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllStatInc">SimDllStatInc</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> If PURE_LITERAL is defined calls SimDllMlf.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllSolve">Sim_DllSolve</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="simAllFile.html#simInt.h"TARGET="ABSTRACT"><CODE>simInt.h</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

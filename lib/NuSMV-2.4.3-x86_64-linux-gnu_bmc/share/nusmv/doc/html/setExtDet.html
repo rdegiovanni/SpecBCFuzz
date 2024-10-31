@@ -1,0 +1,175 @@
+<HTML>
+<HEAD><TITLE>The set package</TITLE></HEAD>
+<BODY>
+
+<DL>
+<dt><pre>
+<A NAME="Set_AddMember"></A>
+Set_t <I></I>
+<B>Set_AddMember</B>(
+  Set_t  <b>set</b>, <i></i>
+  Set_Element_t  <b>el</b> <i></i>
+)
+</pre>
+<dd> The new set is returned
+<p>
+
+<dt><pre>
+<A NAME="Set_Difference"></A>
+Set_t <I></I>
+<B>Set_Difference</B>(
+  Set_t  <b>set1</b>, <i></i>
+  Set_t  <b>set2</b> <i></i>
+)
+</pre>
+<dd> Computes the Set Difference
+<p>
+
+<dt><pre>
+<A NAME="Set_GetFirst"></A>
+Set_Element_t <I></I>
+<B>Set_GetFirst</B>(
+  Set_t  <b>set1</b> <i></i>
+)
+</pre>
+<dd> Gets the first element of a set.
+<p>
+
+<dt><pre>
+<A NAME="Set_GetRest"></A>
+Set_t <I></I>
+<B>Set_GetRest</B>(
+  Set_t  <b>set1</b> <i></i>
+)
+</pre>
+<dd> Gets the set difference among the set and the
+  singleton corresponding to the first element of the set.
+<p>
+
+<dt><pre>
+<A NAME="Set_GiveCardinality"></A>
+int <I></I>
+<B>Set_GiveCardinality</B>(
+  Set_t  <b>set</b> <i></i>
+)
+</pre>
+<dd> Computes the cardinality of the given set
+<p>
+
+<dt><pre>
+<A NAME="Set_IsEmpty"></A>
+boolean <I></I>
+<B>Set_IsEmpty</B>(
+  Set_t  <b>set</b> <i></i>
+)
+</pre>
+<dd> Checks for Set Emptiness.
+<p>
+
+<dt><pre>
+<A NAME="Set_IsMember"></A>
+boolean <I></I>
+<B>Set_IsMember</B>(
+  Set_t  <b>set</b>, <i></i>
+  Set_Element_t  <b>el</b> <i></i>
+)
+</pre>
+<dd> Checks if the given element is a meber of the
+  set. It returns <tt>True</tt> if it is a member, <tt>False</tt>
+  otherwise.
+<p>
+
+<dt><pre>
+<A NAME="Set_MakeEmpty"></A>
+Set_t <I></I>
+<B>Set_MakeEmpty</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This function creates an empty set.
+<p>
+
+<dt><pre>
+<A NAME="Set_MakeSingleton"></A>
+Set_t <I></I>
+<B>Set_MakeSingleton</B>(
+  Set_Element_t  <b>el</b> <i></i>
+)
+</pre>
+<dd> Creates a set with a unique element.
+<p>
+
+<dt><pre>
+<A NAME="Set_Make"></A>
+Set_t <I></I>
+<B>Set_Make</B>(
+  node_ptr  <b>l</b> <i></i>
+)
+</pre>
+<dd> Given a list, builds a corresponding set
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Set_MakeSingleton">Set_MakeSingleton</a>
+</code>
+
+<dt><pre>
+<A NAME="Set_PrintSet"></A>
+void <I></I>
+<B>Set_PrintSet</B>(
+  FILE * <b>file</b>, <i></i>
+  Set_t  <b>s</b> <i></i>
+)
+</pre>
+<dd> Prints a set to the specified file stream
+<p>
+
+<dt><pre>
+<A NAME="Set_ReleaseSet"></A>
+void <I></I>
+<B>Set_ReleaseSet</B>(
+  Set_t  <b>set</b> <i></i>
+)
+</pre>
+<dd> Releases the memory associated to the given set
+<p>
+
+<dt><pre>
+<A NAME="Set_RemoveMember"></A>
+Set_t <I></I>
+<B>Set_RemoveMember</B>(
+  Set_t  <b>set</b>, <i></i>
+  Set_Element_t  <b>el</b> <i></i>
+)
+</pre>
+<dd> The new set is returned
+<p>
+
+<dt><pre>
+<A NAME="Set_Set2List"></A>
+node_ptr <I></I>
+<B>Set_Set2List</B>(
+  Set_t  <b>l</b> <i></i>
+)
+</pre>
+<dd> Given a set, builds a corresponding list
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Set_MakeSingleton">Set_MakeSingleton</a>
+</code>
+
+<dt><pre>
+<A NAME="Set_Union"></A>
+Set_t <I></I>
+<B>Set_Union</B>(
+  Set_t  <b>set1</b>, <i></i>
+  Set_t  <b>set2</b> <i></i>
+)
+</pre>
+<dd> Computes the Union of two sets
+<p>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

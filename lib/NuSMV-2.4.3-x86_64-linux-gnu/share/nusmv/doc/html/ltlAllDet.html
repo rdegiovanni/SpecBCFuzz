@@ -1,0 +1,544 @@
+<html>
+<head><title>The ltl package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="CommandCheckLtlSpec"></A>
+int <I></I>
+<B>CommandCheckLtlSpec</B>(
+  int  <b>argc</b>, <i></i>
+  char ** <b>argv</b> <i></i>
+)
+</pre>
+<dd> Performs LTL model checking
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCmd.c"TARGET="ABSTRACT"><CODE>ltlCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME="Ltl_CheckLtlSpec"></A>
+void <I></I>
+<B>Ltl_CheckLtlSpec</B>(
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> The main routine to perform LTL model checking. It
+  first takes the LTL formula, prints it in a file. It calls the LTL2SMV
+  translator on it an reads in the generated tableau. The tableau is
+  instantiated, compiled and then conjoined with the original model
+  (both the set of fairness conditions and the transition relation are
+  affected by this operation, for this reason we save the current
+  model, and after the verification of the property we restore the
+  original one).
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltl.c"TARGET="ABSTRACT"><CODE>ltl.c</CODE></A>
+
+<dt><pre>
+<A NAME="Ltl_Init"></A>
+void <I></I>
+<B>Ltl_Init</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Initializes the ltl package.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCmd.c"TARGET="ABSTRACT"><CODE>ltlCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME="build_input_vars_assoc"></A>
+static hash_ptr <I></I>
+<B>build_input_vars_assoc</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  node_ptr  <b>inputs</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="expand_input"></A>
+static node_ptr <I></I>
+<B>expand_input</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  node_ptr  <b>expr</b>, <i></i>
+  hash_ptr  <b>assoc</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="expr_is_constant"></A>
+static boolean <I></I>
+<B>expr_is_constant</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  node_ptr  <b>expr</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="expr_is_term"></A>
+static boolean <I></I>
+<B>expr_is_term</B>(
+  node_ptr  <b>expr</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="expr_is_wff"></A>
+static boolean <I></I>
+<B>expr_is_wff</B>(
+  node_ptr  <b>expr</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="expr_subst_all"></A>
+static node_ptr <I></I>
+<B>expr_subst_all</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  node_ptr  <b>expr</b>, <i></i>
+  node_ptr  <b>s</b>, <i></i>
+  node_ptr  <b>d</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="extract_inputs"></A>
+static node_ptr <I></I>
+<B>extract_inputs</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  node_ptr  <b>expr</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="feasible"></A>
+bdd_ptr <I></I>
+<B>feasible</B>(
+  BddFsm_ptr  <b>fsm</b>, <i></i>
+  BddEnc_ptr  <b>enc</b> <i></i>
+)
+</pre>
+<dd> Checks whether the model has a fair path and returns
+  the initial state of the path.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCompassion.c"TARGET="ABSTRACT"><CODE>ltlCompassion.c</CODE></A>
+
+<dt><pre>
+<A NAME="fill_path_with_inputs"></A>
+static node_ptr <I></I>
+<B>fill_path_with_inputs</B>(
+  BddFsm_ptr  <b>fsm</b>, <i></i>
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  node_ptr  <b>path</b> <i></i>
+)
+</pre>
+<dd> Fills a path with inputs.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCompassion.c"TARGET="ABSTRACT"><CODE>ltlCompassion.c</CODE></A>
+
+<dt><pre>
+<A NAME="free_assoc_data_aux"></A>
+static assoc_retval <I></I>
+<B>free_assoc_data_aux</B>(
+  char * <b>key</b>, <i></i>
+  char * <b>data</b>, <i></i>
+  char * <b>arg</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_digits"></A>
+static int <I></I>
+<B>get_digits</B>(
+  int  <b>n</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_var_name"></A>
+static node_ptr <I></I>
+<B>get_var_name</B>(
+  hash_ptr  <b>assoc</b>, <i></i>
+  node_ptr  <b>name</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_var_trans"></A>
+static node_ptr <I></I>
+<B>get_var_trans</B>(
+  hash_ptr  <b>assoc</b>, <i></i>
+  node_ptr  <b>name</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_var_values"></A>
+static node_ptr <I></I>
+<B>get_var_values</B>(
+  hash_ptr  <b>assoc</b>, <i></i>
+  node_ptr  <b>name</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="ltlBuildTableauAndPropFsm"></A>
+static int <I></I>
+<B>ltlBuildTableauAndPropFsm</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  SymbLayer_ptr  <b>tableau_layer</b>, <i></i>
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> Creates the tableau for a LTL property.  The FSM of the
+  property contains the tableau. Returns 1 if an error is encountered
+  during the tableau generation, 0 otherwise
+<p>
+
+<dd> <b>Side Effects</b> The bdd fsm into the prop will change
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltl.c"TARGET="ABSTRACT"><CODE>ltl.c</CODE></A>
+
+<dt><pre>
+<A NAME="ltlFreeWFFR_TYPE"></A>
+void <I></I>
+<B>ltlFreeWFFR_TYPE</B>(
+  WFFR_TYPE  <b>rw</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="ltlHandleInputsVars"></A>
+void <I></I>
+<B>ltlHandleInputsVars</B>(
+  SymbLayer_ptr  <b>layer</b>, <i></i>
+  WFFR_TYPE  <b>wr</b>, <i></i>
+  node_ptr* <b>init</b>, <i></i>
+  node_ptr* <b>invar</b>, <i></i>
+  node_ptr* <b>trans</b> <i></i>
+)
+</pre>
+<dd> Declares the new variables introduced by the
+  rewriting and builds their transition relation
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="ltlInsertModuleHashReadModule"></A>
+static void <I></I>
+<B>ltlInsertModuleHashReadModule</B>(
+  node_ptr  <b>ltl_parsed_module</b> <i></i>
+)
+</pre>
+<dd> Add the tableau module to the list of know modules
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltl.c"TARGET="ABSTRACT"><CODE>ltl.c</CODE></A>
+
+<dt><pre>
+<A NAME="ltlPropAddTableau"></A>
+static void <I></I>
+<B>ltlPropAddTableau</B>(
+  Prop_ptr  <b>prop</b>, <i></i>
+  SymbLayer_ptr  <b>tableau_layer</b>, <i></i>
+  FlatHierarchy_ptr  <b>hierarchy</b> <i></i>
+)
+</pre>
+<dd> The bdd fsm into the property will change
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltl.c"TARGET="ABSTRACT"><CODE>ltl.c</CODE></A>
+
+<dt><pre>
+<A NAME="ltlRewriteWffIfInputPresent"></A>
+WFFR_TYPE <I></I>
+<B>ltlRewriteWffIfInputPresent</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  node_ptr  <b>expr</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlRewrite.c"TARGET="ABSTRACT"><CODE>ltlRewrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="ltl_remove_layer"></A>
+void <I></I>
+<B>ltl_remove_layer</B>(
+  BddEnc_ptr  <b>bdd_enc</b>, <i></i>
+  SymbLayer_ptr  <b>layer</b> <i></i>
+)
+</pre>
+<dd> Private service that removes the given layer from 
+  the symbol table, and from both the boolean and bdd encodings.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltl.c"TARGET="ABSTRACT"><CODE>ltl.c</CODE></A>
+
+<dt><pre>
+<A NAME="path"></A>
+static node_ptr <I></I>
+<B>path</B>(
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  bdd_ptr  <b>source</b>, <i></i>
+  bdd_ptr  <b>dest</b>, <i></i>
+  bdd_ptr  <b>R</b> <i></i>
+)
+</pre>
+<dd> Computes a path given the bdds representind the source
+  states, the target states, and the transition relation.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCompassion.c"TARGET="ABSTRACT"><CODE>ltlCompassion.c</CODE></A>
+
+<dt><pre>
+<A NAME="predecessors"></A>
+static bdd_ptr <I></I>
+<B>predecessors</B>(
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  bdd_ptr  <b>relation</b>, <i></i>
+  bdd_ptr  <b>to</b> <i></i>
+)
+</pre>
+<dd> Given a state to and a transition relation, compute the
+  direct and indirect predecessor states (transitive closure of
+  predecessor).
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCompassion.c"TARGET="ABSTRACT"><CODE>ltlCompassion.c</CODE></A>
+
+<dt><pre>
+<A NAME="predecessor"></A>
+static bdd_ptr <I></I>
+<B>predecessor</B>(
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  bdd_ptr  <b>relation</b>, <i></i>
+  bdd_ptr  <b>to</b> <i></i>
+)
+</pre>
+<dd> Given a state to and a transition relation, compute the
+  direct predecessor state.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCompassion.c"TARGET="ABSTRACT"><CODE>ltlCompassion.c</CODE></A>
+
+<dt><pre>
+<A NAME="print_ltlspec"></A>
+void <I></I>
+<B>print_ltlspec</B>(
+  FILE* <b>file</b>, <i></i>
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> Print the LTL specification.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltl.c"TARGET="ABSTRACT"><CODE>ltl.c</CODE></A>
+
+<dt><pre>
+<A NAME="successors"></A>
+static bdd_ptr <I></I>
+<B>successors</B>(
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  bdd_ptr  <b>from</b>, <i></i>
+  bdd_ptr  <b>relation</b> <i></i>
+)
+</pre>
+<dd> Given a state from and transition relation, compute the
+  direct and indirect successor states (transitive closure of
+  successor).
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCompassion.c"TARGET="ABSTRACT"><CODE>ltlCompassion.c</CODE></A>
+
+<dt><pre>
+<A NAME="successor"></A>
+static bdd_ptr <I></I>
+<B>successor</B>(
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  bdd_ptr  <b>from</b>, <i></i>
+  bdd_ptr  <b>relation</b> <i></i>
+)
+</pre>
+<dd> Given a state from and transition relation, compute the
+  direct successor state.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCompassion.c"TARGET="ABSTRACT"><CODE>ltlCompassion.c</CODE></A>
+
+<dt><pre>
+<A NAME="witness"></A>
+node_ptr <I></I>
+<B>witness</B>(
+  BddFsm_ptr  <b>fsm</b>, <i></i>
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  bdd_ptr  <b>feasib</b> <i></i>
+)
+</pre>
+<dd> Computes fair path from one of the states 
+  passed as parameter.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="ltlAllFile.html#ltlCompassion.c"TARGET="ABSTRACT"><CODE>ltlCompassion.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

@@ -1,0 +1,137 @@
+<html>
+<head><title>sim package abstract</title></head>
+<body>
+
+
+<!-- Function Abstracts -->
+
+<dl>
+<dt> <a href="simAllDet.html#Sim_DllAddLit" TARGET="MAIN"><code>Sim_DllAddLit()</code></a>
+<dd> Add a literal `lit' to the current clause. `lit' must
+               be an integer such that its absolute value is greater
+	       than 0 and smaller than or equal to the biggest allowed
+	       variable index. A positive (negative) integer denotes a
+	       positive (negative) occurrence of the corresponding variable.
+	       If `lit' does not fulfill the above conditions, or if
+	       there is no pending clause to add `lit' to, -1 is
+	       returned. The function returns 0 if the pending clause
+	       becomes tautologous, and 1 otherwise. Redundant
+	       literals are always discarded.
+
+<dt> <a href="simAllDet.html#Sim_DllClear" TARGET="MAIN"><code>Sim_DllClear()</code></a>
+<dd> Destroys the internal data structure.
+
+<dt> <a href="simAllDet.html#Sim_DllCommitCl" TARGET="MAIN"><code>Sim_DllCommitCl()</code></a>
+<dd> Commit the pending clause. If there is no such clause,
+                or the given `clId' is differente from the current
+		one, -1 is returned. If the committed clause is empty, 
+		0 is returned and the function resets the state (no
+		pending clause). On success, `clId' is returned.
+
+<dt> <a href="simAllDet.html#Sim_DllGetSolution" TARGET="MAIN"><code>Sim_DllGetSolution()</code></a>
+<dd> Get the current assignment to propositions. The returned
+               object is an array of integers indexed on
+	       propositions. For each proposition, the values  SIM_TT,
+	       SIM_FF, SIM_DC are given, meaning that the proposition
+	       was assigned to true, false or not assigned at all (Don't
+	       Care). Propositions that did not occur in the formula
+	       receive a default value of SIM_DC. The first location
+	       of the returned array contains the biggest proposition index.
+
+<dt> <a href="simAllDet.html#Sim_DllGetStack" TARGET="MAIN"><code>Sim_DllGetStack()</code></a>
+<dd> Get the current search stack contents. The returned
+               object is an array representing truth assignment 
+	       to propositions encoded as literals (negative
+	       value if the proposition was assigned to false and vice versa).
+	       The first location of the returned array is the cardinality
+	       of the truth assignment.
+
+<dt> <a href="simAllDet.html#Sim_DllInit" TARGET="MAIN"><code>Sim_DllInit()</code></a>
+<dd> Initialize the DLL module. The array `params' must
+               be suitably initialized.
+
+<dt> <a href="simAllDet.html#Sim_DllNewClSize" TARGET="MAIN"><code>Sim_DllNewClSize()</code></a>
+<dd> Create a new (empty) clause and return its unique id,
+               (an integer code greater than or equal to 0).
+	       The clause is dimensioned to accomodate `size' literals
+	       without reallocations. 
+	       Trying to add a new clause without committing any pending
+	       one yields -1 as a return value.
+
+<dt> <a href="simAllDet.html#Sim_DllNewCl" TARGET="MAIN"><code>Sim_DllNewCl()</code></a>
+<dd> Create a new (empty) clause and return its unique id
+               (an integer code greater than or equal to 0). Trying to
+	       add a new clause without committing any pending one
+	       yields -1 as a return value.
+
+<dt> <a href="simAllDet.html#Sim_DllParseDimacs" TARGET="MAIN"><code>Sim_DllParseDimacs()</code></a>
+<dd> Parses a DIMACS cnf problem file into a DLL module.
+
+<dt> <a href="simAllDet.html#Sim_DllPrintFormulaDimacs" TARGET="MAIN"><code>Sim_DllPrintFormulaDimacs()</code></a>
+<dd> Print the formula in the DLL module using DIMACS format.
+
+<dt> <a href="simAllDet.html#Sim_DllPrintModel" TARGET="MAIN"><code>Sim_DllPrintModel()</code></a>
+<dd> Print the model.
+
+<dt> <a href="simAllDet.html#Sim_DllPrintParams" TARGET="MAIN"><code>Sim_DllPrintParams()</code></a>
+<dd> Prints parameters (configuration).
+
+<dt> <a href="simAllDet.html#Sim_DllPrintResult" TARGET="MAIN"><code>Sim_DllPrintResult()</code></a>
+<dd> Prints the result (formatted).
+
+<dt> <a href="simAllDet.html#Sim_DllPrintStats" TARGET="MAIN"><code>Sim_DllPrintStats()</code></a>
+<dd> Prints internal statistics.
+
+<dt> <a href="simAllDet.html#Sim_DllPrintTimers" TARGET="MAIN"><code>Sim_DllPrintTimers()</code></a>
+<dd> Prints internal timers.
+
+<dt> <a href="simAllDet.html#Sim_DllPropMakeIndep" TARGET="MAIN"><code>Sim_DllPropMakeIndep()</code></a>
+<dd> State model membership, i.e., a proposition that is not
+               dependent or defined. 'prop` must be a positive
+	       non-zero integer smaller than or equal to the biggest
+	       allowed variable index.
+
+<dt> <a href="simAllDet.html#Sim_DllSolve" TARGET="MAIN"><code>Sim_DllSolve()</code></a>
+<dd> Solves a formula using the Davis-Logemann-Loveland 
+               algorithm.
+
+<dt> <a href="simAllDet.html#Sim_GetErrorCode" TARGET="MAIN"><code>Sim_GetErrorCode()</code></a>
+<dd> Returns the error code (if any).
+
+<dt> <a href="simAllDet.html#Sim_GetErrorLocation" TARGET="MAIN"><code>Sim_GetErrorLocation()</code></a>
+<dd> Returns the error location (if any).
+
+<dt> <a href="simAllDet.html#Sim_ParamInit" TARGET="MAIN"><code>Sim_ParamInit()</code></a>
+<dd> Creates a default parameter setup as follows:<br>
+	       <tt>
+                Idx  Default value  Parameter           Notes 
+		--------------------------------------------------------------
+                 0       unlimited  SIM_TIMEOUT         seconds
+		 1       unlimited  SIM_MEMOUT          megabytes
+		 2  SIM_BOEHM_HEUR  SIM_HEURISTICS      0..SIM_HEUR_NUM
+		 3               1  SIM_SOL_NUM         N >= 1
+		 4               3  SIM_LEARN_ORDER     N >= 2
+		 5   SIM_RELEVANCE  SIM_LEARN_TYPE      SIM_RELEVANCE/SIM_SIZE
+		 6               0  SIM_MODEL_PROPS     0/1
+		 7        SIM_NONE  SIM_PPROC_STRENGTH  0..SIM_RESOLVE
+		 8               0  SIM_RND_SEED        N >= 0
+		 9               0  SIM_VERBOSITY       0/1  
+		10               0  SIM_HEUR_PARAM      N >= 0
+	        11             100  SIM_MAX_VAR_NUM     N > 1
+		12            1000  SIM_MAX_CL_NUM      N > 1
+		--------------------------------------------------------------
+	       </tt>
+	       Notice that the actual number of variables and clauses in the
+	       formula *cannot* be greater than SIM_MAX_VAR_NUM and
+	       SIM_MAX_CL_NUM respectively. Failing to dimension these
+	       parameters correctly will cause the solver to crash.
+
+<dt> <a href="simAllDet.html#Sim_ParamSet" TARGET="MAIN"><code>Sim_ParamSet()</code></a>
+<dd> Changes the value of a specific parameter.
+
+</dl>
+
+<hr>
+
+Last updated on 2007/05/22 18h:36
+</body></html>

@@ -1,0 +1,434 @@
+<HTML>
+<HEAD><TITLE>The sim package</TITLE></HEAD>
+<BODY>
+
+<DL>
+<dt><pre>
+<A NAME="Sim_DllAddLit"></A>
+int <I></I>
+<B>Sim_DllAddLit</B>(
+  int  <b>clId</b>, <i></i>
+  int  <b>lit</b> <i></i>
+)
+</pre>
+<dd> If there is no pending clause in SimClauses,
+               or `lit' is not within reasonable bounds, exit
+	       with error condition -1.
+	       Check for tautologies and duplications using the list of
+	       occurrences for the proposition corresponding to `lit'.
+	       Return 0 on tautologies, 1 on duplications.
+	       If the literal is ok, add it to the clause and update
+	       the lists of occurrences of the corresponding proposition.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllNewCl">Sim_DllNewCl</a>
+<a href="#Sim_DllNewClSize">Sim_DllNewClSize</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllClear"></A>
+void <I></I>
+<B>Sim_DllClear</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Destroys the internal data structure.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllInit">Sim_DllInit</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllCommitCl"></A>
+int <I></I>
+<B>Sim_DllCommitCl</B>(
+  int  <b>clId</b> <i></i>
+)
+</pre>
+<dd> If there is no pending clause in SimClauses or it has 
+               not the same `clId', return -1.
+	       If the current clause is empty, reset the state and
+	       return 0.
+	       If the pending clause is ok, it is confirmed in the
+	       main clause index: if unary, it is pushed in the bcp
+	       stack. If HORN_RELAXATION is defined, non-Horn clauses
+	       are detected and pushed in the non-Horn index.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllInit">Sim_DllInit</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllGetSolution"></A>
+int * <I></I>
+<B>Sim_DllGetSolution</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate `result' to contain all propositions
+               indexes; scan the main propositions index and store in
+	       `result' the value of the corresponing literals.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllGetStack">Sim_DllGetStack</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllGetStack"></A>
+int * <I></I>
+<B>Sim_DllGetStack</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate `result' to contain all the propositions; scan
+               the stack and store in `result' the id 
+	       of the literal  with the sign of propagation.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllGetStack">Sim_DllGetStack</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllInit"></A>
+void <I></I>
+<B>Sim_DllInit</B>(
+  int * <b>params</b> <i></i>
+)
+</pre>
+<dd> Perform several initializations.
+               <ul>
+	       <li> the solver working parameters are set using the values 
+	            in the  input array `params'; 
+	       <li> timeout and memory out are fixed;
+	       <li> counters, statistics and timers are resetted;
+	       <li> the random seed is initialized;
+	       <li> the main propositions index and the propositions
+	            look-up table are initialized 
+		    (the look-up table is to accomodate up to the
+		    biggest variable index);  
+	       <li> the model propositions index is initialized to a 
+	            fraction (25%) of the number of propositions;
+	       <li> if PURE_LITERAL is defined, the pure literal stack
+	            is initialized to the number of propositions;
+	       <li> the main clause index and the unit clauses stack
+	            are initialized to the number of clauses;
+	       <li> if HORN_RELAXATION is defined, the non-Horn
+	            clauses index is initialized to the number of clauses.
+	       </ul>
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllClear">Sim_DllClear</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllNewClSize"></A>
+int <I></I>
+<B>Sim_DllNewClSize</B>(
+  short  <b>size</b> <i></i>
+)
+</pre>
+<dd> If there is a pending clause in SimClauses,
+               return -1, a failure code.
+               Otherwise, create a new empty clause and reference it
+	       with the last available index in SimClauses. The size
+	       of the clause will be `size'.
+	       Return the clause index (to be used in future operations with
+	       the clause).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllAddLit">Sim_DllAddLit</a>
+<a href="#Sim_DllCommitCl">Sim_DllCommitCl</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllNewCl"></A>
+int <I></I>
+<B>Sim_DllNewCl</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> If there is a pending clause in SimClauses,
+               return -1, a failure code.
+               Otherwise, create a new empty one and reference it
+	       with the last available index in SimClauses. The size
+	       of the clause will be the default SIMCL_SIZE.
+	       Return the clause index (to be used in future operations with
+	       the clause).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllAddLit">Sim_DllAddLit</a>
+<a href="#Sim_DllCommitCl">Sim_DllCommitCl</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllParseDimacs"></A>
+int <I></I>
+<B>Sim_DllParseDimacs</B>(
+  FILE * <b>inFile</b>, <i></i>
+  int * <b>params</b> <i></i>
+)
+</pre>
+<dd> Takes a pointer to a file and tries to parse (using
+               DIMACS format) a cnf problem. Takes also the initialization 
+	       parameters for the dll module. Returns a pointer to a
+	       DLL module if successfull; NULL if (i) the file does
+	       not exists, or (ii) there is no line starting with p,
+	       or (iii) such line does not define a DIMACS cnf
+	       problem.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllInit">Sim_DllInit</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllPrintFormulaDimacs"></A>
+void <I></I>
+<B>Sim_DllPrintFormulaDimacs</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Print the formula in the DLL module using DIMACS format.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dt><pre>
+<A NAME="Sim_DllPrintModel"></A>
+void <I></I>
+<B>Sim_DllPrintModel</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Print the model.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintStack">Sim_DllPrintStack</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllPrintParams"></A>
+void <I></I>
+<B>Sim_DllPrintParams</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Prints parameters (configuration).
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllPrintResult"></A>
+void <I></I>
+<B>Sim_DllPrintResult</B>(
+  int  <b>res</b> <i></i>
+)
+</pre>
+<dd> Prints the result (formatted).
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllPrintStats"></A>
+void <I></I>
+<B>Sim_DllPrintStats</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Prints internal statistics.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllPrintTimers"></A>
+void <I></I>
+<B>Sim_DllPrintTimers</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Prints internal timers.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_DllPrintModel">Sim_DllPrintModel</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_DllPropMakeIndep"></A>
+void <I></I>
+<B>Sim_DllPropMakeIndep</B>(
+  int  <b>prop</b> <i></i>
+)
+</pre>
+<dd> If `prop' is a sensible value, then if the
+               corresponding proposition is not there, it is created and
+               inserted in the main proposition index. If the
+	       proposition was not declared as a model proposition, 
+	       set its back reference and push it in the model
+	       propositions index.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dt><pre>
+<A NAME="Sim_DllSolve"></A>
+int <I></I>
+<B>Sim_DllSolve</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> A heuristic function (SimDllChooseLiteral) is used to choose
+               a literal at each node of the search tree; 
+	       SimDllCheckConsistency is used to (i) declare a formula
+	       satisfiable, and (ii) stop the search at some point; 
+	       the SimDllBacktracking function is responsible for
+	       restoring to a 
+	       previous choice point (if any) in the search tree when
+	       a dead end (SIM_UNSAT subproblem) is reached.  
+	       Returns SIM_SAT if the formula is satisifable;
+	       SIM_UNSAT otherwise.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SimDllCheckConsistency">SimDllCheckConsistency</a>
+<a href="#SimDllChooseLiteral">SimDllChooseLiteral</a>
+<a href="#SimDllBacktrack">SimDllBacktrack</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_GetErrorCode"></A>
+Sim_ErrCode_c <I></I>
+<B>Sim_GetErrorCode</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the error code (if any).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dt><pre>
+<A NAME="Sim_GetErrorLocation"></A>
+Sim_ErrLocation_c <I></I>
+<B>Sim_GetErrorLocation</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the error location (if any).
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dt><pre>
+<A NAME="Sim_ParamInit"></A>
+int * <I></I>
+<B>Sim_ParamInit</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Creates a default parameter setup as follows:<br>
+	       <tt>
+                Idx  Default value  Parameter           Notes 
+		--------------------------------------------------------------
+                 0       unlimited  SIM_TIMEOUT         seconds
+		 1       unlimited  SIM_MEMOUT          megabytes
+		 2  SIM_BOEHM_HEUR  SIM_HEURISTICS      0..SIM_HEUR_NUM
+		 3               1  SIM_SOL_NUM         N >= 1
+		 4               3  SIM_LEARN_ORDER     N >= 2
+		 5   SIM_RELEVANCE  SIM_LEARN_TYPE      SIM_RELEVANCE/SIM_SIZE
+		 6               0  SIM_MODEL_PROPS     0/1
+		 7        SIM_NONE  SIM_PPROC_STRENGTH  0..SIM_RESOLVE
+		 8               0  SIM_RND_SEED        N >= 0
+		 9               0  SIM_VERBOSITY       0/1  
+		10               0  SIM_HEUR_PARAM      N >= 0
+	        11             100  SIM_MAX_VAR_NUM     N > 1
+		12            1000  SIM_MAX_CL_NUM      N > 1
+		--------------------------------------------------------------
+	       </tt>
+	       Notice that the actual number of variables and clauses in the
+	       formula *cannot* be greater than SIM_MAX_VAR_NUM and
+	       SIM_MAX_CL_NUM respectively. Failing to dimension these
+	       parameters correctly will cause the solver to crash.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_ParamSet">Sim_ParamSet</a>
+</code>
+
+<dt><pre>
+<A NAME="Sim_ParamSet"></A>
+int * <I></I>
+<B>Sim_ParamSet</B>(
+  int * <b>param</b>, <i></i>
+  int  <b>pName</b>, <i></i>
+  int  <b>pValue</b> <i></i>
+)
+</pre>
+<dd> Changes the value of a specific parameter.
+<p>
+
+<dd> <b>Side Effects</b> none
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sim_ParamInit">Sim_ParamInit</a>
+</code>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

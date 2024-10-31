@@ -1,0 +1,159 @@
+<HTML>
+<HEAD><TITLE>The mc package</TITLE></HEAD>
+<BODY>
+
+<DL>
+<dt><pre>
+<A NAME="Mc_CheckAGOnlySpec"></A>
+void <I></I>
+<B>Mc_CheckAGOnlySpec</B>(
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> The implicit assumption is that "spec" must be an AG
+  formula (i.e. it must contain only conjunctions and AG's).  No attempt
+  is done to normalize the formula (e.g. push negations). The AG mode
+  relies on the previous computation and storage of the reachable
+  state space (<tt>reachable_states_layers</tt>), they are used in
+  counterexample computation.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#check_spec">check_spec</a>
+</code>
+
+<dt><pre>
+<A NAME="Mc_CheckCTLSpec"></A>
+void <I></I>
+<B>Mc_CheckCTLSpec</B>(
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> Verifies that M,s0 |= alpha using the fair CTL model checking.
+<p>
+
+<dt><pre>
+<A NAME="Mc_CheckCompute"></A>
+void <I></I>
+<B>Mc_CheckCompute</B>(
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> Compute the given quantitative characteristics on the model.
+<p>
+
+<dt><pre>
+<A NAME="Mc_CheckInvar"></A>
+void <I></I>
+<B>Mc_CheckInvar</B>(
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> Verifies that M,s0 |= AG alpha, with alpha propositional.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#check_spec">check_spec</a>
+<a href="#check_ltlspec">check_ltlspec</a>
+</code>
+
+<dt><pre>
+<A NAME="Mc_CheckLanguageEmptiness"></A>
+void <I></I>
+<B>Mc_CheckLanguageEmptiness</B>(
+  const BddFsm_ptr  <b>fsm</b>, <i></i>
+  boolean  <b>allinit</b>, <i></i>
+  boolean  <b>verbose</b> <i></i>
+)
+</pre>
+<dd> Checks whether the language is empty. If
+  <tt>allinit</tt> is <tt>true</tt> the check is performed by
+  verifying whether all initial states are included in the set of fair
+  states. If it is the case from all initial states there exists a
+  fair path and thus the language is not empty. On the other hand, if
+  <tt>allinit</tt> is false, the check is performed by verifying
+  whether there exists at least one initial state that is also a fair
+  state. In this case there is an initial state from which it starts a
+  fair path and thus the lnaguage is not empty.
+
+  Depending on the global option use_reachable_states the set of fair
+  states computed can be restricted to reachable states only. In this
+  latter case the check can be further simplified.
+  
+  if <tt>verbose</tt> is true, then some information on the set of
+  initial states is printed out too.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dd> <b>See Also</b> <code><a href="#BddFsm_get_fair_states">BddFsm_get_fair_states</a>
+</code>
+
+<dt><pre>
+<A NAME="Mc_End"></A>
+void <I></I>
+<B>Mc_End</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Quit the mc package
+<p>
+
+<dt><pre>
+<A NAME="Mc_Init"></A>
+void <I></I>
+<B>Mc_Init</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Initializes the mc package.
+<p>
+
+<dt><pre>
+<A NAME="Mc_check_psl_property"></A>
+int <I></I>
+<B>Mc_check_psl_property</B>(
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> The parameters are:
+  - prop is the PSL property to be checked
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dt><pre>
+<A NAME="Mc_fair_si_iteration"></A>
+bdd_ptr <I></I>
+<B>Mc_fair_si_iteration</B>(
+  BddFsm_ptr  <b>fsm</b>, <i></i>
+  BddStatesInputs  <b>states</b>, <i></i>
+  BddStatesInputs  <b>subspace</b> <i></i>
+)
+</pre>
+<dd> Perform one iteration over the list of fairness
+  conditions (order is statically determined). Compute states that are
+  backward reachable from each of the fairness conditions.
+
+  MAP( ApplicableStatesInputs ) over Fairness constraints
+  
+  (Q / ex_si ( Z / AND_i eu_si(Z, (Z/ StatesInputFC_i))))
+<p>
+
+<dt><pre>
+<A NAME="Mc_get_fair_si_subset"></A>
+BddStatesInputs <I></I>
+<B>Mc_get_fair_si_subset</B>(
+  BddFsm_ptr  <b>fsm</b>, <i></i>
+  BddStatesInputs  <b>si</b> <i></i>
+)
+</pre>
+<dd> Returns the set of state-input pairs in si that are
+  fair, i.e. beginning of a fair path.
+<p>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

@@ -1,0 +1,138 @@
+<html>
+<head><title>The  package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="ParserAp_create"></A>
+ParserAp_ptr <I></I>
+<B>ParserAp_create</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserAp_destroy"></A>
+void <I></I>
+<B>ParserAp_destroy</B>(
+  ParserAp_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserAp_get_ap_list"></A>
+NodeList_ptr <I></I>
+<B>ParserAp_get_ap_list</B>(
+  const ParserAp_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returned list is owned by self, and should not be 
+  changed or destroyed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserAp_parse_from_file"></A>
+void <I></I>
+<B>ParserAp_parse_from_file</B>(
+  ParserAp_ptr  <b>self</b>, <i></i>
+  FILE* <b>f</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserAp_parse_from_string"></A>
+void <I></I>
+<B>ParserAp_parse_from_string</B>(
+  ParserAp_ptr  <b>self</b>, <i></i>
+  const char* <b>str</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserAp_reset"></A>
+void <I></I>
+<B>ParserAp_reset</B>(
+  ParserAp_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_ap_add"></A>
+void <I></I>
+<B>parser_ap_add</B>(
+  ParserAp_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>ap</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_ap_deinit"></A>
+static void <I></I>
+<B>parser_ap_deinit</B>(
+  ParserAp_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_ap_init"></A>
+static void <I></I>
+<B>parser_ap_init</B>(
+  ParserAp_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_ap_mk_ap"></A>
+node_ptr <I></I>
+<B>parser_ap_mk_ap</B>(
+  ParserAp_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>label</b>, <i></i>
+  node_ptr  <b>ap</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserAp.c"TARGET="ABSTRACT"><CODE>ParserAp.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2011/10/28 15h:48
+</BODY></HTML>

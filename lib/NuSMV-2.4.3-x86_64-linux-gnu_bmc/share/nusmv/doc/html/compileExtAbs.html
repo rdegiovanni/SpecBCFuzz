@@ -1,0 +1,162 @@
+<html>
+<head><title>compile package abstract</title></head>
+<body>
+
+
+<!-- Function Abstracts -->
+
+<dl>
+<dt> <a href="compileAllDet.html#Compile_CheckAssigns" TARGET="MAIN"><code>Compile_CheckAssigns()</code></a>
+<dd> Semantic checks on assignments of the modele.
+
+<dt> <a href="compileAllDet.html#Compile_ConstructHierarchy" TARGET="MAIN"><code>Compile_ConstructHierarchy()</code></a>
+<dd> Traverses the module hierarchy and extracts the
+information needed to compile the automaton.
+
+<dt> <a href="compileAllDet.html#Compile_FlattenHierarchy" TARGET="MAIN"><code>Compile_FlattenHierarchy()</code></a>
+<dd> Traverse the module hierarchy, collect all required
+the informations and flatten the hierarchy.
+
+<dt> <a href="compileAllDet.html#Compile_FlattenSexpExpandDefine" TARGET="MAIN"><code>Compile_FlattenSexpExpandDefine()</code></a>
+<dd> Flattens an expression and expands defined symbols.
+
+<dt> <a href="compileAllDet.html#Compile_FlattenSexp" TARGET="MAIN"><code>Compile_FlattenSexp()</code></a>
+<dd> Builds the flattened version of an expression.
+
+<dt> <a href="compileAllDet.html#Compile_ProcessHierarchy" TARGET="MAIN"><code>Compile_ProcessHierarchy()</code></a>
+<dd> This function processes a hierarchy after 
+collecting all its subparts.
+
+<dt> <a href="compileAllDet.html#Compile_WriteBoolFsm" TARGET="MAIN"><code>Compile_WriteBoolFsm()</code></a>
+<dd> Prints the boolean FSM of an SMV model.
+
+<dt> <a href="compileAllDet.html#Compile_WriteBoolSpecs" TARGET="MAIN"><code>Compile_WriteBoolSpecs()</code></a>
+<dd> Prints the boolean specifications of an SMV model.
+
+<dt> <a href="compileAllDet.html#Compile_WriteFlattenFsm" TARGET="MAIN"><code>Compile_WriteFlattenFsm()</code></a>
+<dd> Prints the flatten version of FSM of an SMV model.
+
+<dt> <a href="compileAllDet.html#Compile_WriteFlattenSpecs" TARGET="MAIN"><code>Compile_WriteFlattenSpecs()</code></a>
+<dd> Prints the flatten specifications.
+
+<dt> <a href="compileAllDet.html#Compile_check_if_bool_model_was_built" TARGET="MAIN"><code>Compile_check_if_bool_model_was_built()</code></a>
+<dd> Checks if boolean model has been constructed
+
+<dt> <a href="compileAllDet.html#Compile_check_if_encoding_was_built" TARGET="MAIN"><code>Compile_check_if_encoding_was_built()</code></a>
+<dd> Checks if the variables enconding has been constructed
+
+<dt> <a href="compileAllDet.html#Compile_check_if_flat_model_was_built" TARGET="MAIN"><code>Compile_check_if_flat_model_was_built()</code></a>
+<dd> Checks if flat model has been constructed
+
+<dt> <a href="compileAllDet.html#Compile_check_if_flattening_was_built" TARGET="MAIN"><code>Compile_check_if_flattening_was_built()</code></a>
+<dd> Checks if the flattening has been carried out
+
+<dt> <a href="compileAllDet.html#Compile_check_if_model_was_built" TARGET="MAIN"><code>Compile_check_if_model_was_built()</code></a>
+<dd> Checks if bdd model has been constructed
+
+<dt> <a href="compileAllDet.html#Compile_cleanup_booleanizer_cache_about" TARGET="MAIN"><code>Compile_cleanup_booleanizer_cache_about()</code></a>
+<dd> Cleans those hashed entries that are about a symbol that
+  is being removed
+
+<dt> <a href="compileAllDet.html#Compile_detexpr2bexpr" TARGET="MAIN"><code>Compile_detexpr2bexpr()</code></a>
+<dd> Converts a scalar expression into a boolean expression.
+
+<dt> <a href="compileAllDet.html#Compile_expr2bexpr" TARGET="MAIN"><code>Compile_expr2bexpr()</code></a>
+<dd> Converts a scalar expression into a boolean expression.
+
+<dt> <a href="compileAllDet.html#Compile_get_expression_dependencies" TARGET="MAIN"><code>Compile_get_expression_dependencies()</code></a>
+<dd> Gets list of variables in the expression
+
+<dt> <a href="compileAllDet.html#Compile_get_global_fsm_builder" TARGET="MAIN"><code>Compile_get_global_fsm_builder()</code></a>
+<dd> Returns the global fsm builder
+
+<dt> <a href="compileAllDet.html#Compile_get_global_predicate_normaliser" TARGET="MAIN"><code>Compile_get_global_predicate_normaliser()</code></a>
+<dd> Returns a global predicate normaliser
+
+<dt> <a href="compileAllDet.html#Compile_init_cmd" TARGET="MAIN"><code>Compile_init_cmd()</code></a>
+<dd> Initializes the commands provided by this package
+
+<dt> <a href="compileAllDet.html#Compile_init" TARGET="MAIN"><code>Compile_init()</code></a>
+<dd> Initializes the compile package.
+
+<dt> <a href="compileAllDet.html#Compile_make_sorted_vars_list_from_order" TARGET="MAIN"><code>Compile_make_sorted_vars_list_from_order()</code></a>
+<dd> This function creates a new list of variables that will
+  contain the same symbols into 'vars', but ordered wrt to
+  'vars_order' content
+
+<dt> <a href="compileAllDet.html#Compile_pop_distrib_ops" TARGET="MAIN"><code>Compile_pop_distrib_ops()</code></a>
+<dd> Simplifies the given property by exploiting 
+  the distributivity of G, AG and H over AND, and distributivity of F, AF and O 
+  over OR
+
+<dt> <a href="compileAllDet.html#Compile_quit" TARGET="MAIN"><code>Compile_quit()</code></a>
+<dd> Shut down the compile package
+
+<dt> <a href="compileAllDet.html#compile_check_print_io_atom_stack_assign" TARGET="MAIN"><code>compile_check_print_io_atom_stack_assign()</code></a>
+<dd> 
+
+<dt> <a href="compileAllDet.html#compile_create_boolean_model" TARGET="MAIN"><code>compile_create_boolean_model()</code></a>
+<dd> Creates the  master boolean fsm if needed.
+  A new layer called DETERM_LAYER_NAME
+  will be added if the bool fsm is created.
+
+<dt> <a href="compileAllDet.html#compile_create_flat_model" TARGET="MAIN"><code>compile_create_flat_model()</code></a>
+<dd> creates the  master scalar fsm if needed
+
+<dt> <a href="compileAllDet.html#compile_flatten_eval_number" TARGET="MAIN"><code>compile_flatten_eval_number()</code></a>
+<dd> Simple evaluator for positive and negative constant
+numbers
+
+<dt> <a href="compileAllDet.html#compile_flatten_resolve_name_recur" TARGET="MAIN"><code>compile_flatten_resolve_name_recur()</code></a>
+<dd> Performs the recursive step of
+<code>CompileFlatten_resolve_name</code>. Returns TYPE_ERROR if not
+resolvable name
+
+<dt> <a href="compileAllDet.html#compile_instantiate_by_name" TARGET="MAIN"><code>compile_instantiate_by_name()</code></a>
+<dd> Starts the flattening from a given point in the
+module hierarchy.
+
+<dt> <a href="compileAllDet.html#compile_instantiate_vars" TARGET="MAIN"><code>compile_instantiate_vars()</code></a>
+<dd> Recursively applies <tt>compile_instantiate_var</tt>.
+
+<dt> <a href="compileAllDet.html#compile_instantiate_var" TARGET="MAIN"><code>compile_instantiate_var()</code></a>
+<dd> Instantiates the given variable.
+
+<dt> <a href="compileAllDet.html#compile_instantiate" TARGET="MAIN"><code>compile_instantiate()</code></a>
+<dd> Instantiates all in the body of a module.
+
+<dt> <a href="compileAllDet.html#compile_write_constants" TARGET="MAIN"><code>compile_write_constants()</code></a>
+<dd> Writes the set of non-numeric constants as CONSTANTS 
+  statement
+
+<dt> <a href="compileAllDet.html#compile_write_flatten_bfexpr" TARGET="MAIN"><code>compile_write_flatten_bfexpr()</code></a>
+<dd> Writes flattened expression in SMV format on a file.
+
+<dt> <a href="compileAllDet.html#compile_write_flatten_bool_vars" TARGET="MAIN"><code>compile_write_flatten_bool_vars()</code></a>
+<dd> Writes boolean VAR and IVAR declarations in SMV format on
+  a file. Non boolean vars are dumped as defines for the sake of
+  readability of conterexamples.
+
+<dt> <a href="compileAllDet.html#compile_write_flatten_expr_pair" TARGET="MAIN"><code>compile_write_flatten_expr_pair()</code></a>
+<dd> Writes flattened expression pairs in SMV format on a
+  file.
+
+<dt> <a href="compileAllDet.html#compile_write_flatten_expr_split" TARGET="MAIN"><code>compile_write_flatten_expr_split()</code></a>
+<dd> Writes flattened expression in SMV format on a file.
+
+<dt> <a href="compileAllDet.html#compile_write_flatten_expr" TARGET="MAIN"><code>compile_write_flatten_expr()</code></a>
+<dd> Writes flattened expression in SMV format on a file.
+
+<dt> <a href="compileAllDet.html#compile_write_flatten_psl" TARGET="MAIN"><code>compile_write_flatten_psl()</code></a>
+<dd> Writes PSL properties as they are.
+
+<dt> <a href="compileAllDet.html#compile_write_flatten_vars" TARGET="MAIN"><code>compile_write_flatten_vars()</code></a>
+<dd> Writes VAR and IVAR declarations in SMV format on a 
+  file.
+
+</dl>
+
+<hr>
+
+Last updated on 2007/05/22 18h:36
+</body></html>

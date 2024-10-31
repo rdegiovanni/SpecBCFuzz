@@ -1,0 +1,278 @@
+<HTML>
+<HEAD><TITLE>The parser package</TITLE></HEAD>
+<BODY>
+
+<DL>
+<dt><pre>
+<A NAME="Parser_CloseInput"></A>
+void <I></I>
+<B>Parser_CloseInput</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Closes the input file and corresponding buffer used
+  by the parser to read tokens.
+  NB: This function should be invoked only after successive invocation
+  of parser_open_input_pp.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Parser_OpenInput">Parser_OpenInput</a>
+</code>
+
+<dt><pre>
+<A NAME="Parser_Init"></A>
+void <I></I>
+<B>Parser_Init</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Initializes the parser
+<p>
+
+<dt><pre>
+<A NAME="Parser_Quit"></A>
+void <I></I>
+<B>Parser_Quit</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Deinitializes the parser
+<p>
+
+<dt><pre>
+<A NAME="Parser_ReadCmdFromFile"></A>
+int <I></I>
+<B>Parser_ReadCmdFromFile</B>(
+  const char * <b>filename</b>, <i></i>
+  node_ptr* <b>res</b> <i></i>
+)
+</pre>
+<dd> The resulting parse tree is returned through res. If a
+  parsing error occurs then return 1, else return 0.
+<p>
+
+<dt><pre>
+<A NAME="Parser_ReadCmdFromString"></A>
+int <I></I>
+<B>Parser_ReadCmdFromString</B>(
+  int  <b>argc</b>, <i></i>
+  const char** <b>argv</b>, <i></i>
+  const char* <b>head</b>, <i></i>
+  const char* <b>tail</b>, <i></i>
+  node_ptr* <b>pc</b> <i></i>
+)
+</pre>
+<dd> Create a string for a command, and then call
+  <tt>yyparse</tt> to read from the created string.
+  If a parsing error occurs than return 1, else return 0.
+  The result of parsing is stored in <tt>pc</tt> to be used from the caller.
+<p>
+
+<dt><pre>
+<A NAME="Parser_ReadIdentifierExprFromString"></A>
+int <I></I>
+<B>Parser_ReadIdentifierExprFromString</B>(
+  const char* <b>str_expr</b>, <i></i>
+  node_ptr* <b>res</b> <i></i>
+)
+</pre>
+<dd> The resulting parse tree is returned through res. If a
+  parsing error occurs then return 1, else return 0.
+<p>
+
+<dt><pre>
+<A NAME="Parser_ReadLtlExprFromFile"></A>
+int <I></I>
+<B>Parser_ReadLtlExprFromFile</B>(
+  const char * <b>filename</b> <i></i>
+)
+</pre>
+<dd> Parse SMV code from a given file. If
+  no file is provided, parse from stdin. If a parsing error occurs then
+  return 1, else return 0. The result of parsing is stored in
+  the global variable <tt>parsed_tree</tt> to be used from the caller.
+<p>
+
+<dt><pre>
+<A NAME="Parser_ReadNextExprFromFile"></A>
+int <I></I>
+<B>Parser_ReadNextExprFromFile</B>(
+  const char * <b>filename</b>, <i></i>
+  node_ptr* <b>res</b> <i></i>
+)
+</pre>
+<dd> The resulting parse tree is returned through res. If a
+  parsing error occurs then return 1, else return 0.
+<p>
+
+<dt><pre>
+<A NAME="Parser_ReadNextExprFromString"></A>
+int <I></I>
+<B>Parser_ReadNextExprFromString</B>(
+  const char* <b>str_expr</b>, <i></i>
+  node_ptr* <b>res</b> <i></i>
+)
+</pre>
+<dd> The resulting parse tree is returned through res. If a
+  parsing error occurs then return 1, else return 0.
+<p>
+
+<dt><pre>
+<A NAME="Parser_ReadSMVFromFile"></A>
+int <I></I>
+<B>Parser_ReadSMVFromFile</B>(
+  const char * <b>filename</b> <i></i>
+)
+</pre>
+<dd> Parse SMV code from a given file. If
+  no file is provided, parse from stdin. If a parsing error occurs then
+  return 1, else return 0. The result of parsing is stored in
+  the global variable <tt>parsed_tree</tt> to be used from the caller.
+<p>
+
+<dt><pre>
+<A NAME="Parser_ReadSimpExprFromString"></A>
+int <I></I>
+<B>Parser_ReadSimpExprFromString</B>(
+  const char* <b>str_expr</b>, <i></i>
+  node_ptr* <b>res</b> <i></i>
+)
+</pre>
+<dd> The resulting parse tree is returned through res. If a
+  parsing error occurs then return 1, else return 0.
+<p>
+
+<dt><pre>
+<A NAME="Parser_get_syntax_errors_list"></A>
+node_ptr <I></I>
+<B>Parser_get_syntax_errors_list</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Each node of the list can be passed to
+  Parser_get_syntax_error to get information out of it. The
+  returned lists must be NOT modified or freed by the caller.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Parser_get_syntax_error">Parser_get_syntax_error</a>
+</code>
+
+<dt><pre>
+<A NAME="Parser_get_syntax_error"></A>
+void <I></I>
+<B>Parser_get_syntax_error</B>(
+  node_ptr  <b>node</b>, <i></i>
+  const char** <b>out_filename</b>, <i></i>
+  int* <b>out_lineno</b>, <i></i>
+  const char** <b>out_token</b>, <i></i>
+  const char** <b>out_message</b> <i></i>
+)
+</pre>
+<dd> Each node contains information which will be set in
+  output params filename, lineno and message. Those information
+  must be NOT modified or freed by the caller. If not interested in
+  an information, pass NULL with the respective parameter.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Parser_get_syntax_errors_list">Parser_get_syntax_errors_list</a>
+</code>
+
+<dt><pre>
+<A NAME="Parser_print_syntax_error"></A>
+void <I></I>
+<B>Parser_print_syntax_error</B>(
+  node_ptr  <b>error</b>, <i></i>
+  FILE* <b>fout</b> <i></i>
+)
+</pre>
+<dd> The syntax error information contained in the given
+  node is printed to the given output file.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Parser_get_syntax_errors_list">Parser_get_syntax_errors_list</a>
+</code>
+
+<dt><pre>
+<A NAME="Parser_read_psl_from_file"></A>
+int <I></I>
+<B>Parser_read_psl_from_file</B>(
+  const char* <b>filename</b>, <i></i>
+  node_ptr* <b>res</b> <i></i>
+)
+</pre>
+<dd> The PSL parser is directly called. The resulting
+  parse tree is returned through res. 1 is returned if an error occurred.
+<p>
+
+<dt><pre>
+<A NAME="Parser_read_psl_from_string"></A>
+int <I></I>
+<B>Parser_read_psl_from_string</B>(
+  int  <b>argc</b>, <i></i>
+  const char** <b>argv</b>, <i></i>
+  node_ptr* <b>res</b> <i></i>
+)
+</pre>
+<dd> The PSL parser is directly called. The resulting
+  parse tree is returned through res. 1 is returned if an error occurred.
+<p>
+
+<dt><pre>
+<A NAME="parser_add_syntax_error"></A>
+void <I></I>
+<B>parser_add_syntax_error</B>(
+  const char* <b>fname</b>, <i></i>
+  int  <b>lineno</b>, <i></i>
+  const char* <b>token</b>, <i></i>
+  const char* <b>err_msg</b> <i></i>
+)
+</pre>
+<dd> This is called by the parser when needed
+<p>
+
+<dt><pre>
+<A NAME="parser_close_input_pp"></A>
+void <I></I>
+<B>parser_close_input_pp</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Closes the input file used from parser to read tokens.
+<p>
+
+<dd> <b>Side Effects</b> Deletes any temporary files created by
+  parser_open_input_pp.
+<p>
+
+<dt><pre>
+<A NAME="parser_free_parsed_syntax_errors"></A>
+void <I></I>
+<B>parser_free_parsed_syntax_errors</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Frees the list of structures containing the syntax
+  errors built by the parser.
+<p>
+
+<dt><pre>
+<A NAME="parser_open_input_pp"></A>
+void <I></I>
+<B>parser_open_input_pp</B>(
+  const char* <b>filename</b> <i></i>
+)
+</pre>
+<dd> Open a file, pre-process it, and inform the parser to
+  start reading tokens from this file. The directory in which the original file
+  resides is used to store the temporary files. This is so that any #includes
+  statements used by the second or later pre-processor work properly.
+<p>
+
+<dd> <b>Side Effects</b> Creates temporary files which are subsequently deleted.
+<p>
+
+
+</DL>
+<HR>
+Last updated on 2011/10/28 15h:48
+</BODY></HTML>

@@ -1,0 +1,969 @@
+<HTML>
+<HEAD><TITLE>The prop package</TITLE></HEAD>
+<BODY>
+
+<DL>
+<dt><pre>
+<A NAME="Prop_apply_coi_for_bdd"></A>
+void <I></I>
+<B>Prop_apply_coi_for_bdd</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  FsmBuilder_ptr  <b>helper</b> <i></i>
+)
+</pre>
+<dd> The COI is applied only for BDD-based model checking. 
+  To apply for BMC, use Prop_apply_coi_for_bmc
+<p>
+
+<dd> <b>Side Effects</b> Internal FSMs are computed
+<p>
+
+<dt><pre>
+<A NAME="Prop_apply_coi_for_bmc"></A>
+void <I></I>
+<B>Prop_apply_coi_for_bmc</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  FsmBuilder_ptr  <b>helper</b> <i></i>
+)
+</pre>
+<dd> The COI is applied only for BMC-based model checking. 
+  To apply for BDD, use Prop_apply_coi_for_bdd. This method creates a new layer 
+  for those determinization vars that derives from the booleanization of 
+  the fsm deriving from the property cone. That layer will be committed to the 
+  BoolEnc and BeEnc encodings only, not to the BddEnc. The newly created layer 
+  will be assigned to a name that depends on the property number within the 
+  database DbProp.
+<p>
+
+<dd> <b>Side Effects</b> Internal FSMs are computed
+<p>
+
+<dt><pre>
+<A NAME="Prop_check_type"></A>
+int <I></I>
+<B>Prop_check_type</B>(
+  const Prop_ptr  <b>self</b>, <i></i>
+  Prop_Type  <b>type</b> <i></i>
+)
+</pre>
+<dd> Checks if a property in the database is of a given type.
+  If the type is correct, value 0 is returned, otherwise an error message 
+  is emitted and value 1 is returned.
+<p>
+
+<dt><pre>
+<A NAME="Prop_create_partial"></A>
+Prop_ptr <I></I>
+<B>Prop_create_partial</B>(
+  Expr_ptr  <b>expr</b>, <i></i>
+  Prop_Type  <b>type</b> <i></i>
+)
+</pre>
+<dd> Creates a property structure filling only the property
+  and property type fields. The property index within the db is not set.
+<p>
+
+<dt><pre>
+<A NAME="Prop_create"></A>
+Prop_ptr <I></I>
+<B>Prop_create</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Allocate a property. If no more room is
+  available then a call to <tt>numsv_exit</tt> is performed. All the
+  fields of the prop structure are initialized to either NULL or the
+  corresponding default type (e.g. Prop_NoType for property type).
+<p>
+
+<dt><pre>
+<A NAME="Prop_destroy"></A>
+void <I></I>
+<B>Prop_destroy</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Free a property. Notice that before freeing the
+  property all the elements of the property that needs to be freed
+  will be automatically freed.
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_bdd_fsm"></A>
+BddFsm_ptr <I></I>
+<B>Prop_get_bdd_fsm</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the BDD FSM associated to
+  the property. Self keeps the ownership of the given fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_be_fsm"></A>
+BeFsm_ptr <I></I>
+<B>Prop_get_be_fsm</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the boolean BE FSM associated to
+  the property. Self keeps the ownership of the given fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_bool_sexp_fsm"></A>
+SexpFsm_ptr <I></I>
+<B>Prop_get_bool_sexp_fsm</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Resturns the boolean FSM associated to
+  the property. Self keeps the ownership of the given fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_cone"></A>
+Set_t <I></I>
+<B>Prop_get_cone</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> If the cone of influence of a property has been
+  computed, this function returns it.
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_context_text"></A>
+char* <I></I>
+<B>Prop_get_context_text</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> If the property has no explicit context, 'Main' will
+  be returned. The returned string must be deleted by the caller.
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_ctrace"></A>
+struct ConcTrace_TAG* <I></I>
+<B>Prop_get_ctrace</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> This function is used by CEGAR, and is available only 
+  when mathsat is enabled
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_expr_core"></A>
+Expr_ptr <I></I>
+<B>Prop_get_expr_core</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the property in a form that it can be handled
+  by the system (model checking, dependency finder, etc.).  This may
+  imply a conversion and a different structure of the resulting
+  formula. For example in PSL FORALLs are expanded, SERE are removed,
+  global operators G and AG are simplified, etc.
+
+  Use this function at system-level, and Prop_get_expr to get the
+  original formula instead
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Prop_get_expr">Prop_get_expr</a>
+</code>
+
+<dt><pre>
+<A NAME="Prop_get_expr"></A>
+Expr_ptr <I></I>
+<B>Prop_get_expr</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the property stored in the prop. If the
+  property is PSL, the result should be converted to core symbols
+  before model checking (see Prop_get_expr_core or
+  PslNode_convert_psl_to_core).
+
+  If the property is a game property, cdr is returned.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Prop_get_expr_core">Prop_get_expr_core</a>
+</code>
+
+<dt><pre>
+<A NAME="Prop_get_game_bdd_fsm"></A>
+GameBddFsm_ptr <I></I>
+<B>Prop_get_game_bdd_fsm</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the Game BDD FSM associated to
+  the property. Self keeps the ownership of the given fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_game_be_fsm"></A>
+GameBeFsm_ptr <I></I>
+<B>Prop_get_game_be_fsm</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the Game boolean BE FSM associated to
+  the property. Self keeps the ownership of the given fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_game_bool_sexp_fsm"></A>
+GameSexpFsm_ptr <I></I>
+<B>Prop_get_game_bool_sexp_fsm</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Resturns the Game boolean FSM in sexp associated to
+  the property. Self keeps the ownership of the given fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_game_player"></A>
+string_ptr <I></I>
+<B>Prop_get_game_player</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns true if the property is a game specifications,
+  i.e. one of REACHTARGET, AVOIDTARGET, REACHDEADLOCK, AVOIDDEADLOCK,
+  BUCHIGAME, GENREACTIVITY.
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_game_scalar_sexp_fsm"></A>
+GameSexpFsm_ptr <I></I>
+<B>Prop_get_game_scalar_sexp_fsm</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Resturns the Game scalar FSM associated to
+  the property. Self keeps the ownership of the given fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_index"></A>
+int <I></I>
+<B>Prop_get_index</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the unique identifier of a property
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_number_as_string"></A>
+char* <I></I>
+<B>Prop_get_number_as_string</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns a number, 'Inifinite' or 'Unchecked'. 
+  The returned string is dynamically created, and caller must free it.
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_number"></A>
+int <I></I>
+<B>Prop_get_number</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> For COMPUTE properties returns the number
+  resulting from the evaluation of the property.
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_scalar_sexp_fsm"></A>
+SexpFsm_ptr <I></I>
+<B>Prop_get_scalar_sexp_fsm</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Resturns the scalar FSM associated to
+  the property. Self keeps the ownership of the given fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_status_as_string"></A>
+const char* <I></I>
+<B>Prop_get_status_as_string</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the string corresponding to a property
+  status for printing it. The caller must NOT free the returned string, 
+  dince it is a constant.
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_status"></A>
+Prop_Status <I></I>
+<B>Prop_get_status</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the status of the property
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_text"></A>
+char* <I></I>
+<B>Prop_get_text</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> The returned string must be deleted by the caller.
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_trace"></A>
+int <I></I>
+<B>Prop_get_trace</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> For unsatisfied properties, the trace number of the
+  asscociated counterexample is returned. 0 is returned if no trace is
+  available
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_type_as_string"></A>
+const char* <I></I>
+<B>Prop_get_type_as_string</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the string corresponding to a property
+  type for printing it. Returned string must NOT be deleted
+<p>
+
+<dt><pre>
+<A NAME="Prop_get_type"></A>
+Prop_Type <I></I>
+<B>Prop_get_type</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns the property kind of the stroed
+  property, i.e. CTL, LTL, ...
+<p>
+
+<dt><pre>
+<A NAME="Prop_is_game_prop"></A>
+boolean <I></I>
+<B>Prop_is_game_prop</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns true if the property is a game specifications,
+  i.e. one of REACHTARGET, AVOIDTARGET, REACHDEADLOCK, AVOIDDEADLOCK,
+  BUCHIGAME, GENREACTIVITY.
+<p>
+
+<dt><pre>
+<A NAME="Prop_is_psl_ltl"></A>
+boolean <I></I>
+<B>Prop_is_psl_ltl</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns true if the property is PSL property and it 
+  is LTL compatible
+<p>
+
+<dt><pre>
+<A NAME="Prop_is_psl_obe"></A>
+boolean <I></I>
+<B>Prop_is_psl_obe</B>(
+  const Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns true if the property is PSL property and it 
+  is CTL compatible
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_get_bdd_fsm"></A>
+BddFsm_ptr <I></I>
+<B>Prop_master_get_bdd_fsm</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the boolean FSM in BDD stored in the master
+  prop.  The returned value may be NULL when coi is enabled
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_get_be_fsm"></A>
+BeFsm_ptr <I></I>
+<B>Prop_master_get_be_fsm</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the boolean FSM in BE stored in the master
+  prop.  The returned value may be NULL when coi is enabled
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_get_bool_sexp_fsm"></A>
+SexpFsm_ptr <I></I>
+<B>Prop_master_get_bool_sexp_fsm</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the boolean FSM in sexp stored in the master
+  prop.  The prop package becomes the owner of the given fsm. The
+  returned value may be NULL when coi is enabled
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_get_game_bdd_fsm"></A>
+GameBddFsm_ptr <I></I>
+<B>Prop_master_get_game_bdd_fsm</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the Game boolean FSM in BDD stored in the
+  master prop
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_get_game_be_fsm"></A>
+GameBeFsm_ptr <I></I>
+<B>Prop_master_get_game_be_fsm</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the Game boolean FSM in BE stored in the
+  master prop
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_get_game_bool_sexp_fsm"></A>
+GameSexpFsm_ptr <I></I>
+<B>Prop_master_get_game_bool_sexp_fsm</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns theGame  boolean FSM in sexp stored in 
+  the master prop.  The prop package becomes the owner of the given  fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_get_game_scalar_sexp_fsm"></A>
+GameSexpFsm_ptr <I></I>
+<B>Prop_master_get_game_scalar_sexp_fsm</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the Game scalar FSM stored in the master prop
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_get_scalar_sexp_fsm"></A>
+SexpFsm_ptr <I></I>
+<B>Prop_master_get_scalar_sexp_fsm</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the scalar FSM stored in the master prop
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_set_bdd_fsm"></A>
+void <I></I>
+<B>Prop_master_set_bdd_fsm</B>(
+  BddFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> Set the boolean FSM in BDD of the master prop. The 
+  prop package becomes the owner of the given fsm. This method
+  destroys the previously set FSM if any.
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_set_be_fsm"></A>
+void <I></I>
+<B>Prop_master_set_be_fsm</B>(
+  BeFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> Set the boolean FSM in BE of the master prop. The 
+  prop package becomes the owner of the given fsm. This method
+  destroys the previously set FSM if any.
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_set_bool_sexp_fsm"></A>
+void <I></I>
+<B>Prop_master_set_bool_sexp_fsm</B>(
+  SexpFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> Set the boolean FSM in sexp of the master prop. The 
+  prop package becomes the owner of the given fsm. This method
+  destroys the previously set FSM if any.
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_set_game_bdd_fsm"></A>
+void <I></I>
+<B>Prop_master_set_game_bdd_fsm</B>(
+  GameBddFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> Set the Game boolean FSM in BDD of the master prop. The 
+  prop package becomes the owner of the given fsm. This method
+  destroys the previously set FSM if any.
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_set_game_be_fsm"></A>
+void <I></I>
+<B>Prop_master_set_game_be_fsm</B>(
+  GameBeFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> Set the Game boolean FSM in BE of the master prop. The
+  prop package becomes the owner of the given fsm. This method
+  destroys the previously set FSM if any.
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_set_game_bool_sexp_fsm"></A>
+void <I></I>
+<B>Prop_master_set_game_bool_sexp_fsm</B>(
+  GameSexpFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> Set the Game boolean FSM in sexp of the master prop. The 
+  prop package becomes the owner of the given fsm. This method
+  destroys the previously set FSM if any.
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_set_game_scalar_sexp_fsm"></A>
+void <I></I>
+<B>Prop_master_set_game_scalar_sexp_fsm</B>(
+  GameSexpFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> Set the Gamescalar FSM of the master prop. This method
+  destroys the previously set FSM if any.
+<p>
+
+<dt><pre>
+<A NAME="Prop_master_set_scalar_sexp_fsm"></A>
+void <I></I>
+<B>Prop_master_set_scalar_sexp_fsm</B>(
+  SexpFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> Set the scalar FSM of the master prop. This method
+  destroys the previously set FSM if any.
+<p>
+
+<dt><pre>
+<A NAME="Prop_print_db"></A>
+void <I></I>
+<B>Prop_print_db</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  FILE* <b>file</b> <i></i>
+)
+</pre>
+<dd> Prints a property on the specified FILE
+  stream. Some of the information stored in the property structure are
+  printed out (e.g. property, property kind, property status, ...).
+<p>
+
+<dt><pre>
+<A NAME="Prop_print"></A>
+void <I></I>
+<B>Prop_print</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  FILE* <b>file</b> <i></i>
+)
+</pre>
+<dd> Prints a property. 
+  PSL properties are specially handled.
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_bdd_fsm"></A>
+void <I></I>
+<B>Prop_set_bdd_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  BddFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> The given fsm will be duplicated, so the caller keeps 
+  the ownership of fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_be_fsm"></A>
+void <I></I>
+<B>Prop_set_be_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  BeFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> The given fsm will be duplicated, so the caller keeps 
+  the ownership of fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_bool_sexp_fsm"></A>
+void <I></I>
+<B>Prop_set_bool_sexp_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  SexpFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> The given fsm will be duplicated, so the caller keeps 
+  the ownership of fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_cone"></A>
+void <I></I>
+<B>Prop_set_cone</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  Set_t  <b>cone</b> <i></i>
+)
+</pre>
+<dd> Stores the cone of influence of the property
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_ctrace"></A>
+void <I></I>
+<B>Prop_set_ctrace</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  struct ConcTrace_TAG* <b>ctrace</b> <i></i>
+)
+</pre>
+<dd> This function is used by CEGAR, and is available only 
+  when mathsat is enabled
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_fsm_to_master"></A>
+void <I></I>
+<B>Prop_set_fsm_to_master</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Copies the FSM informations stored in the master
+  prop into the corresponding fields of the given prop structure.
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_game_bdd_fsm"></A>
+void <I></I>
+<B>Prop_set_game_bdd_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  GameBddFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> The given fsm will be duplicated, so the caller keeps 
+  the ownership of fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_game_be_fsm"></A>
+void <I></I>
+<B>Prop_set_game_be_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  GameBeFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> The given fsm will be duplicated, so the caller keeps 
+  the ownership of fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_game_bool_sexp_fsm"></A>
+void <I></I>
+<B>Prop_set_game_bool_sexp_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  GameSexpFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> The given fsm will be duplicated, so the caller keeps 
+  the ownership of fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_game_scalar_sexp_fsm"></A>
+void <I></I>
+<B>Prop_set_game_scalar_sexp_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  GameSexpFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> The given fsm will be duplicated, so the caller keeps 
+  the ownership of fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_index"></A>
+void <I></I>
+<B>Prop_set_index</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  const int  <b>index</b> <i></i>
+)
+</pre>
+<dd> Sets the unique identifier of a property
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_number_infinite"></A>
+void <I></I>
+<B>Prop_set_number_infinite</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Sets the to INFINITE the number resulting from the
+  evaluation of the property.
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_number_undefined"></A>
+void <I></I>
+<B>Prop_set_number_undefined</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Sets the to UNDEFINED the number resulting from the
+  evaluation of the property.
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_number"></A>
+void <I></I>
+<B>Prop_set_number</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  int  <b>n</b> <i></i>
+)
+</pre>
+<dd> Sets the number resulting from the
+  evaluation of the property.
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_scalar_sexp_fsm"></A>
+void <I></I>
+<B>Prop_set_scalar_sexp_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  SexpFsm_ptr  <b>fsm</b> <i></i>
+)
+</pre>
+<dd> The given fsm will be duplicated, so the caller keeps 
+  the ownership of fsm
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_status"></A>
+void <I></I>
+<B>Prop_set_status</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  Prop_Status  <b>s</b> <i></i>
+)
+</pre>
+<dd> Sets the status of the property
+<p>
+
+<dt><pre>
+<A NAME="Prop_set_trace"></A>
+void <I></I>
+<B>Prop_set_trace</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  int  <b>t</b> <i></i>
+)
+</pre>
+<dd> Sets the trace number for an unsatisfied property.
+<p>
+
+<dt><pre>
+<A NAME="Prop_verify"></A>
+void <I></I>
+<B>Prop_verify</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Depending the property, different model checking
+  algorithms are called. The status of the property is updated
+  accordingly to the result of the verification process.
+<p>
+
+<dt><pre>
+<A NAME="prop_db_get_prop_type_as_parsing_string"></A>
+const char* <I></I>
+<B>prop_db_get_prop_type_as_parsing_string</B>(
+  const Prop_Type  <b>type</b> <i></i>
+)
+</pre>
+<dd> Returns the parsing type given the property type. 
+  The returned string must NOT be freed.
+<p>
+
+<dt><pre>
+<A NAME="prop_db_prop_parse_from_arg_and_add"></A>
+int <I></I>
+<B>prop_db_prop_parse_from_arg_and_add</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  int  <b>argc</b>, <i></i>
+  const char** <b>argv</b>, <i></i>
+  const Prop_Type  <b>type</b> <i></i>
+)
+</pre>
+<dd> Parses and creates a property of a given type from 
+  an arg structure. If the formula is correct, it is added to the 
+  property database and its index is returned.
+  Otherwise, -1 is returned.
+  Valid types are Prop_Ctl, Prop_Ltl, Prop_Psl, Prop_Invar and Prop_Compute.
+<p>
+
+<dt><pre>
+<A NAME="prop_deinit"></A>
+void <I></I>
+<B>prop_deinit</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Destroy the elements of a property
+<p>
+
+<dt><pre>
+<A NAME="prop_init"></A>
+void <I></I>
+<B>prop_init</B>(
+  Prop_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Initializes the property
+<p>
+
+<dt><pre>
+<A NAME="prop_print"></A>
+void <I></I>
+<B>prop_print</B>(
+  const Prop_ptr  <b>self</b>, <i></i>
+  FILE* <b>file</b> <i></i>
+)
+</pre>
+<dd> Prints a property. 
+  PSL properties and game propeties are specially handled.
+<p>
+
+<dt><pre>
+<A NAME="prop_set_bdd_fsm"></A>
+void <I></I>
+<B>prop_set_bdd_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  BddFsm_ptr  <b>fsm</b>, <i></i>
+  const boolean  <b>duplicate</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<dt><pre>
+<A NAME="prop_set_be_fsm"></A>
+void <I></I>
+<B>prop_set_be_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  BeFsm_ptr  <b>fsm</b>, <i></i>
+  const boolean  <b>duplicate</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<dt><pre>
+<A NAME="prop_set_bool_sexp_fsm"></A>
+void <I></I>
+<B>prop_set_bool_sexp_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  SexpFsm_ptr  <b>fsm</b>, <i></i>
+  const boolean  <b>duplicate</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<dt><pre>
+<A NAME="prop_set_game_bdd_fsm"></A>
+void <I></I>
+<B>prop_set_game_bdd_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  GameBddFsm_ptr  <b>fsm</b>, <i></i>
+  const boolean  <b>duplicate</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<dt><pre>
+<A NAME="prop_set_game_be_fsm"></A>
+void <I></I>
+<B>prop_set_game_be_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  GameBeFsm_ptr  <b>fsm</b>, <i></i>
+  const boolean  <b>duplicate</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<dt><pre>
+<A NAME="prop_set_game_bool_sexp_fsm"></A>
+void <I></I>
+<B>prop_set_game_bool_sexp_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  GameSexpFsm_ptr  <b>fsm</b>, <i></i>
+  const boolean  <b>duplicate</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<dt><pre>
+<A NAME="prop_set_game_scalar_sexp_fsm"></A>
+void <I></I>
+<B>prop_set_game_scalar_sexp_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  GameSexpFsm_ptr  <b>fsm</b>, <i></i>
+  const boolean  <b>duplicate</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<dt><pre>
+<A NAME="prop_set_scalar_sexp_fsm"></A>
+void <I></I>
+<B>prop_set_scalar_sexp_fsm</B>(
+  Prop_ptr  <b>self</b>, <i></i>
+  SexpFsm_ptr  <b>fsm</b>, <i></i>
+  const boolean  <b>duplicate</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

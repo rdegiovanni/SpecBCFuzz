@@ -1,0 +1,412 @@
+<HTML>
+<HEAD><TITLE>The prop package: files</TITLE></HEAD>
+<BODY>
+
+<DL>
+ <DT> <A HREF="#prop.h"><CODE>prop.h</CODE></A>
+ <DD> External header file
+ <DT> <A HREF="#propInt.h"><CODE>propInt.h</CODE></A>
+ <DD> Internal header file
+ <DT> <A HREF="#propCmd.c"><CODE>propCmd.c</CODE></A>
+ <DD> Shell interface for the prop package.
+ <DT> <A HREF="#propDb.c"><CODE>propDb.c</CODE></A>
+ <DD> Property database
+ <DT> <A HREF="#propProp.c"><CODE>propProp.c</CODE></A>
+ <DD> Main routines for the prop data structure
+</DL><HR>
+<A NAME="prop.h"><H1>prop.h</H1></A>
+External header file <P>
+<B>By: Marco Roveri, Roberto Cavada</B><P>
+<DL>
+</DL>
+<HR>
+<A NAME="propInt.h"><H1>propInt.h</H1></A>
+Internal header file <P>
+<B>By: Marco Roveri, Roberto Cavada</B><P>
+<P><B>See Also</B><A HREF="#optional"><CODE>optional</CODE></A>
+<DL>
+</DL>
+<HR>
+<A NAME="propCmd.c"><H1>propCmd.c</H1></A>
+Shell interface for the prop package. <P>
+<B>By: Marco Roveri</B><P>
+This file contains the interface of the prop package
+  with the interactive shell. <P>
+<P><B>See Also</B><A HREF="#cmdCmd.c"><CODE>cmdCmd.c</CODE></A>
+<DL>
+ <DT> <A HREF="propAllDet.html#PropPkg_init_cmd" TARGET="MAIN"><CODE>PropPkg_init_cmd()</CODE></A>
+ <DD> Initiliaze the prop package for commands
+
+ <DT> <A HREF="propAllDet.html#PropPkg_quit_cmd" TARGET="MAIN"><CODE>PropPkg_quit_cmd()</CODE></A>
+ <DD> Quit the prop package for commands
+
+ <DT> <A HREF="propAllDet.html#CommandShowProperty" TARGET="MAIN"><CODE>CommandShowProperty()</CODE></A>
+ <DD> Shows the currently stored properties
+
+ <DT> <A HREF="propAllDet.html#CommandAddProperty" TARGET="MAIN"><CODE>CommandAddProperty()</CODE></A>
+ <DD> Adds a property to the list of properties
+
+ <DT> <A HREF="propAllDet.html#CommandCheckProperty" TARGET="MAIN"><CODE>CommandCheckProperty()</CODE></A>
+ <DD> Checks properties
+
+</DL>
+<HR>
+<A NAME="propDb.c"><H1>propDb.c</H1></A>
+Property database <P>
+<B>By: Roberto Cavada, Marco Roveri</B><P>
+Primitives to create, query and manipulate a database
+  of property is provided. <P>
+<DL>
+ <DT> <A HREF="propAllDet.html#PropDb_create" TARGET="MAIN"><CODE>PropDb_create()</CODE></A>
+ <DD> Initializes the DB of properties
+
+ <DT> <A HREF="propAllDet.html#PropDb_destroy" TARGET="MAIN"><CODE>PropDb_destroy()</CODE></A>
+ <DD> Disposes the DB of properties
+
+ <DT> <A HREF="propAllDet.html#PropDb_clean" TARGET="MAIN"><CODE>PropDb_clean()</CODE></A>
+ <DD> Disposes the DB of properties
+
+ <DT> <A HREF="propAllDet.html#PropDb_fill" TARGET="MAIN"><CODE>PropDb_fill()</CODE></A>
+ <DD> Fills the DB of properties
+
+ <DT> <A HREF="propAllDet.html#PropDb_fill_game" TARGET="MAIN"><CODE>PropDb_fill_game()</CODE></A>
+ <DD> Fills the DB of (game) properties
+
+ <DT> <A HREF="propAllDet.html#PropDb_add" TARGET="MAIN"><CODE>PropDb_add()</CODE></A>
+ <DD> Inserts a property in the DB of properties
+
+ <DT> <A HREF="propAllDet.html#PropDb_prop_create_and_add" TARGET="MAIN"><CODE>PropDb_prop_create_and_add()</CODE></A>
+ <DD> Inserts a property in the DB of properties
+
+ <DT> <A HREF="propAllDet.html#PropDb_get_last" TARGET="MAIN"><CODE>PropDb_get_last()</CODE></A>
+ <DD> Returns the last entered property in the DB
+
+ <DT> <A HREF="propAllDet.html#PropDb_get_prop_at_index" TARGET="MAIN"><CODE>PropDb_get_prop_at_index()</CODE></A>
+ <DD> Returns the property indexed by index
+
+ <DT> <A HREF="propAllDet.html#PropDb_get_prop_index" TARGET="MAIN"><CODE>PropDb_get_prop_index()</CODE></A>
+ <DD> Returns the index of a property in the database
+
+ <DT> <A HREF="propAllDet.html#PropDb_get_size" TARGET="MAIN"><CODE>PropDb_get_size()</CODE></A>
+ <DD> Returns the size of the DB
+
+ <DT> <A HREF="propAllDet.html#PropDb_print_list_header" TARGET="MAIN"><CODE>PropDb_print_list_header()</CODE></A>
+ <DD> Prints the header of the property list
+
+ <DT> <A HREF="propAllDet.html#PropDb_print_prop_at_index" TARGET="MAIN"><CODE>PropDb_print_prop_at_index()</CODE></A>
+ <DD> Prints the specified property from the DB
+
+ <DT> <A HREF="propAllDet.html#PropDb_print_all" TARGET="MAIN"><CODE>PropDb_print_all()</CODE></A>
+ <DD> Prints all the properties stored in the DB
+
+ <DT> <A HREF="propAllDet.html#PropDb_print_all_status_type" TARGET="MAIN"><CODE>PropDb_print_all_status_type()</CODE></A>
+ <DD> Prints all the properties stored in the DB
+
+ <DT> <A HREF="propAllDet.html#PropDb_print_all_type" TARGET="MAIN"><CODE>PropDb_print_all_type()</CODE></A>
+ <DD> Prints all the properties stored in the DB
+
+ <DT> <A HREF="propAllDet.html#PropDb_print_all_status" TARGET="MAIN"><CODE>PropDb_print_all_status()</CODE></A>
+ <DD> Prints all the properties stored in the DB
+
+ <DT> <A HREF="propAllDet.html#PropDb_get_props_of_type" TARGET="MAIN"><CODE>PropDb_get_props_of_type()</CODE></A>
+ <DD> Given a property type returns the list of properties
+  of that type currently located into the property database
+
+ <DT> <A HREF="propAllDet.html#PropDb_prop_parse_and_add" TARGET="MAIN"><CODE>PropDb_prop_parse_and_add()</CODE></A>
+ <DD> Add a property to the database from a string and a type
+
+ <DT> <A HREF="propAllDet.html#PropDb_get_prop_index_from_string" TARGET="MAIN"><CODE>PropDb_get_prop_index_from_string()</CODE></A>
+ <DD> Get a valid property index from a string
+
+ <DT> <A HREF="propAllDet.html#PropDb_get_prop_index_from_trace_index" TARGET="MAIN"><CODE>PropDb_get_prop_index_from_trace_index()</CODE></A>
+ <DD> Returns the index of the property associated to a trace.
+
+ <DT> <A HREF="propAllDet.html#PropDb_verify_prop_at_index" TARGET="MAIN"><CODE>PropDb_verify_prop_at_index()</CODE></A>
+ <DD> Verifies a given property
+
+ <DT> <A HREF="propAllDet.html#PropDb_verify_all_type" TARGET="MAIN"><CODE>PropDb_verify_all_type()</CODE></A>
+ <DD> Verifies all properties of a given type
+
+ <DT> <A HREF="propAllDet.html#PropDb_verify_all" TARGET="MAIN"><CODE>PropDb_verify_all()</CODE></A>
+ <DD> Verifies all the properties in the DB
+
+ <DT> <A HREF="propAllDet.html#prop_db_prop_parse_from_arg_and_add" TARGET="MAIN"><CODE>prop_db_prop_parse_from_arg_and_add()</CODE></A>
+ <DD> Add a property to the database from an arg structure 
+  and a type
+
+ <DT> <A HREF="propAllDet.html#prop_db_get_prop_type_as_parsing_string" TARGET="MAIN"><CODE>prop_db_get_prop_type_as_parsing_string()</CODE></A>
+ <DD> Returns the parsing type given the property type
+
+</DL>
+<HR>
+<A NAME="propProp.c"><H1>propProp.c</H1></A>
+Main routines for the prop data structure <P>
+<B>By: Marco Roveri, Roberto Cavada</B><P>
+Main routines for the manipulation of the prop data
+  structure. A "master" property is also defined to be used to
+  represent the whole system, for instance to perform reachability or
+  to perform simulation. Moreover a primitives to create, query and
+  manipulate a database of property is provided. <P>
+<DL>
+ <DT> <A HREF="propAllDet.html#PropPkg_init" TARGET="MAIN"><CODE>PropPkg_init()</CODE></A>
+ <DD> Initializes the package: master property and 
+  property database are allocated
+
+ <DT> <A HREF="propAllDet.html#PropPkg_quit" TARGET="MAIN"><CODE>PropPkg_quit()</CODE></A>
+ <DD> Quits the package
+
+ <DT> <A HREF="propAllDet.html#Prop_create" TARGET="MAIN"><CODE>Prop_create()</CODE></A>
+ <DD> Allocate a property
+
+ <DT> <A HREF="propAllDet.html#Prop_destroy" TARGET="MAIN"><CODE>Prop_destroy()</CODE></A>
+ <DD> Free a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_expr" TARGET="MAIN"><CODE>Prop_get_expr()</CODE></A>
+ <DD> Returns the property as it has been parsed and created
+
+ <DT> <A HREF="propAllDet.html#Prop_get_expr_core" TARGET="MAIN"><CODE>Prop_get_expr_core()</CODE></A>
+ <DD> Returns the property, but it is converted before in terms
+  of core symbols.
+
+ <DT> <A HREF="propAllDet.html#Prop_get_cone" TARGET="MAIN"><CODE>Prop_get_cone()</CODE></A>
+ <DD> Returns the cone of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_cone" TARGET="MAIN"><CODE>Prop_set_cone()</CODE></A>
+ <DD> Sets the cone of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_type" TARGET="MAIN"><CODE>Prop_get_type()</CODE></A>
+ <DD> Returns the property type
+
+ <DT> <A HREF="propAllDet.html#Prop_get_status" TARGET="MAIN"><CODE>Prop_get_status()</CODE></A>
+ <DD> Returns the status of the property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_status" TARGET="MAIN"><CODE>Prop_set_status()</CODE></A>
+ <DD> Sets the status of the property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_number" TARGET="MAIN"><CODE>Prop_get_number()</CODE></A>
+ <DD> Returns the number of the property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_number" TARGET="MAIN"><CODE>Prop_set_number()</CODE></A>
+ <DD> Sets the number of the property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_number_infinite" TARGET="MAIN"><CODE>Prop_set_number_infinite()</CODE></A>
+ <DD> Sets the number of the property to INFINITE
+
+ <DT> <A HREF="propAllDet.html#Prop_set_number_undefined" TARGET="MAIN"><CODE>Prop_set_number_undefined()</CODE></A>
+ <DD> Sets the number of the property to UNDEFINED
+
+ <DT> <A HREF="propAllDet.html#Prop_get_trace" TARGET="MAIN"><CODE>Prop_get_trace()</CODE></A>
+ <DD> Returns the trace number associated to a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_trace" TARGET="MAIN"><CODE>Prop_set_trace()</CODE></A>
+ <DD> Sets the trace number
+
+ <DT> <A HREF="propAllDet.html#Prop_get_scalar_sexp_fsm" TARGET="MAIN"><CODE>Prop_get_scalar_sexp_fsm()</CODE></A>
+ <DD> Returns the scalar FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_game_scalar_sexp_fsm" TARGET="MAIN"><CODE>Prop_get_game_scalar_sexp_fsm()</CODE></A>
+ <DD> Returns the Game scalar FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_scalar_sexp_fsm" TARGET="MAIN"><CODE>Prop_set_scalar_sexp_fsm()</CODE></A>
+ <DD> Sets the scalar FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_game_scalar_sexp_fsm" TARGET="MAIN"><CODE>Prop_set_game_scalar_sexp_fsm()</CODE></A>
+ <DD> Sets the Game scalar FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_bool_sexp_fsm" TARGET="MAIN"><CODE>Prop_get_bool_sexp_fsm()</CODE></A>
+ <DD> Returns the boolean FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_game_bool_sexp_fsm" TARGET="MAIN"><CODE>Prop_get_game_bool_sexp_fsm()</CODE></A>
+ <DD> Returns the Game boolean FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_bool_sexp_fsm" TARGET="MAIN"><CODE>Prop_set_bool_sexp_fsm()</CODE></A>
+ <DD> Sets the boolean FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_game_bool_sexp_fsm" TARGET="MAIN"><CODE>Prop_set_game_bool_sexp_fsm()</CODE></A>
+ <DD> Sets the Game boolean FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_bdd_fsm" TARGET="MAIN"><CODE>Prop_get_bdd_fsm()</CODE></A>
+ <DD> Returns the BDD FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_game_bdd_fsm" TARGET="MAIN"><CODE>Prop_get_game_bdd_fsm()</CODE></A>
+ <DD> Returns the Game BDD FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_bdd_fsm" TARGET="MAIN"><CODE>Prop_set_bdd_fsm()</CODE></A>
+ <DD> Sets the boolean FSM in BDD of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_game_bdd_fsm" TARGET="MAIN"><CODE>Prop_set_game_bdd_fsm()</CODE></A>
+ <DD> Sets the Game BDD FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_be_fsm" TARGET="MAIN"><CODE>Prop_get_be_fsm()</CODE></A>
+ <DD> Returns the BE FSM  of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_game_be_fsm" TARGET="MAIN"><CODE>Prop_get_game_be_fsm()</CODE></A>
+ <DD> Returns the Game BE FSM in  of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_be_fsm" TARGET="MAIN"><CODE>Prop_set_be_fsm()</CODE></A>
+ <DD> Sets the boolean BE FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_game_be_fsm" TARGET="MAIN"><CODE>Prop_set_game_be_fsm()</CODE></A>
+ <DD> Sets the Game boolean BE FSM of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_apply_coi_for_bdd" TARGET="MAIN"><CODE>Prop_apply_coi_for_bdd()</CODE></A>
+ <DD> Applies cone of influence to the given property
+
+ <DT> <A HREF="propAllDet.html#Prop_apply_coi_for_bmc" TARGET="MAIN"><CODE>Prop_apply_coi_for_bmc()</CODE></A>
+ <DD> Applies cone of influence to the given property
+
+ <DT> <A HREF="propAllDet.html#Prop_print_db" TARGET="MAIN"><CODE>Prop_print_db()</CODE></A>
+ <DD> Prints a property with info or its position and status 
+  within the database
+
+ <DT> <A HREF="propAllDet.html#Prop_print" TARGET="MAIN"><CODE>Prop_print()</CODE></A>
+ <DD> Prints a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_number_as_string" TARGET="MAIN"><CODE>Prop_get_number_as_string()</CODE></A>
+ <DD> Returns the number value as a string (only for compute 
+  types)
+
+ <DT> <A HREF="propAllDet.html#Prop_get_context_text" TARGET="MAIN"><CODE>Prop_get_context_text()</CODE></A>
+ <DD> Returns the context name of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_text" TARGET="MAIN"><CODE>Prop_get_text()</CODE></A>
+ <DD> Returns the property text, with no explicit context
+
+ <DT> <A HREF="propAllDet.html#Prop_master_get_scalar_sexp_fsm" TARGET="MAIN"><CODE>Prop_master_get_scalar_sexp_fsm()</CODE></A>
+ <DD> Returns the scalar FSM
+
+ <DT> <A HREF="propAllDet.html#Prop_master_get_game_scalar_sexp_fsm" TARGET="MAIN"><CODE>Prop_master_get_game_scalar_sexp_fsm()</CODE></A>
+ <DD> Returns the Game scalar FSM
+
+ <DT> <A HREF="propAllDet.html#Prop_master_set_scalar_sexp_fsm" TARGET="MAIN"><CODE>Prop_master_set_scalar_sexp_fsm()</CODE></A>
+ <DD> Set the scalar FSM
+
+ <DT> <A HREF="propAllDet.html#Prop_master_set_game_scalar_sexp_fsm" TARGET="MAIN"><CODE>Prop_master_set_game_scalar_sexp_fsm()</CODE></A>
+ <DD> Set the Gamescalar FSM
+
+ <DT> <A HREF="propAllDet.html#Prop_master_get_bool_sexp_fsm" TARGET="MAIN"><CODE>Prop_master_get_bool_sexp_fsm()</CODE></A>
+ <DD> Returns the boolean FSM in sexp
+
+ <DT> <A HREF="propAllDet.html#Prop_master_get_game_bool_sexp_fsm" TARGET="MAIN"><CODE>Prop_master_get_game_bool_sexp_fsm()</CODE></A>
+ <DD> Returns the Game boolean FSM in sexp
+
+ <DT> <A HREF="propAllDet.html#Prop_master_set_bool_sexp_fsm" TARGET="MAIN"><CODE>Prop_master_set_bool_sexp_fsm()</CODE></A>
+ <DD> Set the boolean FSM in sexp
+
+ <DT> <A HREF="propAllDet.html#Prop_master_set_game_bool_sexp_fsm" TARGET="MAIN"><CODE>Prop_master_set_game_bool_sexp_fsm()</CODE></A>
+ <DD> Set the Game boolean FSM in sexp
+
+ <DT> <A HREF="propAllDet.html#Prop_master_get_bdd_fsm" TARGET="MAIN"><CODE>Prop_master_get_bdd_fsm()</CODE></A>
+ <DD> Returns the boolean FSM in BDD
+
+ <DT> <A HREF="propAllDet.html#Prop_master_get_game_bdd_fsm" TARGET="MAIN"><CODE>Prop_master_get_game_bdd_fsm()</CODE></A>
+ <DD> Returns the Game boolean FSM in BDD
+
+ <DT> <A HREF="propAllDet.html#Prop_master_set_bdd_fsm" TARGET="MAIN"><CODE>Prop_master_set_bdd_fsm()</CODE></A>
+ <DD> Set the boolean FSM in BDD
+
+ <DT> <A HREF="propAllDet.html#Prop_master_set_game_bdd_fsm" TARGET="MAIN"><CODE>Prop_master_set_game_bdd_fsm()</CODE></A>
+ <DD> Set the Game boolean FSM in BDD
+
+ <DT> <A HREF="propAllDet.html#Prop_master_get_be_fsm" TARGET="MAIN"><CODE>Prop_master_get_be_fsm()</CODE></A>
+ <DD> Returns the boolean FSM in BE
+
+ <DT> <A HREF="propAllDet.html#Prop_master_get_game_be_fsm" TARGET="MAIN"><CODE>Prop_master_get_game_be_fsm()</CODE></A>
+ <DD> Returns the Game boolean FSM in BE
+
+ <DT> <A HREF="propAllDet.html#Prop_master_set_be_fsm" TARGET="MAIN"><CODE>Prop_master_set_be_fsm()</CODE></A>
+ <DD> Set the boolean FSM in BE
+
+ <DT> <A HREF="propAllDet.html#Prop_master_set_game_be_fsm" TARGET="MAIN"><CODE>Prop_master_set_game_be_fsm()</CODE></A>
+ <DD> Set the Game boolean FSM in BE
+
+ <DT> <A HREF="propAllDet.html#Prop_set_fsm_to_master" TARGET="MAIN"><CODE>Prop_set_fsm_to_master()</CODE></A>
+ <DD> Copies master prop FSM data into prop
+
+ <DT> <A HREF="propAllDet.html#Prop_get_type_as_string" TARGET="MAIN"><CODE>Prop_get_type_as_string()</CODE></A>
+ <DD> Returns the a string associated to a property type
+
+ <DT> <A HREF="propAllDet.html#Prop_get_status_as_string" TARGET="MAIN"><CODE>Prop_get_status_as_string()</CODE></A>
+ <DD> Returns the a string associated to a property status
+
+ <DT> <A HREF="propAllDet.html#Prop_check_type" TARGET="MAIN"><CODE>Prop_check_type()</CODE></A>
+ <DD> Check if a property in the database is of a given type
+
+ <DT> <A HREF="propAllDet.html#Prop_verify" TARGET="MAIN"><CODE>Prop_verify()</CODE></A>
+ <DD> Verifies a given property
+
+ <DT> <A HREF="propAllDet.html#PropType_to_string" TARGET="MAIN"><CODE>PropType_to_string()</CODE></A>
+ <DD> Returns the a string associated to a property type
+
+ <DT> <A HREF="propAllDet.html#Prop_is_psl_ltl" TARGET="MAIN"><CODE>Prop_is_psl_ltl()</CODE></A>
+ <DD> Returns true if the property is PSL property and it 
+  is LTL compatible
+
+ <DT> <A HREF="propAllDet.html#Prop_is_psl_obe" TARGET="MAIN"><CODE>Prop_is_psl_obe()</CODE></A>
+ <DD> Returns true if the property is PSL property and it 
+  is CTL compatible
+
+ <DT> <A HREF="propAllDet.html#Prop_is_game_prop" TARGET="MAIN"><CODE>Prop_is_game_prop()</CODE></A>
+ <DD> Returns true if the property is a game specifications,
+  i.e. one of REACHTARGET, AVOIDTARGET, REACHDEADLOCK, AVOIDDEADLOCK,
+  BUCHIGAME, GENREACTIVITY.
+
+ <DT> <A HREF="propAllDet.html#Prop_get_game_player" TARGET="MAIN"><CODE>Prop_get_game_player()</CODE></A>
+ <DD> Returns true if the property is a game specifications,
+  i.e. one of REACHTARGET, AVOIDTARGET, REACHDEADLOCK, AVOIDDEADLOCK,
+  BUCHIGAME, GENREACTIVITY.
+
+ <DT> <A HREF="propAllDet.html#Prop_create_partial" TARGET="MAIN"><CODE>Prop_create_partial()</CODE></A>
+ <DD> Creates a property, but does not insert it within 
+  the database, so the property can be used on the fly.
+
+ <DT> <A HREF="propAllDet.html#Prop_get_ctrace" TARGET="MAIN"><CODE>Prop_get_ctrace()</CODE></A>
+ <DD> Returns the associated concrete trace structure
+
+ <DT> <A HREF="propAllDet.html#Prop_set_ctrace" TARGET="MAIN"><CODE>Prop_set_ctrace()</CODE></A>
+ <DD> Associates given concrete trace structure to the
+  property
+
+ <DT> <A HREF="propAllDet.html#Prop_get_index" TARGET="MAIN"><CODE>Prop_get_index()</CODE></A>
+ <DD> Returns the index of a property
+
+ <DT> <A HREF="propAllDet.html#Prop_set_index" TARGET="MAIN"><CODE>Prop_set_index()</CODE></A>
+ <DD> Sets the index of a property
+
+ <DT> <A HREF="propAllDet.html#prop_init" TARGET="MAIN"><CODE>prop_init()</CODE></A>
+ <DD> Initializes the property
+
+ <DT> <A HREF="propAllDet.html#prop_deinit" TARGET="MAIN"><CODE>prop_deinit()</CODE></A>
+ <DD> Destroy the elements of a property
+
+ <DT> <A HREF="propAllDet.html#prop_print" TARGET="MAIN"><CODE>prop_print()</CODE></A>
+ <DD> Prints a property
+
+ <DT> <A HREF="propAllDet.html#prop_set_scalar_sexp_fsm" TARGET="MAIN"><CODE>prop_set_scalar_sexp_fsm()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="propAllDet.html#prop_set_game_scalar_sexp_fsm" TARGET="MAIN"><CODE>prop_set_game_scalar_sexp_fsm()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="propAllDet.html#prop_set_bool_sexp_fsm" TARGET="MAIN"><CODE>prop_set_bool_sexp_fsm()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="propAllDet.html#prop_set_game_bool_sexp_fsm" TARGET="MAIN"><CODE>prop_set_game_bool_sexp_fsm()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="propAllDet.html#prop_set_bdd_fsm" TARGET="MAIN"><CODE>prop_set_bdd_fsm()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="propAllDet.html#prop_set_game_bdd_fsm" TARGET="MAIN"><CODE>prop_set_game_bdd_fsm()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="propAllDet.html#prop_set_be_fsm" TARGET="MAIN"><CODE>prop_set_be_fsm()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="propAllDet.html#prop_set_game_be_fsm" TARGET="MAIN"><CODE>prop_set_game_be_fsm()</CODE></A>
+ <DD> 
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

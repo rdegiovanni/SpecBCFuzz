@@ -1,0 +1,75 @@
+<html>
+<head><title>The  package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="Compass_print_add_sigref_format"></A>
+int <I></I>
+<B>Compass_print_add_sigref_format</B>(
+  DdManager* <b>dd</b>, <i></i>
+  add_ptr  <b>add</b>, <i></i>
+  FILE* <b>file</b>, <i></i>
+  boolean  <b>do_indent</b> <i></i>
+)
+</pre>
+<dd> Returns 0 if successful, a negative number if an occurs
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#sigrefWrite.c"TARGET="ABSTRACT"><CODE>sigrefWrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="Compass_write_language_sigref"></A>
+int <I></I>
+<B>Compass_write_language_sigref</B>(
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  FILE* <b>file</b> <i></i>
+)
+</pre>
+<dd> Returns 0 if successful, a negative number if an occurs
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#sigrefWrite.c"TARGET="ABSTRACT"><CODE>sigrefWrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="Compass_write_sigref"></A>
+void <I></I>
+<B>Compass_write_sigref</B>(
+  FILE* <b>file</b>, <i></i>
+  BddFsm_ptr  <b>fsm</b>, <i></i>
+  NodeList_ptr  <b>probs_list</b>, <i></i>
+  Expr_ptr  <b>tau</b>, <i></i>
+  NodeList_ptr  <b>ap_list</b>, <i></i>
+  boolean  <b>do_indent</b> <i>Beautify the XML output</i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#sigrefWrite.c"TARGET="ABSTRACT"><CODE>sigrefWrite.c</CODE></A>
+
+<dt><pre>
+<A NAME="compass_print_add_child_sigref"></A>
+static int <I></I>
+<B>compass_print_add_child_sigref</B>(
+  DdManager* <b>dd</b>, <i></i>
+  add_ptr  <b>add</b>, <i></i>
+  FILE* <b>file</b>, <i></i>
+  int  <b>indent</b>, <i></i>
+  const char* <b>child_tag</b>, <i></i>
+  hash_ptr  <b>hash</b>, <i></i>
+  boolean  <b>do_indent</b> <i></i>
+)
+</pre>
+<dd> Returns 0 if successful, a negative number if an occurs
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#sigrefWrite.c"TARGET="ABSTRACT"><CODE>sigrefWrite.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2011/10/28 15h:48
+</BODY></HTML>

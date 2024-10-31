@@ -1,0 +1,128 @@
+<HTML>
+<HEAD><TITLE>The sm package</TITLE></HEAD>
+<BODY>
+
+<DL>
+<dt><pre>
+<A NAME="Sm_End"></A>
+void <I></I>
+<B>Sm_End</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Calls the end routines of all the packages.
+<p>
+
+<dd> <b>Side Effects</b> Closes the output files if not the standard ones.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_Init">Sm_Init</a>
+</code>
+
+<dt><pre>
+<A NAME="Sm_Init"></A>
+void <I></I>
+<B>Sm_Init</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Calls the initialization routines of all the packages.
+<p>
+
+<dd> <b>Side Effects</b> Sets the global variables nusmv_stdout, nusmv_stderr,
+  nusmv_historyFile.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SmEnd">SmEnd</a>
+</code>
+
+<dt><pre>
+<A NAME="Sm_NuSMVEndPrintMore"></A>
+int <I></I>
+<B>Sm_NuSMVEndPrintMore</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This function is  called to terminate piping
+  stdout through "more". It is important to call Sm_NuSMVEndPrintMore  before exiting
+  your function (preferably at the end of your printing; failing to do so will cause
+  the stdin lines not to appear). The function returns a 0 if it fails.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_NuSMVInitPrintMore">Sm_NuSMVInitPrintMore</a>
+</code>
+
+<dt><pre>
+<A NAME="Sm_NuSMVInitPrintMore"></A>
+void <I></I>
+<B>Sm_NuSMVInitPrintMore</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This function is  called to initialize piping
+  stdout through "more". It is important to call Sm_NuSMVEndPrintMore before
+  returning from your function and after
+  calling Sm_NuSMVInitPrintMore (preferably at the end of your printing;
+  failing to do so will cause the stdin lines not to appear).
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_NuSMVEndPrintMore">Sm_NuSMVEndPrintMore</a>
+</code>
+
+<dt><pre>
+<A NAME="Sm_NuSMVObtainLibrary"></A>
+char* <I></I>
+<B>Sm_NuSMVObtainLibrary</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns a string giving the directory which contains the
+  standard NuSMV library.  Used to find things like the default .nusmvrc, the
+  on-line help files, etc. It is the responsibility of the user to free the
+  returned string.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_NuSMVReadVersion">Sm_NuSMVReadVersion</a>
+</code>
+
+<dt><pre>
+<A NAME="Sm_NuSMVReadVersion"></A>
+char* <I></I>
+<B>Sm_NuSMVReadVersion</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns a static string giving the NuSMV version and compilation
+  timestamp.  The user should not free this string.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_NuSMVObtainLibrary">Sm_NuSMVObtainLibrary</a>
+</code>
+
+<dt><pre>
+<A NAME="Sm_Reset"></A>
+void <I></I>
+<B>Sm_Reset</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Shuts down and restarts the system
+<p>
+
+<dt><pre>
+<A NAME="sm_ParseLineOptions"></A>
+void <I></I>
+<B>sm_ParseLineOptions</B>(
+  int  <b>argc</b>, <i></i>
+  char ** <b>argv</b>, <i></i>
+  options_ptr  <b>options</b> <i></i>
+)
+</pre>
+<dd> Parses the command line options.
+<p>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

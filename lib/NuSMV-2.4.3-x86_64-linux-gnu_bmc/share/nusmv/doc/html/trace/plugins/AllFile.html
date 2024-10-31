@@ -1,0 +1,176 @@
+<HTML>
+<HEAD><TITLE>The  package: files</TITLE></HEAD>
+<BODY>
+
+<DL>
+ <DT> <A HREF="#TraceExplainer.c"><CODE>TraceExplainer.c</CODE></A>
+ <DD> Routines related to TraceExplainer object.
+ <DT> <A HREF="#TracePlugin.c"><CODE>TracePlugin.c</CODE></A>
+ <DD> Routines related to TracePlugin object.
+ <DT> <A HREF="#TraceTable.c"><CODE>TraceTable.c</CODE></A>
+ <DD> Routines related to TraceTable object.
+ <DT> <A HREF="#TraceXmlDumper.c"><CODE>TraceXmlDumper.c</CODE></A>
+ <DD> Routines related to TraceXmlDumper class
+ <DT> <A HREF="#TraceXmlLoader.c"><CODE>TraceXmlLoader.c</CODE></A>
+ <DD> Routines related to TraceXmlLoader class
+</DL><HR>
+<A NAME="TraceExplainer.c"><H1>TraceExplainer.c</H1></A>
+Routines related to TraceExplainer object. <P>
+<B>By: Ashutosh Trivedi</B><P>
+This file contains the definition of "TraceExplainer" 
+  class. TraceExplainer plugin simply prints the trace. <P>
+<DL>
+ <DT> <A HREF="AllDet.html#TraceExplainer_create" TARGET="MAIN"><CODE>TraceExplainer_create()</CODE></A>
+ <DD> Creates an Explainer Plugin and initializes it.
+
+ <DT> <A HREF="AllDet.html#trace_explainer_init" TARGET="MAIN"><CODE>trace_explainer_init()</CODE></A>
+ <DD> Initializes trace explain object.
+
+ <DT> <A HREF="AllDet.html#trace_explainer_deinit" TARGET="MAIN"><CODE>trace_explainer_deinit()</CODE></A>
+ <DD> Deinitializes Explain object.
+
+ <DT> <A HREF="AllDet.html#trace_explainer_action" TARGET="MAIN"><CODE>trace_explainer_action()</CODE></A>
+ <DD> Action method associated with TraceExplainer class.
+
+ <DT> <A HREF="AllDet.html#trace_explainer_finalize" TARGET="MAIN"><CODE>trace_explainer_finalize()</CODE></A>
+ <DD> Trace Explainer finalize method.
+
+</DL>
+<HR>
+<A NAME="TracePlugin.c"><H1>TracePlugin.c</H1></A>
+Routines related to TracePlugin object. <P>
+<B>By: Ashutosh Trivedi</B><P>
+This file contains the definition of "TracePlugin" class. <P>
+<DL>
+ <DT> <A HREF="AllDet.html#TracePlugin_action" TARGET="MAIN"><CODE>TracePlugin_action()</CODE></A>
+ <DD> Action associated with the Class TracePlugin.
+
+ <DT> <A HREF="AllDet.html#TracePlugin_get_desc" TARGET="MAIN"><CODE>TracePlugin_get_desc()</CODE></A>
+ <DD> Returns a short description of the plugin.
+
+ <DT> <A HREF="AllDet.html#trace_plugin_action" TARGET="MAIN"><CODE>trace_plugin_action()</CODE></A>
+ <DD> Action associated with the Class action.
+
+ <DT> <A HREF="AllDet.html#trace_plugin_init" TARGET="MAIN"><CODE>trace_plugin_init()</CODE></A>
+ <DD> This function initializes the plugin class.
+
+ <DT> <A HREF="AllDet.html#trace_plugin_deinit" TARGET="MAIN"><CODE>trace_plugin_deinit()</CODE></A>
+ <DD> This function de-initializes the plugin class.
+
+ <DT> <A HREF="AllDet.html#trace_plugin_finalize" TARGET="MAIN"><CODE>trace_plugin_finalize()</CODE></A>
+ <DD> Finalize method of plugin class.
+
+</DL>
+<HR>
+<A NAME="TraceTable.c"><H1>TraceTable.c</H1></A>
+Routines related to TraceTable object. <P>
+<B>By: Ashutosh Trivedi</B><P>
+This file contains the definition of "TraceTable" 
+  class. <P>
+<DL>
+ <DT> <A HREF="AllDet.html#TraceTable_create" TARGET="MAIN"><CODE>TraceTable_create()</CODE></A>
+ <DD> Creates an Table Plugin and initializes it.
+
+ <DT> <A HREF="AllDet.html#trace_table_init" TARGET="MAIN"><CODE>trace_table_init()</CODE></A>
+ <DD> Initializes trace table object.
+
+ <DT> <A HREF="AllDet.html#trace_table_deinit" TARGET="MAIN"><CODE>trace_table_deinit()</CODE></A>
+ <DD> Deinitializes Explain object.
+
+ <DT> <A HREF="AllDet.html#trace_table_action" TARGET="MAIN"><CODE>trace_table_action()</CODE></A>
+ <DD> Action method associated with TraceTable class.
+
+ <DT> <A HREF="AllDet.html#trace_table_print_column_style" TARGET="MAIN"><CODE>trace_table_print_column_style()</CODE></A>
+ <DD> Print Trace in Table format with each state on a seperate
+  column.
+
+ <DT> <A HREF="AllDet.html#trace_table_print_row_style" TARGET="MAIN"><CODE>trace_table_print_row_style()</CODE></A>
+ <DD> Print Trace in table format with each state in a seperate row.
+
+ <DT> <A HREF="AllDet.html#trace_table_print_vars_rows" TARGET="MAIN"><CODE>trace_table_print_vars_rows()</CODE></A>
+ <DD> Prints the rows of name/values associated to given symbols
+  list
+
+ <DT> <A HREF="AllDet.html#trace_table_finalize" TARGET="MAIN"><CODE>trace_table_finalize()</CODE></A>
+ <DD> Trace Table finalize method.
+
+</DL>
+<HR>
+<A NAME="TraceXmlDumper.c"><H1>TraceXmlDumper.c</H1></A>
+Routines related to TraceXmlDumper class <P>
+<B>By: Ashutosh Trivedi, Roberto Cavada</B><P>
+This file contains the definition of TraceXmlDumper
+  class. <P>
+<DL>
+ <DT> <A HREF="AllDet.html#TraceXmlDumper_create" TARGET="MAIN"><CODE>TraceXmlDumper_create()</CODE></A>
+ <DD> Creates an XML Plugin for dumping and initializes it.
+
+ <DT> <A HREF="AllDet.html#TraceXmlTag_from_string" TARGET="MAIN"><CODE>TraceXmlTag_from_string()</CODE></A>
+ <DD> String to XML Tag converter.
+
+ <DT> <A HREF="AllDet.html#trace_xml_dumper_action" TARGET="MAIN"><CODE>trace_xml_dumper_action()</CODE></A>
+ <DD> Action method associated with TraceXmlDumper class.
+
+ <DT> <A HREF="AllDet.html#trace_xml_dumper_init" TARGET="MAIN"><CODE>trace_xml_dumper_init()</CODE></A>
+ <DD> Class initializer
+
+ <DT> <A HREF="AllDet.html#trace_xml_dumper_deinit" TARGET="MAIN"><CODE>trace_xml_dumper_deinit()</CODE></A>
+ <DD> Deinitializes the TraceXmlDumper Plugin object.
+
+ <DT> <A HREF="AllDet.html#trace_xml_dumper_finalize" TARGET="MAIN"><CODE>trace_xml_dumper_finalize()</CODE></A>
+ <DD> Plugin finalize method.
+
+ <DT> <A HREF="AllDet.html#trace_xml_dumper_dump" TARGET="MAIN"><CODE>trace_xml_dumper_dump()</CODE></A>
+ <DD> Dump the trace in XML format into FILE pointed by /"output/".
+
+</DL>
+<HR>
+<A NAME="TraceXmlLoader.c"><H1>TraceXmlLoader.c</H1></A>
+Routines related to TraceXmlLoader class <P>
+<B>By: Ashutosh Trivedi, Roberto Cavada</B><P>
+This file contains the definition of TraceXmlLoader 
+  class. <P>
+<DL>
+ <DT> <A HREF="AllDet.html#TraceXmlLoader_create" TARGET="MAIN"><CODE>TraceXmlLoader_create()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_init" TARGET="MAIN"><CODE>trace_xml_loader_init()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_deinit" TARGET="MAIN"><CODE>trace_xml_loader_deinit()</CODE></A>
+ <DD> Deallocates internal structures
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_action" TARGET="MAIN"><CODE>trace_xml_loader_action()</CODE></A>
+ <DD> Action method associated with TraceXmlLoader class.
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_finalize" TARGET="MAIN"><CODE>trace_xml_loader_finalize()</CODE></A>
+ <DD> Virtual destructor
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_set" TARGET="MAIN"><CODE>trace_xml_loader_set()</CODE></A>
+ <DD> 
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_reset" TARGET="MAIN"><CODE>trace_xml_loader_reset()</CODE></A>
+ <DD> Cleans up after reading of xml source
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_load" TARGET="MAIN"><CODE>trace_xml_loader_load()</CODE></A>
+ <DD> Read the trace from the XML file pointed by /"input/".
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_fill_trace" TARGET="MAIN"><CODE>trace_xml_loader_fill_trace()</CODE></A>
+ <DD> It converts the internal trace representation into 
+  a Trace instance
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_tag_begin" TARGET="MAIN"><CODE>trace_xml_loader_tag_begin()</CODE></A>
+ <DD> Function that gets called when parser encounter start of
+some tag.
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_tag_end" TARGET="MAIN"><CODE>trace_xml_loader_tag_end()</CODE></A>
+ <DD> Function that gets called when end of any tag is
+encountered by the parser.
+
+ <DT> <A HREF="AllDet.html#trace_xml_loader_char_handler" TARGET="MAIN"><CODE>trace_xml_loader_char_handler()</CODE></A>
+ <DD> Character Handler used by parser.
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

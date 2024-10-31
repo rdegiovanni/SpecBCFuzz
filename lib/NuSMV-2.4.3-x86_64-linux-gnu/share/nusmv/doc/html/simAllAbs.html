@@ -1,0 +1,467 @@
+<HTML>
+<HEAD><TITLE>sim package abstract</TITLE></HEAD>
+<BODY>
+
+
+<!-- Function Abstracts -->
+
+<dl>
+<DT> <A HREF="simAllDet.html#CountBinaryNeg" TARGET="MAIN"><CODE>CountBinaryNeg()</CODE></A>
+<DD> Evaluates how many times a propositions occurres in a
+               binary clause.
+
+<DT> <A HREF="simAllDet.html#CountBinaryPos" TARGET="MAIN"><CODE>CountBinaryPos()</CODE></A>
+<DD> Evaluates how many times a propositions occurres in a
+               binary clause.
+
+<DT> <A HREF="simAllDet.html#CountNoBinaryNeg" TARGET="MAIN"><CODE>CountNoBinaryNeg()</CODE></A>
+<DD> Calculate a score for a proposition.
+
+<DT> <A HREF="simAllDet.html#CountNoBinaryPos" TARGET="MAIN"><CODE>CountNoBinaryPos()</CODE></A>
+<DD> Calculate a score for a proposition.
+
+<DT> <A HREF="simAllDet.html#DllMomsHeur" TARGET="MAIN"><CODE>DllMomsHeur()</CODE></A>
+<DD> Chooses the best literal according to M.O.M.S. heuristics.
+
+<DT> <A HREF="simAllDet.html#Examine0" TARGET="MAIN"><CODE>Examine0()</CODE></A>
+<DD> Evaluates how much an assignment reduces the formula.
+
+<DT> <A HREF="simAllDet.html#Examine" TARGET="MAIN"><CODE>Examine()</CODE></A>
+<DD> Evaluates how much an assignment reduces the formula.
+
+<DT> <A HREF="simAllDet.html#Propagate" TARGET="MAIN"><CODE>Propagate()</CODE></A>
+<DD> Evaluates how much an assignment reduces the formula.
+
+<DT> <A HREF="simAllDet.html#SimClauseClear" TARGET="MAIN"><CODE>SimClauseClear()</CODE></A>
+<DD> Clears a clause.
+
+<DT> <A HREF="simAllDet.html#SimClauseInit" TARGET="MAIN"><CODE>SimClauseInit()</CODE></A>
+<DD> Initializes a clause.
+
+<DT> <A HREF="simAllDet.html#SimDll2JWHeur" TARGET="MAIN"><CODE>SimDll2JWHeur()</CODE></A>
+<DD> Chooses the best literal according to 2-sided JW.
+
+<DT> <A HREF="simAllDet.html#SimDllBackjumping" TARGET="MAIN"><CODE>SimDllBackjumping()</CODE></A>
+<DD> Stackwise conflict directed backjumping.
+
+<DT> <A HREF="simAllDet.html#SimDllBcp" TARGET="MAIN"><CODE>SimDllBcp()</CODE></A>
+<DD> Performs Boolean Constraint Propagation (Unit resolution)
+
+<DT> <A HREF="simAllDet.html#SimDllBoehmHeur" TARGET="MAIN"><CODE>SimDllBoehmHeur()</CODE></A>
+<DD> Choose the best literal according to Boehm's heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllBuild" TARGET="MAIN"><CODE>SimDllBuild()</CODE></A>
+<DD> Final build of the data structure.
+
+<DT> <A HREF="simAllDet.html#SimDllCheck" TARGET="MAIN"><CODE>SimDllCheck()</CODE></A>
+<DD> Checks a solution found by Sim_DllSolve.
+
+<DT> <A HREF="simAllDet.html#SimDllChronoBt" TARGET="MAIN"><CODE>SimDllChronoBt()</CODE></A>
+<DD> Stackwise chronological backtracking.
+
+<DT> <A HREF="simAllDet.html#SimDllDelProp" TARGET="MAIN"><CODE>SimDllDelProp()</CODE></A>
+<DD> Removes a  literal from the DLL data structure.
+
+<DT> <A HREF="simAllDet.html#SimDllEndRelsatHeur" TARGET="MAIN"><CODE>SimDllEndRelsatHeur()</CODE></A>
+<DD> Free auxiliary data for Relsat heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllEndSatoHeur" TARGET="MAIN"><CODE>SimDllEndSatoHeur()</CODE></A>
+<DD> Free auxiliary data for Sato heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllEndSatzHeur" TARGET="MAIN"><CODE>SimDllEndSatzHeur()</CODE></A>
+<DD> Free auxiliary data for Chu Min Li heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllEndUnitieHeur" TARGET="MAIN"><CODE>SimDllEndUnitieHeur()</CODE></A>
+<DD> Free auxiliary data for Unitie heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllExtendPropFF" TARGET="MAIN"><CODE>SimDllExtendPropFF()</CODE></A>
+<DD> Valuates a proposition to SIM_FF
+
+<DT> <A HREF="simAllDet.html#SimDllExtendPropTT" TARGET="MAIN"><CODE>SimDllExtendPropTT()</CODE></A>
+<DD> Valuates a proposition to SIM_TT
+
+<DT> <A HREF="simAllDet.html#SimDllGetModelsHorn" TARGET="MAIN"><CODE>SimDllGetModelsHorn()</CODE></A>
+<DD> Consistency checking with horn relaxation.
+
+<DT> <A HREF="simAllDet.html#SimDllGetModels" TARGET="MAIN"><CODE>SimDllGetModels()</CODE></A>
+<DD> Consistency checkingl.
+
+<DT> <A HREF="simAllDet.html#SimDllInitRelsatHeur" TARGET="MAIN"><CODE>SimDllInitRelsatHeur()</CODE></A>
+<DD> Allocate auxiliary data for Relsat heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllInitSatoHeur" TARGET="MAIN"><CODE>SimDllInitSatoHeur()</CODE></A>
+<DD> Allocate auxiliary data for Sato 3.2 heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllInitSatzHeur" TARGET="MAIN"><CODE>SimDllInitSatzHeur()</CODE></A>
+<DD> Allocate auxiliary data for Chu Min Li heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllInitUnitieHeur" TARGET="MAIN"><CODE>SimDllInitUnitieHeur()</CODE></A>
+<DD> Allocate auxiliary data for Unitie heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllInitWr" TARGET="MAIN"><CODE>SimDllInitWr()</CODE></A>
+<DD> Initializes the working reason.
+
+<DT> <A HREF="simAllDet.html#SimDllInsProp" TARGET="MAIN"><CODE>SimDllInsProp()</CODE></A>
+<DD> Inserts a new proposition in the DLL data structure.
+
+<DT> <A HREF="simAllDet.html#SimDllJWHeur" TARGET="MAIN"><CODE>SimDllJWHeur()</CODE></A>
+<DD> Chooses the best literal with Jeroslow-Wang's  heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllLearnClause" TARGET="MAIN"><CODE>SimDllLearnClause()</CODE></A>
+<DD> Learns a clause.
+
+<DT> <A HREF="simAllDet.html#SimDllMakeClauseFromWr" TARGET="MAIN"><CODE>SimDllMakeClauseFromWr()</CODE></A>
+<DD> Creates a clause from the working reason.
+
+<DT> <A HREF="simAllDet.html#SimDllMlf" TARGET="MAIN"><CODE>SimDllMlf()</CODE></A>
+<DD> Performs Monotone Literal Fixing (Pure literal).
+
+<DT> <A HREF="simAllDet.html#SimDllMomsHeur" TARGET="MAIN"><CODE>SimDllMomsHeur()</CODE></A>
+<DD> Chooses the best literal according to M.O.M.S. heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllParseDimacsCls" TARGET="MAIN"><CODE>SimDllParseDimacsCls()</CODE></A>
+<DD> Parses clauses from a DIMACS file.
+
+<DT> <A HREF="simAllDet.html#SimDllPrintClause" TARGET="MAIN"><CODE>SimDllPrintClause()</CODE></A>
+<DD> Prints a clause structure.
+
+<DT> <A HREF="simAllDet.html#SimDllPrintFormulaStruct" TARGET="MAIN"><CODE>SimDllPrintFormulaStruct()</CODE></A>
+<DD> Print the formula in the DLL module showing internal status.
+
+<DT> <A HREF="simAllDet.html#SimDllPrintLearnedBW" TARGET="MAIN"><CODE>SimDllPrintLearnedBW()</CODE></A>
+<DD> Prints learned clauses (last learned, first printed).
+
+<DT> <A HREF="simAllDet.html#SimDllPrintLearnedFW" TARGET="MAIN"><CODE>SimDllPrintLearnedFW()</CODE></A>
+<DD> Prints learned clauses (first learned, first printed).
+
+<DT> <A HREF="simAllDet.html#SimDllPrintOpen" TARGET="MAIN"><CODE>SimDllPrintOpen()</CODE></A>
+<DD> Print the open propositions.
+
+<DT> <A HREF="simAllDet.html#SimDllPrintPath" TARGET="MAIN"><CODE>SimDllPrintPath()</CODE></A>
+<DD> Print the search path.
+
+<DT> <A HREF="simAllDet.html#SimDllPrintStack" TARGET="MAIN"><CODE>SimDllPrintStack()</CODE></A>
+<DD> Print the search stack.
+
+<DT> <A HREF="simAllDet.html#SimDllRelsatHeur" TARGET="MAIN"><CODE>SimDllRelsatHeur()</CODE></A>
+<DD> Chooses the best literal according to Relsat 2.0 heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllResolveWithWr" TARGET="MAIN"><CODE>SimDllResolveWithWr()</CODE></A>
+<DD> Resolves the given clause with the working reason.
+
+<DT> <A HREF="simAllDet.html#SimDllRetractPropFF" TARGET="MAIN"><CODE>SimDllRetractPropFF()</CODE></A>
+<DD> Unvaluates a proposition (assigned to SIM_FF)
+
+<DT> <A HREF="simAllDet.html#SimDllRetractPropTT" TARGET="MAIN"><CODE>SimDllRetractPropTT()</CODE></A>
+<DD> Unvaluates a proposition (assigned to SIM_TT)
+
+<DT> <A HREF="simAllDet.html#SimDllRndHeur" TARGET="MAIN"><CODE>SimDllRndHeur()</CODE></A>
+<DD> Selects an open literal randomly
+
+<DT> <A HREF="simAllDet.html#SimDllSatoHeur" TARGET="MAIN"><CODE>SimDllSatoHeur()</CODE></A>
+<DD> Choose the best literal according to Sato 3.2 heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllSatzHeur" TARGET="MAIN"><CODE>SimDllSatzHeur()</CODE></A>
+<DD> Choose the best literal according to Satz heuristics.
+
+<DT> <A HREF="simAllDet.html#SimDllSetMemout" TARGET="MAIN"><CODE>SimDllSetMemout()</CODE></A>
+<DD> Sets the memeout on the process.
+
+<DT> <A HREF="simAllDet.html#SimDllSetTimeout" TARGET="MAIN"><CODE>SimDllSetTimeout()</CODE></A>
+<DD> Sets the timeout on the process.
+
+<DT> <A HREF="simAllDet.html#SimDllStartMemory" TARGET="MAIN"><CODE>SimDllStartMemory()</CODE></A>
+<DD> Starts memory accounting.
+
+<DT> <A HREF="simAllDet.html#SimDllStartTimer" TARGET="MAIN"><CODE>SimDllStartTimer()</CODE></A>
+<DD> Starts a timer.
+
+<DT> <A HREF="simAllDet.html#SimDllStopMemory" TARGET="MAIN"><CODE>SimDllStopMemory()</CODE></A>
+<DD> Stops memory accounting.
+
+<DT> <A HREF="simAllDet.html#SimDllStopTimer" TARGET="MAIN"><CODE>SimDllStopTimer()</CODE></A>
+<DD> Stops a timer.
+
+<DT> <A HREF="simAllDet.html#SimDllThrow" TARGET="MAIN"><CODE>SimDllThrow()</CODE></A>
+<DD> Prompts an error to the user and raises a SIGUSR1.
+
+<DT> <A HREF="simAllDet.html#SimDllTraceLeafs" TARGET="MAIN"><CODE>SimDllTraceLeafs()</CODE></A>
+<DD> Tracing search leafs.
+
+<DT> <A HREF="simAllDet.html#SimDllTraceNodes" TARGET="MAIN"><CODE>SimDllTraceNodes()</CODE></A>
+<DD> Tracing search nodes.
+
+<DT> <A HREF="simAllDet.html#SimDllUnitieHeur" TARGET="MAIN"><CODE>SimDllUnitieHeur()</CODE></A>
+<DD> A simple unit based heuristics with tie breaking.
+
+<DT> <A HREF="simAllDet.html#SimDllUnlearnClause" TARGET="MAIN"><CODE>SimDllUnlearnClause()</CODE></A>
+<DD> Delete clause from learned clauses database.
+
+<DT> <A HREF="simAllDet.html#SimDllUsrHeur" TARGET="MAIN"><CODE>SimDllUsrHeur()</CODE></A>
+<DD> Asks the user for a literal.
+
+<DT> <A HREF="simAllDet.html#SimPropClear" TARGET="MAIN"><CODE>SimPropClear()</CODE></A>
+<DD> Clears a proposition.
+
+<DT> <A HREF="simAllDet.html#SimPropInit" TARGET="MAIN"><CODE>SimPropInit()</CODE></A>
+<DD> Initializes a proposition.
+
+<DT> <A HREF="simAllDet.html#Sim_DllAddLit" TARGET="MAIN"><CODE>Sim_DllAddLit()</CODE></A>
+<DD> Add a literal `lit' to the current clause. `lit' must
+               be an integer such that its absolute value is greater
+	       than 0 and smaller than or equal to the biggest allowed
+	       variable index. A positive (negative) integer denotes a
+	       positive (negative) occurrence of the corresponding variable.
+	       If `lit' does not fulfill the above conditions, or if
+	       there is no pending clause to add `lit' to, -1 is
+	       returned. The function returns 0 if the pending clause
+	       becomes tautologous, and 1 otherwise. Redundant
+	       literals are always discarded.
+
+<DT> <A HREF="simAllDet.html#Sim_DllClear" TARGET="MAIN"><CODE>Sim_DllClear()</CODE></A>
+<DD> Destroys the internal data structure.
+
+<DT> <A HREF="simAllDet.html#Sim_DllCommitCl" TARGET="MAIN"><CODE>Sim_DllCommitCl()</CODE></A>
+<DD> Commit the pending clause. If there is no such clause,
+                or the given `clId' is differente from the current
+		one, -1 is returned. If the committed clause is empty, 
+		0 is returned and the function resets the state (no
+		pending clause). On success, `clId' is returned.
+
+<DT> <A HREF="simAllDet.html#Sim_DllGetSolution" TARGET="MAIN"><CODE>Sim_DllGetSolution()</CODE></A>
+<DD> Get the current assignment to propositions. The returned
+               object is an array of integers indexed on
+	       propositions. For each proposition, the values  SIM_TT,
+	       SIM_FF, SIM_DC are given, meaning that the proposition
+	       was assigned to true, false or not assigned at all (Don't
+	       Care). Propositions that did not occur in the formula
+	       receive a default value of SIM_DC. The first location
+	       of the returned array contains the biggest proposition index.
+
+<DT> <A HREF="simAllDet.html#Sim_DllGetStack" TARGET="MAIN"><CODE>Sim_DllGetStack()</CODE></A>
+<DD> Get the current search stack contents. The returned
+               object is an array representing truth assignment 
+	       to propositions encoded as literals (negative
+	       value if the proposition was assigned to false and vice versa).
+	       The first location of the returned array is the cardinality
+	       of the truth assignment.
+
+<DT> <A HREF="simAllDet.html#Sim_DllInit" TARGET="MAIN"><CODE>Sim_DllInit()</CODE></A>
+<DD> Initialize the DLL module. The array `params' must
+               be suitably initialized.
+
+<DT> <A HREF="simAllDet.html#Sim_DllNewClSize" TARGET="MAIN"><CODE>Sim_DllNewClSize()</CODE></A>
+<DD> Create a new (empty) clause and return its unique id,
+               (an integer code greater than or equal to 0).
+	       The clause is dimensioned to accomodate `size' literals
+	       without reallocations. 
+	       Trying to add a new clause without committing any pending
+	       one yields -1 as a return value.
+
+<DT> <A HREF="simAllDet.html#Sim_DllNewCl" TARGET="MAIN"><CODE>Sim_DllNewCl()</CODE></A>
+<DD> Create a new (empty) clause and return its unique id
+               (an integer code greater than or equal to 0). Trying to
+	       add a new clause without committing any pending one
+	       yields -1 as a return value.
+
+<DT> <A HREF="simAllDet.html#Sim_DllParseDimacs" TARGET="MAIN"><CODE>Sim_DllParseDimacs()</CODE></A>
+<DD> Parses a DIMACS cnf problem file into a DLL module.
+
+<DT> <A HREF="simAllDet.html#Sim_DllPrintFormulaDimacs" TARGET="MAIN"><CODE>Sim_DllPrintFormulaDimacs()</CODE></A>
+<DD> Print the formula in the DLL module using DIMACS format.
+
+<DT> <A HREF="simAllDet.html#Sim_DllPrintModel" TARGET="MAIN"><CODE>Sim_DllPrintModel()</CODE></A>
+<DD> Print the model.
+
+<DT> <A HREF="simAllDet.html#Sim_DllPrintParams" TARGET="MAIN"><CODE>Sim_DllPrintParams()</CODE></A>
+<DD> Prints parameters (configuration).
+
+<DT> <A HREF="simAllDet.html#Sim_DllPrintResult" TARGET="MAIN"><CODE>Sim_DllPrintResult()</CODE></A>
+<DD> Prints the result (formatted).
+
+<DT> <A HREF="simAllDet.html#Sim_DllPrintStats" TARGET="MAIN"><CODE>Sim_DllPrintStats()</CODE></A>
+<DD> Prints internal statistics.
+
+<DT> <A HREF="simAllDet.html#Sim_DllPrintTimers" TARGET="MAIN"><CODE>Sim_DllPrintTimers()</CODE></A>
+<DD> Prints internal timers.
+
+<DT> <A HREF="simAllDet.html#Sim_DllPropMakeIndep" TARGET="MAIN"><CODE>Sim_DllPropMakeIndep()</CODE></A>
+<DD> State model membership, i.e., a proposition that is not
+               dependent or defined. 'prop` must be a positive
+	       non-zero integer smaller than or equal to the biggest
+	       allowed variable index.
+
+<DT> <A HREF="simAllDet.html#Sim_DllSolve" TARGET="MAIN"><CODE>Sim_DllSolve()</CODE></A>
+<DD> Solves a formula using the Davis-Logemann-Loveland 
+               algorithm.
+
+<DT> <A HREF="simAllDet.html#Sim_GetErrorCode" TARGET="MAIN"><CODE>Sim_GetErrorCode()</CODE></A>
+<DD> Returns the error code (if any).
+
+<DT> <A HREF="simAllDet.html#Sim_GetErrorLocation" TARGET="MAIN"><CODE>Sim_GetErrorLocation()</CODE></A>
+<DD> Returns the error location (if any).
+
+<DT> <A HREF="simAllDet.html#Sim_ParamInit" TARGET="MAIN"><CODE>Sim_ParamInit()</CODE></A>
+<DD> Creates a default parameter setup as follows:<br>
+	       <tt>
+                Idx  Default value  Parameter           Notes 
+		--------------------------------------------------------------
+                 0       unlimited  SIM_TIMEOUT         seconds
+		 1       unlimited  SIM_MEMOUT          megabytes
+		 2  SIM_BOEHM_HEUR  SIM_HEURISTICS      0..SIM_HEUR_NUM
+		 3               1  SIM_SOL_NUM         N >= 1
+		 4               3  SIM_LEARN_ORDER     N >= 2
+		 5   SIM_RELEVANCE  SIM_LEARN_TYPE      SIM_RELEVANCE/SIM_SIZE
+		 6               0  SIM_MODEL_PROPS     0/1
+		 7        SIM_NONE  SIM_PPROC_STRENGTH  0..SIM_RESOLVE
+		 8               0  SIM_RND_SEED        N >= 0
+		 9               0  SIM_VERBOSITY       0/1  
+		10               0  SIM_HEUR_PARAM      N >= 0
+	        11             100  SIM_MAX_VAR_NUM     N > 1
+		12            1000  SIM_MAX_CL_NUM      N > 1
+		--------------------------------------------------------------
+	       </tt>
+	       Notice that the actual number of variables and clauses in the
+	       formula *cannot* be greater than SIM_MAX_VAR_NUM and
+	       SIM_MAX_CL_NUM respectively. Failing to dimension these
+	       parameters correctly will cause the solver to crash.
+
+<DT> <A HREF="simAllDet.html#Sim_ParamSet" TARGET="MAIN"><CODE>Sim_ParamSet()</CODE></A>
+<DD> Changes the value of a specific parameter.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Adds a given number to a statistic.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Assigns a truth value to a proposition and propagates it
+                throughout the formula doing unit resolutions only.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Bit annotarion in proposition pointers.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Calls the selected heuristics.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Checks if a solution is found.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Decides what kind of consistency check is to be performed.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Decrements a statistic.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Empty macro.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Empty macro.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Increments a statistic.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Increments the unit counter (unit).
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Increments the unit counter (unit).
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Increments the unit counter (unit).
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Performs unit propagation.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about a contradiction.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about a skipped choice point.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about a split.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about an heuristics choice.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about an implied assignment.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about learning a clause.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about retracting a valuation.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about the creation of a new working reason.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Prints a message about the current working reason.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Remove a clause.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Resets propagations.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Return the absolute value of an integer.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Returns a long integer in the range [0, x-1
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Selects how to propagate the proposition.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Selects how to propagate the proposition.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Selects the backtracking function.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Set the flags that witness an assignment.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Sim `assert' macro.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Sim memory checking macro.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Sim trace enabler.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Store q reason.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Stores the random generation seed.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Swaps two scalars.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Tests if the clause is open.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Unassigns all the propositions in changedProps.
+                Restores the number of open propositions
+		to the old value in the changed clauses. Computes
+		working reason while restoring the counters.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Updates a (maximum) statistic.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> Updates a (minimum) statistic.
+
+<DT> <A HREF="simAllDet.html#" TARGET="MAIN"><CODE>()</CODE></A>
+<DD> When to call MLF.
+
+</DL>
+
+<HR>
+
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

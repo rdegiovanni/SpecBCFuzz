@@ -1,0 +1,273 @@
+<html>
+<head><title>The  package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="BddEncCache_clean_evaluation_about"></A>
+void <I></I>
+<B>BddEncCache_clean_evaluation_about</B>(
+  BddEncCache_ptr  <b>self</b>, <i></i>
+  NodeList_ptr  <b>symbs</b> <i></i>
+)
+</pre>
+<dd> This is called by the BddEnc class when a layer is
+  begin removed and the cache has to be cleaned up
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_create"></A>
+BddEncCache_ptr <I></I>
+<B>BddEncCache_create</B>(
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  DdManager* <b>dd</b> <i></i>
+)
+</pre>
+<dd> Class constructor
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_destroy"></A>
+void <I></I>
+<B>BddEncCache_destroy</B>(
+  BddEncCache_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Class destructor
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_get_evaluation"></A>
+AddArray_ptr <I></I>
+<B>BddEncCache_get_evaluation</B>(
+  BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>name</b> <i></i>
+)
+</pre>
+<dd> If not evaluated, given symbol returns NULL. If the 
+  evaluation is in the process, BDD_ENC_EVALUATING is returned.
+  Otherwise an array of ADD is returned.
+  The returned array must be destroyed by the invoker!
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_is_boolean_var_encoded"></A>
+boolean <I></I>
+<B>BddEncCache_is_boolean_var_encoded</B>(
+  const BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var_name</b> <i></i>
+)
+</pre>
+<dd> Returns true whether the given boolean variable has 
+  been encoded
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_is_constant_encoded"></A>
+boolean <I></I>
+<B>BddEncCache_is_constant_encoded</B>(
+  const BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>constant</b> <i></i>
+)
+</pre>
+<dd> Returns true whether the given constant has been encoded
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_lookup_boolean_var"></A>
+add_ptr <I></I>
+<B>BddEncCache_lookup_boolean_var</B>(
+  const BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var_name</b> <i></i>
+)
+</pre>
+<dd> Returned add is referenced. NULL is returned if the 
+  variable is not encoded.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_lookup_constant"></A>
+add_ptr <I></I>
+<B>BddEncCache_lookup_constant</B>(
+  const BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>constant</b> <i></i>
+)
+</pre>
+<dd> Returned ADD is referenced, NULL is returned if the given 
+  constant is not currently encoded
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_new_boolean_var"></A>
+void <I></I>
+<B>BddEncCache_new_boolean_var</B>(
+  BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var_name</b>, <i></i>
+  add_ptr  <b>var_add</b> <i></i>
+)
+</pre>
+<dd> Call this to insert the encoding for a given boolean
+  variable
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_new_constant"></A>
+void <I></I>
+<B>BddEncCache_new_constant</B>(
+  BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>constant</b>, <i></i>
+  add_ptr  <b>constant_add</b> <i></i>
+)
+</pre>
+<dd> This methods adds the given constant only if it 
+  does not exist already, otherwise it only increments a reference counter, 
+  to be used when the constant is removed later.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_remove_boolean_var"></A>
+void <I></I>
+<B>BddEncCache_remove_boolean_var</B>(
+  BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var_name</b> <i></i>
+)
+</pre>
+<dd> Removes the given variable from the internal hash
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_remove_constant"></A>
+void <I></I>
+<B>BddEncCache_remove_constant</B>(
+  BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>constant</b> <i></i>
+)
+</pre>
+<dd> Removes the given constant from the internal hash
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="BddEncCache_set_evaluation"></A>
+void <I></I>
+<B>BddEncCache_set_evaluation</B>(
+  BddEncCache_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>name</b>, <i></i>
+  AddArray_ptr  <b>add_array</b> <i></i>
+)
+</pre>
+<dd> The provided array of ADD will belong to "self"
+  and will be freed during destuctions of the class or setting a new 
+  value for the same node_ptr.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="bdd_enc_cache_deinit"></A>
+static void <I></I>
+<B>bdd_enc_cache_deinit</B>(
+  BddEncCache_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Private deinitializer, called by the destructor
+<p>
+
+<dd> <b>See Also</b> <code><a href="#bdd_enc_cache_init">bdd_enc_cache_init</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="bdd_enc_cache_init"></A>
+static void <I></I>
+<B>bdd_enc_cache_init</B>(
+  BddEncCache_ptr  <b>self</b>, <i></i>
+  SymbTable_ptr  <b>symb_table</b>, <i></i>
+  DdManager* <b>dd</b> <i></i>
+)
+</pre>
+<dd> Private initializer, called by the constructor
+<p>
+
+<dd> <b>See Also</b> <code><a href="#bdd_enc_cache_deinit">bdd_enc_cache_deinit</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="hash_free_add_array"></A>
+static assoc_retval <I></I>
+<B>hash_free_add_array</B>(
+  char* <b>key</b>, <i></i>
+  char* <b>data</b>, <i></i>
+  char* <b>arg</b> <i></i>
+)
+</pre>
+<dd> Called when pushing the status, and during
+  deinitialization
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="hash_free_add_counted"></A>
+static assoc_retval <I></I>
+<B>hash_free_add_counted</B>(
+  char* <b>key</b>, <i></i>
+  char* <b>data</b>, <i></i>
+  char* <b>arg</b> <i></i>
+)
+</pre>
+<dd> Called when pushing the status, and during
+  deinitialization. The kind of nodes that must be removed here is 
+  CONS(integer, add). Of course it is the add that must be freed.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+<dt><pre>
+<A NAME="hash_free_add"></A>
+static assoc_retval <I></I>
+<B>hash_free_add</B>(
+  char* <b>key</b>, <i></i>
+  char* <b>data</b>, <i></i>
+  char* <b>arg</b> <i></i>
+)
+</pre>
+<dd> Called when pushing the status, and during
+  deinitialization
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#BddEncCache.c"TARGET="ABSTRACT"><CODE>BddEncCache.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

@@ -1,0 +1,257 @@
+<html>
+<head><title>The  package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="ParserProb_create"></A>
+ParserProb_ptr <I></I>
+<B>ParserProb_create</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserProb_destroy"></A>
+void <I></I>
+<B>ParserProb_destroy</B>(
+  ParserProb_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserProb_get_prob_list"></A>
+NodeList_ptr <I></I>
+<B>ParserProb_get_prob_list</B>(
+  const ParserProb_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returned list is owned by self, and should not be 
+  changed or destroyed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserProb_parse_from_file"></A>
+void <I></I>
+<B>ParserProb_parse_from_file</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  FILE* <b>f</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserProb_parse_from_string"></A>
+void <I></I>
+<B>ParserProb_parse_from_string</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  const char* <b>str</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="ParserProb_reset"></A>
+void <I></I>
+<B>ParserProb_reset</B>(
+  ParserProb_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_add"></A>
+void <I></I>
+<B>parser_prob_add</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>prob</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_deinit"></A>
+static void <I></I>
+<B>parser_prob_deinit</B>(
+  ParserProb_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_init"></A>
+static void <I></I>
+<B>parser_prob_init</B>(
+  ParserProb_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_array"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_array</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>left</b>, <i></i>
+  node_ptr  <b>right</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_atom"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_atom</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  const char* <b>name</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_dot"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_dot</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>left</b>, <i></i>
+  node_ptr  <b>right</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_false"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_false</B>(
+  ParserProb_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_num"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_num</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  const int  <b>num</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_prob"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_prob</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>assigns</b>, <i></i>
+  node_ptr  <b>prob</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_real"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_real</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  const char* <b>real_text</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_true"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_true</B>(
+  ParserProb_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_var_assigns"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_var_assigns</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>left</b>, <i></i>
+  node_ptr  <b>right</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+<dt><pre>
+<A NAME="parser_prob_mk_var_assign"></A>
+node_ptr <I></I>
+<B>parser_prob_mk_var_assign</B>(
+  ParserProb_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var</b>, <i></i>
+  node_ptr  <b>val</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#ParserProb.c"TARGET="ABSTRACT"><CODE>ParserProb.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2011/10/28 15h:48
+</BODY></HTML>

@@ -1,0 +1,52 @@
+<HTML>
+<HEAD><TITLE>The ltl package</TITLE></HEAD>
+<BODY>
+
+<DL>
+<dt><pre>
+<A NAME="Ltl_CheckLtlSpec"></A>
+void <I></I>
+<B>Ltl_CheckLtlSpec</B>(
+  Prop_ptr  <b>prop</b> <i></i>
+)
+</pre>
+<dd> The main routine to perform LTL model checking. It
+  first takes the LTL formula, prints it in a file. It calls the LTL2SMV
+  translator on it an reads in the generated tableau. The tableau is
+  instantiated, compiled and then conjoined with the original model
+  (both the set of fairness conditions and the transition relation are
+  affected by this operation, for this reason we save the current
+  model, and after the verification of the property we restore the
+  original one).
+<p>
+
+<dt><pre>
+<A NAME="Ltl_Init"></A>
+void <I></I>
+<B>Ltl_Init</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Initializes the ltl package.
+<p>
+
+<dd> <b>Side Effects</b> None
+<p>
+
+<dt><pre>
+<A NAME="ltl_remove_layer"></A>
+void <I></I>
+<B>ltl_remove_layer</B>(
+  BddEnc_ptr  <b>bdd_enc</b>, <i></i>
+  SymbLayer_ptr  <b>layer</b> <i></i>
+)
+</pre>
+<dd> Private service that removes the given layer from 
+  the symbol table, and from both the boolean and bdd encodings.
+<p>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

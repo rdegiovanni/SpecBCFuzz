@@ -1,0 +1,546 @@
+<html>
+<head><title>The  package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="TraceExplainer_create"></A>
+TraceExplainer_ptr <I></I>
+<B>TraceExplainer_create</B>(
+  boolean  <b>changes_only</b> <i></i>
+)
+</pre>
+<dd> Explainer plugin constructor. As arguments it takes the boolean
+  variable /"changes_only/". If <tt>changes_only</tt> is 1, than only state
+  variables which assume a different value from the previous printed one are
+  printed out.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceExplainer.c"TARGET="ABSTRACT"><CODE>TraceExplainer.c</CODE></A>
+
+<dt><pre>
+<A NAME="TracePlugin_action"></A>
+int <I></I>
+<B>TracePlugin_action</B>(
+  const TracePlugin_ptr  <b>self</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layer_names</b>, <i></i>
+  void* <b>arg</b> <i></i>
+)
+</pre>
+<dd> Executes the different action method, corresponding to which
+  derived class instance belongs to, on the trace.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TracePlugin.c"TARGET="ABSTRACT"><CODE>TracePlugin.c</CODE></A>
+
+<dt><pre>
+<A NAME="TracePlugin_get_desc"></A>
+char* <I></I>
+<B>TracePlugin_get_desc</B>(
+  const TracePlugin_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns a short description of the plugin.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TracePlugin.c"TARGET="ABSTRACT"><CODE>TracePlugin.c</CODE></A>
+
+<dt><pre>
+<A NAME="TraceTable_create"></A>
+TraceTable_ptr <I></I>
+<B>TraceTable_create</B>(
+  TraceTableStyle  <b>style</b> <i></i>
+)
+</pre>
+<dd> Table plugin constructor. As arguments it takes variable style
+  which decides the style of printing the trace. The possible values of the
+  style variable may be: TRACE_TABLE_TYPE_ROW and TRACE_TABLE_TYPE_COLUMN.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceTable.c"TARGET="ABSTRACT"><CODE>TraceTable.c</CODE></A>
+
+<dt><pre>
+<A NAME="TraceXmlDumper_create"></A>
+TraceXmlDumper_ptr <I></I>
+<B>TraceXmlDumper_create</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> XML plugin constructor. Using this plugin, a trace can be dumped
+  into or stored from the XML format.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlDumper.c"TARGET="ABSTRACT"><CODE>TraceXmlDumper.c</CODE></A>
+
+<dt><pre>
+<A NAME="TraceXmlLoader_create"></A>
+TraceXmlLoader_ptr <I></I>
+<B>TraceXmlLoader_create</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="TraceXmlTag_from_string"></A>
+TraceXmlTag <I></I>
+<B>TraceXmlTag_from_string</B>(
+  const char* <b>tag</b> <i></i>
+)
+</pre>
+<dd> Protected function that converts an string to
+                     TraceXMLTag
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlDumper.c"TARGET="ABSTRACT"><CODE>TraceXmlDumper.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_explainer_action"></A>
+int <I></I>
+<B>trace_explainer_action</B>(
+  const TracePlugin_ptr  <b>plugin</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layers</b>, <i></i>
+  void* <b>opt</b> <i></i>
+)
+</pre>
+<dd> The action associated with TraceExplainer is to print the trace
+  on the nusmv_stdout. If <tt>changes_only</tt> is 1, than only state variables
+  which assume a different value from the previous printed one are printed
+  out.
+<p>
+
+<dd> <b>Side Effects</b> <tt>print_hash</tt> is modified.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceExplainer.c"TARGET="ABSTRACT"><CODE>TraceExplainer.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_explainer_deinit"></A>
+void <I></I>
+<B>trace_explainer_deinit</B>(
+  TraceExplainer_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Deinitializes Explain object.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceExplainer.c"TARGET="ABSTRACT"><CODE>TraceExplainer.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_explainer_finalize"></A>
+static void <I></I>
+<B>trace_explainer_finalize</B>(
+  Object_ptr  <b>object</b>, <i></i>
+  void* <b>dummy</b> <i></i>
+)
+</pre>
+<dd> Trace Explainer finalize method.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceExplainer.c"TARGET="ABSTRACT"><CODE>TraceExplainer.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_explainer_init"></A>
+void <I></I>
+<B>trace_explainer_init</B>(
+  TraceExplainer_ptr  <b>self</b>, <i></i>
+  boolean  <b>changes_only</b> <i></i>
+)
+</pre>
+<dd> Initializes trace explain object.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceExplainer.c"TARGET="ABSTRACT"><CODE>TraceExplainer.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_plugin_action"></A>
+int <I></I>
+<B>trace_plugin_action</B>(
+  const TracePlugin_ptr  <b>self</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layer_names</b>, <i></i>
+  void* <b>arg</b> <i></i>
+)
+</pre>
+<dd> It is a pure virtual function and TracePlugin is an abstract
+  base class. Every derived class must ovewrwrite this function. It returns 1
+  if operation is successful, 0 otherwise.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TracePlugin.c"TARGET="ABSTRACT"><CODE>TracePlugin.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_plugin_deinit"></A>
+void <I></I>
+<B>trace_plugin_deinit</B>(
+  TracePlugin_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> This function de-initializes the plugin class.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TracePlugin.c"TARGET="ABSTRACT"><CODE>TracePlugin.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_plugin_finalize"></A>
+static void <I></I>
+<B>trace_plugin_finalize</B>(
+  Object_ptr  <b>object</b>, <i></i>
+  void* <b>dummy</b> <i></i>
+)
+</pre>
+<dd> Pure virtual function. This must be refined by derived classes.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TracePlugin.c"TARGET="ABSTRACT"><CODE>TracePlugin.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_plugin_init"></A>
+void <I></I>
+<B>trace_plugin_init</B>(
+  TracePlugin_ptr  <b>self</b>, <i></i>
+  char* <b>desc</b> <i></i>
+)
+</pre>
+<dd> This function initializes the plugin class.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TracePlugin.c"TARGET="ABSTRACT"><CODE>TracePlugin.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_table_action"></A>
+int <I></I>
+<B>trace_table_action</B>(
+  const TracePlugin_ptr  <b>plugin</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layer_names</b>, <i></i>
+  void* <b>opt</b> <i></i>
+)
+</pre>
+<dd> The action associated with TraceTable is to print the trace
+  in the specified file in table format. There are two ways a trace can be
+  printed: i). where states are listed row-wise. ii) Where states are listed
+  column-wise. This depends on the style variable assoicated with the plugin.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceTable.c"TARGET="ABSTRACT"><CODE>TraceTable.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_table_deinit"></A>
+void <I></I>
+<B>trace_table_deinit</B>(
+  TraceTable_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Deinitializes Explain object.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceTable.c"TARGET="ABSTRACT"><CODE>TraceTable.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_table_finalize"></A>
+static void <I></I>
+<B>trace_table_finalize</B>(
+  Object_ptr  <b>object</b>, <i></i>
+  void* <b>dummy</b> <i></i>
+)
+</pre>
+<dd> Trace Table finalize method.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceTable.c"TARGET="ABSTRACT"><CODE>TraceTable.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_table_init"></A>
+void <I></I>
+<B>trace_table_init</B>(
+  TraceTable_ptr  <b>self</b>, <i></i>
+  TraceTableStyle  <b>style</b> <i></i>
+)
+</pre>
+<dd> As arguments it takes variable /"style /" to print the trace.
+  The possible values for the style may be : TRACE_TABLE_TYPE_ROW and
+  TRACE_TABLE_TYPE_COLUMN.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceTable.c"TARGET="ABSTRACT"><CODE>TraceTable.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_table_print_column_style"></A>
+static int <I></I>
+<B>trace_table_print_column_style</B>(
+  TraceTable_ptr  <b>self</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layer_names</b>, <i></i>
+  FILE* <b>output</b> <i></i>
+)
+</pre>
+<dd> Print Trace in Table format with each state on a seperate
+  column.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceTable.c"TARGET="ABSTRACT"><CODE>TraceTable.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_table_print_row_style"></A>
+static int <I></I>
+<B>trace_table_print_row_style</B>(
+  TraceTable_ptr  <b>self</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layer_names</b>, <i></i>
+  FILE* <b>output</b> <i></i>
+)
+</pre>
+<dd> Print Trace in table format with each state in a seperate row.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceTable.c"TARGET="ABSTRACT"><CODE>TraceTable.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_table_print_vars_rows"></A>
+static void <I></I>
+<B>trace_table_print_vars_rows</B>(
+  TraceTable_ptr  <b>self</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  NodeList_ptr  <b>symbols</b>, <i></i>
+  boolean  <b>is_only_input</b>, <i></i>
+  boolean  <b>is_only_state</b>, <i></i>
+  FILE* <b>output</b> <i></i>
+)
+</pre>
+<dd> This methods take into account of positions associated
+  to state and input symbols. It is provided in order to allow printing of 
+  a group of symbols (e.g. only the state symbols, or only the input symbols)
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceTable.c"TARGET="ABSTRACT"><CODE>TraceTable.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_dumper_action"></A>
+int <I></I>
+<B>trace_xml_dumper_action</B>(
+  const TracePlugin_ptr  <b>plugin</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layer_names</b>, <i></i>
+  void* <b>opt</b> <i></i>
+)
+</pre>
+<dd> Given trace is written into the file pointed by
+  given additional parameter
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlDumper.c"TARGET="ABSTRACT"><CODE>TraceXmlDumper.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_dumper_deinit"></A>
+void <I></I>
+<B>trace_xml_dumper_deinit</B>(
+  TraceXmlDumper_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Deinitializes the TraceXmlDumper Plugin object.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlDumper.c"TARGET="ABSTRACT"><CODE>TraceXmlDumper.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_dumper_dump"></A>
+static int <I></I>
+<B>trace_xml_dumper_dump</B>(
+  TraceXmlDumper_ptr  <b>self</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layer_names</b>, <i></i>
+  FILE* <b>output</b> <i></i>
+)
+</pre>
+<dd> Dump the trace in XML format into FILE pointed by /"output/".
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlDumper.c"TARGET="ABSTRACT"><CODE>TraceXmlDumper.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_dumper_finalize"></A>
+static void <I></I>
+<B>trace_xml_dumper_finalize</B>(
+  Object_ptr  <b>object</b>, <i></i>
+  void* <b>dummy</b> <i></i>
+)
+</pre>
+<dd> Plugin finalize method.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlDumper.c"TARGET="ABSTRACT"><CODE>TraceXmlDumper.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_dumper_init"></A>
+void <I></I>
+<B>trace_xml_dumper_init</B>(
+  TraceXmlDumper_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Class initializer
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlDumper.c"TARGET="ABSTRACT"><CODE>TraceXmlDumper.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_action"></A>
+int <I></I>
+<B>trace_xml_loader_action</B>(
+  const TracePlugin_ptr  <b>plugin</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  const array_t* <b>layer_names</b>, <i></i>
+  void* <b>opt</b> <i></i>
+)
+</pre>
+<dd> Given trace is loaded from xml representation stored into 
+  the file pointed by given additional parameter. Layer names are 
+  ignored and can be NULL
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_char_handler"></A>
+static void <I></I>
+<B>trace_xml_loader_char_handler</B>(
+  TraceXmlLoader_ptr  <b>self</b>, <i></i>
+  const char * <b>txt</b>, <i></i>
+  int  <b>txtlen</b> <i></i>
+)
+</pre>
+<dd> Character Handler used by parser.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_deinit"></A>
+void <I></I>
+<B>trace_xml_loader_deinit</B>(
+  TraceXmlLoader_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Deallocates internal structures
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_fill_trace"></A>
+static int <I></I>
+<B>trace_xml_loader_fill_trace</B>(
+  TraceXmlLoader_ptr  <b>self</b>, <i></i>
+  Trace_ptr  <b>trace</b> <i></i>
+)
+</pre>
+<dd> It converts the internal trace representation into 
+  a Trace instance
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_finalize"></A>
+static void <I></I>
+<B>trace_xml_loader_finalize</B>(
+  Object_ptr  <b>object</b>, <i></i>
+  void* <b>dummy</b> <i></i>
+)
+</pre>
+<dd> Virtual destructor
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_init"></A>
+void <I></I>
+<B>trace_xml_loader_init</B>(
+  TraceXmlLoader_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_load"></A>
+static boolean <I></I>
+<B>trace_xml_loader_load</B>(
+  TraceXmlLoader_ptr  <b>self</b>, <i></i>
+  Trace_ptr  <b>trace</b>, <i></i>
+  FILE* <b>xml_file</b> <i></i>
+)
+</pre>
+<dd> Returns true if an error occurs, false otherwise
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_reset"></A>
+static void <I></I>
+<B>trace_xml_loader_reset</B>(
+  TraceXmlLoader_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Cleans up after reading of xml source
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_set"></A>
+static void <I></I>
+<B>trace_xml_loader_set</B>(
+  TraceXmlLoader_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_tag_begin"></A>
+static void <I></I>
+<B>trace_xml_loader_tag_begin</B>(
+  TraceXmlLoader_ptr  <b>self</b>, <i></i>
+  const char* <b>name</b>, <i></i>
+  const char** <b>atts</b> <i></i>
+)
+</pre>
+<dd> Function that gets called when parser encounter start of
+some tag.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+<dt><pre>
+<A NAME="trace_xml_loader_tag_end"></A>
+static void <I></I>
+<B>trace_xml_loader_tag_end</B>(
+  TraceXmlLoader_ptr  <b>self</b>, <i></i>
+  const char * <b>name</b> <i></i>
+)
+</pre>
+<dd> Function that gets called when end of any tag is
+encountered by the parser.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#TraceXmlLoader.c"TARGET="ABSTRACT"><CODE>TraceXmlLoader.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

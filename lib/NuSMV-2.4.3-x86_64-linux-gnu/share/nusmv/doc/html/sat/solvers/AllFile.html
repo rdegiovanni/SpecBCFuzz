@@ -1,0 +1,50 @@
+<HTML>
+<HEAD><TITLE>The  package: files</TITLE></HEAD>
+<BODY>
+
+<DL>
+ <DT> <A HREF="#SatSim.c"><CODE>SatSim.c</CODE></A>
+ <DD> Routines related to SatSim object.
+</DL><HR>
+<A NAME="SatSim.c"><H1>SatSim.c</H1></A>
+Routines related to SatSim object. <P>
+<B>By: Andrei Tchaltsev, Roberto Cavada</B><P>
+This file contains the definition of "SatSim" 
+  class. SatSim  (non-incremental)  solver implementation of the generic 
+  SatSolver clas <P>
+<DL>
+ <DT> <A HREF="AllDet.html#SatSim_create" TARGET="MAIN"><CODE>SatSim_create()</CODE></A>
+ <DD> Creates a Sim SAT solver and initializes it.
+
+ <DT> <A HREF="AllDet.html#SatSim_destroy" TARGET="MAIN"><CODE>SatSim_destroy()</CODE></A>
+ <DD> Destroys an instance of a Sim SAT solver
+
+ <DT> <A HREF="AllDet.html#sat_sim_compare" TARGET="MAIN"><CODE>sat_sim_compare()</CODE></A>
+ <DD> Compares two variables indexes
+
+ <DT> <A HREF="AllDet.html#sat_sim_add" TARGET="MAIN"><CODE>sat_sim_add()</CODE></A>
+ <DD> Adds a clause to the solver database.
+
+ <DT> <A HREF="AllDet.html#sat_sim_set_polarity" TARGET="MAIN"><CODE>sat_sim_set_polarity()</CODE></A>
+ <DD> Sets the polarity of the formula.
+
+ <DT> <A HREF="AllDet.html#sat_sim_solve_all_groups" TARGET="MAIN"><CODE>sat_sim_solve_all_groups()</CODE></A>
+ <DD> Tries to solve all added formulas
+
+ <DT> <A HREF="AllDet.html#sat_sim_make_model" TARGET="MAIN"><CODE>sat_sim_make_model()</CODE></A>
+ <DD> This function should never be invoked since
+  the actual model is generated in 'solve' method
+
+ <DT> <A HREF="AllDet.html#sat_sim_init" TARGET="MAIN"><CODE>sat_sim_init()</CODE></A>
+ <DD> Initializes Sat Sim object.
+
+ <DT> <A HREF="AllDet.html#sat_sim_deinit" TARGET="MAIN"><CODE>sat_sim_deinit()</CODE></A>
+ <DD> Deinitializes SatSim object.
+
+ <DT> <A HREF="AllDet.html#sat_sim_finalize" TARGET="MAIN"><CODE>sat_sim_finalize()</CODE></A>
+ <DD> Sat Sim finalize method.
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

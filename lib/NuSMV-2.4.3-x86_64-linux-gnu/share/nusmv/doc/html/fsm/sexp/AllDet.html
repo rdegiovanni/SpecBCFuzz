@@ -1,0 +1,730 @@
+<html>
+<head><title>The  package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="SexpFsm_copy"></A>
+SexpFsm_ptr <I></I>
+<B>SexpFsm_copy</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Copy costructor
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_create_predicate_normalised_copy"></A>
+SexpFsm_ptr <I></I>
+<B>SexpFsm_create_predicate_normalised_copy</B>(
+  const SexpFsm_ptr  <b>self</b>, <i></i>
+  PredicateNormaliser_ptr  <b>normaliser</b> <i></i>
+)
+</pre>
+<dd> Predicate-normalisations means that an expression is
+  modified in such a way that at the end the subexpressions of a
+  not-boolean expression can be only not-boolean. This is performed by
+  changing boolean expression "exp" (which is a subexpression of a
+  not-boolean expression) to "ITE(exp, 1, 0)", and then pushing all
+  ITE up to the root of not-boolean expressions.
+
+  Constrain: the given Sexp FSM has to be NOT boolean. Otherwise,
+  it is meaningless to apply normalisation functions, since all the exporessions
+  are already boolean.
+<p>
+
+<dd> <b>Side Effects</b> SexpFsm_copy
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_create"></A>
+SexpFsm_ptr <I></I>
+<B>SexpFsm_create</B>(
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  SymbLayer_ptr  <b>det_layer</b>, <i></i>
+  SymbLayer_ptr  <b>inl_layer</b>, <i></i>
+  VarSet_ptr  <b>vars_list</b>, <i></i>
+  FlatHierarchy_ptr  <b>hierarchy</b> <i></i>
+)
+</pre>
+<dd> If provided, the layer will be filled with the
+  determinization variables that might derive from the booleanization.
+  hierarchy will be copied, so the caller is responsible for its
+  destruction.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_destroy"></A>
+void <I></I>
+<B>SexpFsm_destroy</B>(
+  SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Destructor
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_bool_enc"></A>
+BoolEnc_ptr <I></I>
+<B>SexpFsm_get_bool_enc</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> This method can be called only when a valid BddEnc was
+  passed to the class constructor (not NULL). Returned instance do not
+  belongs to the caller and must _not_ be destroyed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_compassion"></A>
+node_ptr <I></I>
+<B>SexpFsm_get_compassion</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Gets the list of sexp expressions defining the set of 
+                  compassion constraints for this machine.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_hierarchy"></A>
+FlatHierarchy_ptr <I></I>
+<B>SexpFsm_get_hierarchy</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returned hierarchy can be freely changed to create 
+  a new sexp fsm derived from self. In any case the caller *must* destroy the 
+  returned instance, as a copy of the internal hierarchy is returned. 
+  Also, notice that the SexpFsm constructor copies the passed hierarchy.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_init"></A>
+Expr_ptr <I></I>
+<B>SexpFsm_get_init</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns an Expr that collects init states for all 
+  variables handled by self
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_input"></A>
+Expr_ptr <I></I>
+<B>SexpFsm_get_input</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns an Expr that collects all input states for all 
+  variables handled by self
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_invar"></A>
+Expr_ptr <I></I>
+<B>SexpFsm_get_invar</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns an Expr that collects invar states for all 
+  variables handled by self
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_justice"></A>
+node_ptr <I></I>
+<B>SexpFsm_get_justice</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Gets the list of sexp expressions defining the set of justice 
+                  constraints for this machine.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_symb_table"></A>
+SymbTable_ptr <I></I>
+<B>SexpFsm_get_symb_table</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> This method can be called only when a valid BddEnc was
+  passed to the class constructor (not NULL). Returned instance do not
+  belongs to the caller and must _not_ be destroyed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_trans"></A>
+Expr_ptr <I></I>
+<B>SexpFsm_get_trans</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns an Expr that collects all next states for all 
+  variables handled by self
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_var_init"></A>
+Expr_ptr <I></I>
+<B>SexpFsm_get_var_init</B>(
+  const SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var_name</b> <i></i>
+)
+</pre>
+<dd> Gets the sexp expression defining the initial state for
+                  the variable "v".
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_var_input"></A>
+Expr_ptr <I></I>
+<B>SexpFsm_get_var_input</B>(
+  const SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var_name</b> <i></i>
+)
+</pre>
+<dd> Gets the sexp expression defining the input relation
+                  for the variable "v".
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_var_invar"></A>
+Expr_ptr <I></I>
+<B>SexpFsm_get_var_invar</B>(
+  const SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var_name</b> <i></i>
+)
+</pre>
+<dd> Gets the sexp expression defining the state constraints
+                  for the variable "v".
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_var_trans"></A>
+Expr_ptr <I></I>
+<B>SexpFsm_get_var_trans</B>(
+  const SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var_name</b> <i></i>
+)
+</pre>
+<dd> Gets the sexp expression defining the transition relation
+                  for the variable "v".
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_get_vars_list"></A>
+VarSet_ptr <I></I>
+<B>SexpFsm_get_vars_list</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returned instance belongs to self
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_is_boolean"></A>
+boolean <I></I>
+<B>SexpFsm_is_boolean</B>(
+  const SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Returns true if self if a booleanized fsm, false if 
+  it is scalar
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="SexpFsm_scalar_to_boolean"></A>
+SexpFsm_ptr <I></I>
+<B>SexpFsm_scalar_to_boolean</B>(
+  const SexpFsm_ptr  <b>self</b>, <i></i>
+  SymbLayer_ptr  <b>det_layer</b>, <i></i>
+  SymbLayer_ptr  <b>inl_layer</b> <i></i>
+)
+</pre>
+<dd> Given layer det_layer will be filled with the
+  determinization variables coming from the booleanization
+  process. Returns a copy if self is already booleanized. Optional
+  inl_layer is used by the inlining simplification (can be NULL)
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="__add_vertex_aux"></A>
+static void <I></I>
+<B>__add_vertex_aux</B>(
+  hash_ptr  <b>hash</b>, <i></i>
+  node_ptr  <b>from</b>, <i></i>
+  node_ptr  <b>to</b> <i></i>
+)
+</pre>
+<dd> Used during inlining
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="__free_nodelist"></A>
+static enum st_retval <I></I>
+<B>__free_nodelist</B>(
+  char* <b>key</b>, <i></i>
+  char* <b>val</b>, <i></i>
+  char* <b>data</b> <i></i>
+)
+</pre>
+<dd> private service used as callback by
+  sexp_fsm_destroy_vars_dag
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="__search_eqdef"></A>
+static node_ptr <I></I>
+<B>__search_eqdef</B>(
+  node_ptr  <b>expr</b>, <i></i>
+  node_ptr  <b>name</b> <i></i>
+)
+</pre>
+<dd> Used during inlining
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="_subst_expr"></A>
+static node_ptr <I></I>
+<B>_subst_expr</B>(
+  SymbTable_ptr  <b>st</b>, <i></i>
+  node_ptr  <b>expr</b>, <i></i>
+  hash_ptr  <b>subst</b> <i></i>
+)
+</pre>
+<dd> Used during inlining
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_add_vertex"></A>
+static void <I></I>
+<B>sexp_fsm_add_vertex</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>from</b>, <i></i>
+  node_ptr  <b>to</b> <i></i>
+)
+</pre>
+<dd> Used during inlining
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_add_vertices_from_expr"></A>
+static boolean <I></I>
+<B>sexp_fsm_add_vertices_from_expr</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>name</b>, <i></i>
+  node_ptr  <b>expr</b>, <i></i>
+  VarFilterType  <b>filter</b> <i></i>
+)
+</pre>
+<dd> Used during inlining
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_apply_inlining"></A>
+static node_ptr <I></I>
+<B>sexp_fsm_apply_inlining</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>expr</b> <i></i>
+)
+</pre>
+<dd> Top level function to apply inlining to the given
+  expression. It has no effects if inl_layer has not been passed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_booleanize_expr"></A>
+static Expr_ptr <I></I>
+<B>sexp_fsm_booleanize_expr</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  Expr_ptr  <b>expr</b> <i></i>
+)
+</pre>
+<dd> If the fsm is not boolean, the input expression is
+  returned
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_callback_var_fsm_free"></A>
+static assoc_retval <I></I>
+<B>sexp_fsm_callback_var_fsm_free</B>(
+  char * <b>key</b>, <i></i>
+  char * <b>data</b>, <i></i>
+  char * <b>arg</b> <i></i>
+)
+</pre>
+<dd> Private callback that destroys a single variable fsm
+  contained into the var fsm hash
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_copy"></A>
+static void <I></I>
+<B>sexp_fsm_copy</B>(
+  const SexpFsm_ptr  <b>self</b>, <i></i>
+  SexpFsm_ptr  <b>copy</b> <i></i>
+)
+</pre>
+<dd> Copies members from self to copy
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_create_vars_dag"></A>
+static void <I></I>
+<B>sexp_fsm_create_vars_dag</B>(
+  SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_dag_get_roots"></A>
+static NodeList_ptr <I></I>
+<B>sexp_fsm_dag_get_roots</B>(
+  SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Used during inlining
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_dag_get_subst_hash"></A>
+static hash_ptr <I></I>
+<B>sexp_fsm_dag_get_subst_hash</B>(
+  SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Used during inlining. Returned hash must be NOT freed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_deinit"></A>
+static void <I></I>
+<B>sexp_fsm_deinit</B>(
+  SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Initializes the vars fsm hash
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_destroy_vars_dag"></A>
+static void <I></I>
+<B>sexp_fsm_destroy_vars_dag</B>(
+  SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Destroyer for the vars dag, used by inlining
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_hash_var_fsm_destroy"></A>
+static void <I></I>
+<B>sexp_fsm_hash_var_fsm_destroy</B>(
+  SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Private method, used internally
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_hash_var_fsm_init"></A>
+static void <I></I>
+<B>sexp_fsm_hash_var_fsm_init</B>(
+  SexpFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> Initializes the vars fsm hash
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_hash_var_fsm_insert_var"></A>
+static void <I></I>
+<B>sexp_fsm_hash_var_fsm_insert_var</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var</b>, <i></i>
+  VarFsm_ptr  <b>varfsm</b> <i></i>
+)
+</pre>
+<dd> Adds a var fsm to the internal hash. Private.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_hash_var_fsm_lookup_var"></A>
+static VarFsm_ptr <I></I>
+<B>sexp_fsm_hash_var_fsm_lookup_var</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>var</b> <i></i>
+)
+</pre>
+<dd> Given a variable name, returns the corresponding variable
+  fsm, or NULL if not found
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_init"></A>
+static void <I></I>
+<B>sexp_fsm_init</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  BddEnc_ptr  <b>enc</b>, <i></i>
+  SymbLayer_ptr  <b>det_layer</b>, <i></i>
+  SymbLayer_ptr  <b>inl_layer</b>, <i></i>
+  VarSet_ptr  <b>vars_list</b>, <i></i>
+  FlatHierarchy_ptr  <b>hierarchy</b> <i></i>
+)
+</pre>
+<dd> hierarchy is copied into an independent FlatHierarchy
+  instance. If the new sexp must be based only on a set of variables, the 
+  hierarchy must be empty
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_remove_dep_dag_node"></A>
+static void <I></I>
+<B>sexp_fsm_remove_dep_dag_node</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  node_ptr  <b>from</b> <i></i>
+)
+</pre>
+<dd> Used during inlining
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="sexp_fsm_simplify_expr"></A>
+static Expr_ptr <I></I>
+<B>sexp_fsm_simplify_expr</B>(
+  SexpFsm_ptr  <b>self</b>, <i></i>
+  hash_ptr  <b>hash</b>, <i></i>
+  Expr_ptr  <b>expr</b>, <i></i>
+  const int  <b>group</b> <i></i>
+)
+</pre>
+<dd> group identifies INVAR, TRANS or INIT group.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="simplifier_hash_add_expr"></A>
+static void <I></I>
+<B>simplifier_hash_add_expr</B>(
+  hash_ptr  <b>hash</b>, <i></i>
+  Expr_ptr  <b>expr</b>, <i></i>
+  const int  <b>group</b> <i></i>
+)
+</pre>
+<dd> group is INIT, INVAR or TRANS
+<p>
+
+<dd> <b>Side Effects</b> The hash can change
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="simplifier_hash_create"></A>
+static hash_ptr <I></I>
+<B>simplifier_hash_create</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This is used when creating cluster list from vars list
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="simplifier_hash_destroy"></A>
+static void <I></I>
+<B>simplifier_hash_destroy</B>(
+  hash_ptr  <b>hash</b> <i></i>
+)
+</pre>
+<dd> Call after sexp_fsm_cluster_hash_create
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="simplifier_hash_query_expr"></A>
+static boolean <I></I>
+<B>simplifier_hash_query_expr</B>(
+  hash_ptr  <b>hash</b>, <i></i>
+  Expr_ptr  <b>expr</b>, <i></i>
+  const int  <b>group</b> <i></i>
+)
+</pre>
+<dd> Queries for an element in the hash, returns True if 
+  found
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="var_fsm_create"></A>
+static VarFsm_ptr <I></I>
+<B>var_fsm_create</B>(
+  Expr_ptr  <b>init</b>, <i></i>
+  Expr_ptr  <b>invar</b>, <i></i>
+  Expr_ptr  <b>next</b> <i></i>
+)
+</pre>
+<dd> Creates a var fsm
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="var_fsm_destroy"></A>
+static void <I></I>
+<B>var_fsm_destroy</B>(
+  VarFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> It does not destroy the init, trans and invar nodes. 
+  It destroys only the support nodes
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="var_fsm_get_init"></A>
+static Expr_ptr <I></I>
+<B>var_fsm_get_init</B>(
+  VarFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="var_fsm_get_input"></A>
+static Expr_ptr <I></I>
+<B>var_fsm_get_input</B>(
+  VarFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="var_fsm_get_invar"></A>
+static Expr_ptr <I></I>
+<B>var_fsm_get_invar</B>(
+  VarFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+<dt><pre>
+<A NAME="var_fsm_get_next"></A>
+static Expr_ptr <I></I>
+<B>var_fsm_get_next</B>(
+  VarFsm_ptr  <b>self</b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#SexpFsm.c"TARGET="ABSTRACT"><CODE>SexpFsm.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

@@ -1,0 +1,127 @@
+<html>
+<head><title>The opt package: all functions </title></head>
+<body>
+
+The internal header file of the opt package.
+<HR>
+<DL>
+<dt><pre>
+<A NAME="CommandSetVariable"></A>
+int <I></I>
+<B>CommandSetVariable</B>(
+  int  <b>argc</b>, <i></i>
+  char** <b>argv</b> <i></i>
+)
+</pre>
+<dd> Sets an environment variable
+<p>
+
+<dd> <b>See Also</b> <code><a href="#unset">unset</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="optAllFile.html#optCmd.c"TARGET="ABSTRACT"><CODE>optCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME="CommandUnsetVariable"></A>
+int <I></I>
+<B>CommandUnsetVariable</B>(
+  int  <b>argc</b>, <i></i>
+  char** <b>argv</b> <i></i>
+)
+</pre>
+<dd> Unsets an environment variable
+<p>
+
+<dd> <b>See Also</b> <code><a href="#set">set</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="optAllFile.html#optCmd.c"TARGET="ABSTRACT"><CODE>optCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME="init_options_cmd"></A>
+void <I></I>
+<B>init_options_cmd</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This function declares the interactive shell
+  commands necessary to manipulate NuSMV options.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="optAllFile.html#optCmd.c"TARGET="ABSTRACT"><CODE>optCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME="init_options"></A>
+options_ptr <I></I>
+<B>init_options</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> The NuSMV options are initialized. A pointer to
+  a structure containing the NuSMV options is allocated, its fields
+  are initialized and the pointer is returned.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="optAllFile.html#optCmd.c"TARGET="ABSTRACT"><CODE>optCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME="remove_non_existant_pps"></A>
+static char* <I></I>
+<B>remove_non_existant_pps</B>(
+  const char* <b>pp_list</b> <i></i>
+)
+</pre>
+<dd> Returned string must be freed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="optAllFile.html#optCmd.c"TARGET="ABSTRACT"><CODE>optCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Makes append_cluster option visible to the shell
+  interface. The default is that it is not visible. Notice that only
+  the printing hide it. The set unset function handle it.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="optAllFile.html#optInt.h"TARGET="ABSTRACT"><CODE>optInt.h</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This sets a constant (not dynamic) string option,
+  _never_ cleaning up the memory. Use NULL for default if there is no
+  default. All the strings are considered constant, to be NOT freed.
+  Constant strings are those that are never provided by the user
+  (i.e. are never built dynamically).
+<p>
+
+<DD> <B>Defined in </B> <A HREF="optAllFile.html#optCmd.c"TARGET="ABSTRACT"><CODE>optCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME=""></A>
+ <I></I>
+<B></B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This sets a string option, cleaning up the memory if
+  needed. Use NULL for default if there is no default. Default string
+  is considered constant, to be NOT freed.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="optAllFile.html#optCmd.c"TARGET="ABSTRACT"><CODE>optCmd.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

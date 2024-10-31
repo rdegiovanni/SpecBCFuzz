@@ -1,0 +1,407 @@
+<html>
+<head><title>The sm package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="BannerPrint"></A>
+static void <I></I>
+<B>BannerPrint</B>(
+  FILE * <b>file</b> <i></i>
+)
+</pre>
+<dd> Prints the banner of NuSMV.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMain.c"TARGET="ABSTRACT"><CODE>smMain.c</CODE></A>
+
+<dt><pre>
+<A NAME="CommandCmdReset"></A>
+int <I></I>
+<B>CommandCmdReset</B>(
+  int  <b>argc</b>, <i></i>
+  char ** <b>argv</b> <i></i>
+)
+</pre>
+<dd> Implements the reset command.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smCmd.c"TARGET="ABSTRACT"><CODE>smCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME="CommandPrintUsage"></A>
+int <I></I>
+<B>CommandPrintUsage</B>(
+  int  <b>argc</b>, <i></i>
+  char ** <b>argv</b> <i></i>
+)
+</pre>
+<dd> Implements the print_usage command.
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smCmd.c"TARGET="ABSTRACT"><CODE>smCmd.c</CODE></A>
+
+<dt><pre>
+<A NAME="DateReadFromDateString"></A>
+static char * <I></I>
+<B>DateReadFromDateString</B>(
+  char * <b>datestr</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smVers.c"TARGET="ABSTRACT"><CODE>smVers.c</CODE></A>
+
+<dt><pre>
+<A NAME="NusmvrcSource"></A>
+static int <I></I>
+<B>NusmvrcSource</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Sources the .nusmvrc file.  Always sources the .nusmvrc from
+  library.  Then source the .nusmvrc from the home directory.  If there is none
+  in the home directory, then execute the one in the current directory if one
+  is present.  Returns 1 if scripts were successfully executed, else return 0.
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMain.c"TARGET="ABSTRACT"><CODE>smMain.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sm_End"></A>
+void <I></I>
+<B>Sm_End</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Calls the end routines of all the packages.
+<p>
+
+<dd> <b>Side Effects</b> Closes the output files if not the standard ones.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_Init">Sm_Init</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sm_Init"></A>
+void <I></I>
+<B>Sm_Init</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Calls the initialization routines of all the packages.
+<p>
+
+<dd> <b>Side Effects</b> Sets the global variables nusmv_stdout, nusmv_stderr,
+  nusmv_historyFile.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#SmEnd">SmEnd</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sm_NuSMVEndPrintMore"></A>
+int <I></I>
+<B>Sm_NuSMVEndPrintMore</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This function is  called to terminate piping
+  stdout through "more". It is important to call Sm_NuSMVEndPrintMore  before exiting
+  your function (preferably at the end of your printing; failing to do so will cause
+  the stdin lines not to appear). The function returns a 0 if it fails.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_NuSMVInitPrintMore">Sm_NuSMVInitPrintMore</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smVers.c"TARGET="ABSTRACT"><CODE>smVers.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sm_NuSMVInitPrintMore"></A>
+void <I></I>
+<B>Sm_NuSMVInitPrintMore</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This function is  called to initialize piping
+  stdout through "more". It is important to call Sm_NuSMVEndPrintMore before
+  returning from your function and after
+  calling Sm_NuSMVInitPrintMore (preferably at the end of your printing;
+  failing to do so will cause the stdin lines not to appear).
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_NuSMVEndPrintMore">Sm_NuSMVEndPrintMore</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smVers.c"TARGET="ABSTRACT"><CODE>smVers.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sm_NuSMVObtainLibrary"></A>
+char* <I></I>
+<B>Sm_NuSMVObtainLibrary</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns a string giving the directory which contains the
+  standard NuSMV library.  Used to find things like the default .nusmvrc, the
+  on-line help files, etc. It is the responsibility of the user to free the
+  returned string.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_NuSMVReadVersion">Sm_NuSMVReadVersion</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smVers.c"TARGET="ABSTRACT"><CODE>smVers.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sm_NuSMVReadVersion"></A>
+char* <I></I>
+<B>Sm_NuSMVReadVersion</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns a static string giving the NuSMV version and compilation
+  timestamp.  The user should not free this string.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Sm_NuSMVObtainLibrary">Sm_NuSMVObtainLibrary</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smVers.c"TARGET="ABSTRACT"><CODE>smVers.c</CODE></A>
+
+<dt><pre>
+<A NAME="Sm_Reset"></A>
+void <I></I>
+<B>Sm_Reset</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Shuts down and restarts the system
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="UsagePrint"></A>
+static void <I></I>
+<B>UsagePrint</B>(
+  char * <b>program</b>, <i></i>
+  char * <b>unknown_option</b> <i></i>
+)
+</pre>
+<dd> Prints the usage of the NuSMV shell interface.
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMain.c"TARGET="ABSTRACT"><CODE>smMain.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_executable_name"></A>
+static char* <I></I>
+<B>get_executable_name</B>(
+  const char* <b>command</b> <i></i>
+)
+</pre>
+<dd> Given a command, returns the executable file name (with
+  extension if required)
+<p>
+
+<dd> <b>Side Effects</b> If not already specified, extension suffix is appended
+  to the returned string. Returned string must be freed.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_preprocessor_call"></A>
+char* <I></I>
+<B>get_preprocessor_call</B>(
+  const char* <b>name</b> <i></i>
+)
+</pre>
+<dd> Gets the command line call for the specified pre-processor
+  name. Returns NULL if given name is not available, or a string that must be 
+  NOT freed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_preprocessor_filename"></A>
+char* <I></I>
+<B>get_preprocessor_filename</B>(
+  const char* <b>name</b> <i></i>
+)
+</pre>
+<dd> Gets the actual program name of the specified pre-processor.
+  Returns NULL if given name is not available, or a string that must be 
+  freed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_preprocessor_names"></A>
+char* <I></I>
+<B>get_preprocessor_names</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Gets the names of the avaliable pre-processors. Returned 
+  string must be freed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="get_preprocessors_num"></A>
+int <I></I>
+<B>get_preprocessors_num</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returns the number of available proprocessors
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="init_preprocessors"></A>
+static void <I></I>
+<B>init_preprocessors</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Initializes information about the pre-processors avaliable.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="main"></A>
+int <I></I>
+<B>main</B>(
+  int  <b>argc</b>, <i></i>
+  char ** <b>argv</b> <i></i>
+)
+</pre>
+<dd> optional
+<p>
+
+<dd> <b>Side Effects</b> required
+<p>
+
+<dd> <b>See Also</b> <code>optional
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMain.c"TARGET="ABSTRACT"><CODE>smMain.c</CODE></A>
+
+<dt><pre>
+<A NAME="print_usage"></A>
+void <I></I>
+<B>print_usage</B>(
+  FILE * <b>file</b> <i></i>
+)
+</pre>
+<dd> Prints on <code>nusmv_stdout</code> usage
+  statistics, i.e. the amount of memory used, the amount of time
+  spent, the number of BDD nodes allocated and the size of the model
+  in BDD.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#compilePrintBddModelStatistic">compilePrintBddModelStatistic</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMisc.c"TARGET="ABSTRACT"><CODE>smMisc.c</CODE></A>
+
+<dt><pre>
+<A NAME="quit_preprocessors"></A>
+static void <I></I>
+<B>quit_preprocessors</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Removes information regarding the avaliable pre-processors.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smInit.c"TARGET="ABSTRACT"><CODE>smInit.c</CODE></A>
+
+<dt><pre>
+<A NAME="restore_nusmv_stderr"></A>
+void <I></I>
+<B>restore_nusmv_stderr</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMisc.c"TARGET="ABSTRACT"><CODE>smMisc.c</CODE></A>
+
+<dt><pre>
+<A NAME="restore_nusmv_stdout"></A>
+void <I></I>
+<B>restore_nusmv_stdout</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMisc.c"TARGET="ABSTRACT"><CODE>smMisc.c</CODE></A>
+
+<dt><pre>
+<A NAME="smBatchMain"></A>
+void <I></I>
+<B>smBatchMain</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> The batch main. It first read the input file, than
+  flatten the hierarchy. Aftre this preliminar phase it creates the
+  boolean variables necessary for the encoding and then start
+  compiling the read model into BDD. Now computes the reachable states
+  depending if the flag has been set. before starting verifying if the
+  properties specified in the model hold or not it computes the
+  fairness constraints. You can also activate the reordering and
+  also choose to avoid the verification of the properties.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMisc.c"TARGET="ABSTRACT"><CODE>smMisc.c</CODE></A>
+
+<dt><pre>
+<A NAME="sm_ParseLineOptions"></A>
+void <I></I>
+<B>sm_ParseLineOptions</B>(
+  int  <b>argc</b>, <i></i>
+  char ** <b>argv</b>, <i></i>
+  options_ptr  <b>options</b> <i></i>
+)
+</pre>
+<dd> Parses the command line options.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="smAllFile.html#smMain.c"TARGET="ABSTRACT"><CODE>smMain.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

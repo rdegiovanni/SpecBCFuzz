@@ -1,0 +1,20 @@
+<html>
+<head><title>compute_reachable</title></head>
+<body>
+
+<h3>compute_reachable - Enables the future computation of the set of reachable states</h3>
+<hr>
+<code>compute_reachable [-h]</code><p>
+Sets a flag in the system that triggers the lazy 
+  calculation of the set of reachable states every time it is needed. 
+
+  The set of reachable states is used to simplify image and
+  preimage computations. This can result in improved performances for
+  models with sparse state spaces. Sometimes this option may slow down
+  the performances because the computation of reachable states may be
+  very expensive. The environment variable <tt>forward_search</tt> is
+  set after the execution of this command.
+
+<HR>
+Last updated on 2007/05/22 18h:36
+</body></html>

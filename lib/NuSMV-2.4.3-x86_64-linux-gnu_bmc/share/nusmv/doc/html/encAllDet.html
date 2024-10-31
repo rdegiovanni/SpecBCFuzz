@@ -1,0 +1,207 @@
+<html>
+<head><title>The enc package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="Enc_get_bdd_encoding"></A>
+BddEnc_ptr <I></I>
+<B>Enc_get_bdd_encoding</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_get_be_encoding"></A>
+BeEnc_ptr <I></I>
+<B>Enc_get_be_encoding</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_get_bool_encoding"></A>
+BoolEnc_ptr <I></I>
+<B>Enc_get_bool_encoding</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> 
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_get_valid_vars_ord_types"></A>
+const char* <I></I>
+<B>Enc_get_valid_vars_ord_types</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Returned string does not have to be freed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_init_bdd_encoding"></A>
+void <I></I>
+<B>Enc_init_bdd_encoding</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Initializes the bdd enc for this session
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_init_be_encoding"></A>
+void <I></I>
+<B>Enc_init_be_encoding</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Initializes the be enc for this session
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_init_bool_encoding"></A>
+void <I></I>
+<B>Enc_init_bool_encoding</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Call it to initialize for the current session the
+  encoding, before flattening. In the current implementation, you must
+  call this *before* the flattening phase. After the flattening, 
+  you must initialize the bdd encoding as well, and after you created the
+  boolean sexp fsm, you must reinitialize the bdd encodings by calling
+  Enc_reinit_bdd_encoding. Don't forget to call Enc_quit_encodings when
+  the session ends.
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Enc_init_bdd_encoding">Enc_init_bdd_encoding</a>
+<a href="#Enc_reinit_bdd_encoding">Enc_reinit_bdd_encoding</a>
+<a href="#Enc_quit_encodings">Enc_quit_encodings</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_init_encodings"></A>
+void <I></I>
+<B>Enc_init_encodings</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> This function initializes only data-structures 
+  global to all encoding.
+  To initialize particular incoding, you have to invoke corresponding
+  init-functions, such as Enc_init_bool_encoding, etc.
+
+  SideEffects        [
+<p>
+
+<dd> <b>See Also</b> <code><a href="#Enc_init_bool_encoding">Enc_init_bool_encoding</a>
+<a href="#Enc_init_bdd_encoding">Enc_init_bdd_encoding</a>
+<a href="#Enc_reinit_bdd_encoding">Enc_reinit_bdd_encoding</a>
+<a href="#Enc_quit_encodings">Enc_quit_encodings</a>
+</code>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_quit_encodings"></A>
+void <I></I>
+<B>Enc_quit_encodings</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> Call to destroy encodings, when session ends. 
+  Enc_init_encodings had to be called before calling this function.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_string_to_vars_ord"></A>
+VarsOrdType <I></I>
+<B>Enc_string_to_vars_ord</B>(
+  const char* <b>str</b> <i></i>
+)
+</pre>
+<dd> VARS_ORD_UNKNOWN is returned when the string does not 
+  match the given string
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="Enc_vars_ord_to_string"></A>
+const char* <I></I>
+<B>Enc_vars_ord_to_string</B>(
+  VarsOrdType  <b>vot</b> <i></i>
+)
+</pre>
+<dd> Returned string does not have to be freed
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="enc_set_bdd_encoding"></A>
+void <I></I>
+<B>enc_set_bdd_encoding</B>(
+  BddEnc_ptr  <b>enc</b> <i></i>
+)
+</pre>
+<dd> Set the global bdd encoding. If it was already 
+  set, it is detroyed before the new assignment
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="enc_set_be_encoding"></A>
+void <I></I>
+<B>enc_set_be_encoding</B>(
+  BeEnc_ptr  <b>enc</b> <i></i>
+)
+</pre>
+<dd> Set the global be encoding. If it was already 
+  set, it is detroyed before the new assignment
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+<dt><pre>
+<A NAME="enc_set_bool_encoding"></A>
+void <I></I>
+<B>enc_set_bool_encoding</B>(
+  BoolEnc_ptr  <b>benc</b> <i></i>
+)
+</pre>
+<dd> Set the global boolean encoding. If it was already 
+  set, it is detroyed before the new assignment
+<p>
+
+<DD> <B>Defined in </B> <A HREF="encAllFile.html#enc.c"TARGET="ABSTRACT"><CODE>enc.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

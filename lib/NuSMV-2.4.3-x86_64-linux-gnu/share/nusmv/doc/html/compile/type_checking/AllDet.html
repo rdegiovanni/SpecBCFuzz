@@ -1,0 +1,52 @@
+<html>
+<head><title>The  package: all functions </title></head>
+<body>
+
+
+<HR>
+<DL>
+<dt><pre>
+<A NAME="TypeCheckingPkg_get_global_type_checker"></A>
+TypeChecker_ptr <I></I>
+<B>TypeCheckingPkg_get_global_type_checker</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> WARNING: This function can be invoked 
+  only after initialisation and before de-initialisation.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#type_checking.c"TARGET="ABSTRACT"><CODE>type_checking.c</CODE></A>
+
+<dt><pre>
+<A NAME="TypeCheckingPkg_init"></A>
+void <I></I>
+<B>TypeCheckingPkg_init</B>(
+  SymbTable_ptr  <b>symbolTable</b> <i></i>
+)
+</pre>
+<dd> Can be invoked only after the symbol table has been
+  created.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#type_checking.c"TARGET="ABSTRACT"><CODE>type_checking.c</CODE></A>
+
+<dt><pre>
+<A NAME="TypeCheckingPkg_quit"></A>
+void <I></I>
+<B>TypeCheckingPkg_quit</B>(
+   <b></b> <i></i>
+)
+</pre>
+<dd> WARNING: All symbolic types SymbTypes
+  generated during type checking will be destroyed after this package
+  de-initialisation.
+<p>
+
+<DD> <B>Defined in </B> <A HREF="AllFile.html#type_checking.c"TARGET="ABSTRACT"><CODE>type_checking.c</CODE></A>
+
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

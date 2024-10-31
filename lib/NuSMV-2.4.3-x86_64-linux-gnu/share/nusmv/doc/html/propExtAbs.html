@@ -1,0 +1,269 @@
+<html>
+<head><title>prop package abstract</title></head>
+<body>
+
+
+<!-- Function Abstracts -->
+
+<dl>
+<dt> <a href="propAllDet.html#Prop_apply_coi_for_bdd" TARGET="MAIN"><code>Prop_apply_coi_for_bdd()</code></a>
+<dd> Applies cone of influence to the given property
+
+<dt> <a href="propAllDet.html#Prop_apply_coi_for_bmc" TARGET="MAIN"><code>Prop_apply_coi_for_bmc()</code></a>
+<dd> Applies cone of influence to the given property
+
+<dt> <a href="propAllDet.html#Prop_check_type" TARGET="MAIN"><code>Prop_check_type()</code></a>
+<dd> Check if a property in the database is of a given type
+
+<dt> <a href="propAllDet.html#Prop_create_partial" TARGET="MAIN"><code>Prop_create_partial()</code></a>
+<dd> Creates a property, but does not insert it within 
+  the database, so the property can be used on the fly.
+
+<dt> <a href="propAllDet.html#Prop_create" TARGET="MAIN"><code>Prop_create()</code></a>
+<dd> Allocate a property
+
+<dt> <a href="propAllDet.html#Prop_destroy" TARGET="MAIN"><code>Prop_destroy()</code></a>
+<dd> Free a property
+
+<dt> <a href="propAllDet.html#Prop_get_bdd_fsm" TARGET="MAIN"><code>Prop_get_bdd_fsm()</code></a>
+<dd> Returns the BDD FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_get_be_fsm" TARGET="MAIN"><code>Prop_get_be_fsm()</code></a>
+<dd> Returns the BE FSM  of a property
+
+<dt> <a href="propAllDet.html#Prop_get_bool_sexp_fsm" TARGET="MAIN"><code>Prop_get_bool_sexp_fsm()</code></a>
+<dd> Returns the boolean FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_get_cone" TARGET="MAIN"><code>Prop_get_cone()</code></a>
+<dd> Returns the cone of a property
+
+<dt> <a href="propAllDet.html#Prop_get_context_text" TARGET="MAIN"><code>Prop_get_context_text()</code></a>
+<dd> Returns the context name of a property
+
+<dt> <a href="propAllDet.html#Prop_get_ctrace" TARGET="MAIN"><code>Prop_get_ctrace()</code></a>
+<dd> Returns the associated concrete trace structure
+
+<dt> <a href="propAllDet.html#Prop_get_expr_core" TARGET="MAIN"><code>Prop_get_expr_core()</code></a>
+<dd> Returns the property, but it is converted before in terms
+  of core symbols.
+
+<dt> <a href="propAllDet.html#Prop_get_expr" TARGET="MAIN"><code>Prop_get_expr()</code></a>
+<dd> Returns the property as it has been parsed and created
+
+<dt> <a href="propAllDet.html#Prop_get_game_bdd_fsm" TARGET="MAIN"><code>Prop_get_game_bdd_fsm()</code></a>
+<dd> Returns the Game BDD FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_get_game_be_fsm" TARGET="MAIN"><code>Prop_get_game_be_fsm()</code></a>
+<dd> Returns the Game BE FSM in  of a property
+
+<dt> <a href="propAllDet.html#Prop_get_game_bool_sexp_fsm" TARGET="MAIN"><code>Prop_get_game_bool_sexp_fsm()</code></a>
+<dd> Returns the Game boolean FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_get_game_player" TARGET="MAIN"><code>Prop_get_game_player()</code></a>
+<dd> Returns true if the property is a game specifications,
+  i.e. one of REACHTARGET, AVOIDTARGET, REACHDEADLOCK, AVOIDDEADLOCK,
+  BUCHIGAME, GENREACTIVITY.
+
+<dt> <a href="propAllDet.html#Prop_get_game_scalar_sexp_fsm" TARGET="MAIN"><code>Prop_get_game_scalar_sexp_fsm()</code></a>
+<dd> Returns the Game scalar FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_get_index" TARGET="MAIN"><code>Prop_get_index()</code></a>
+<dd> Returns the index of a property
+
+<dt> <a href="propAllDet.html#Prop_get_number_as_string" TARGET="MAIN"><code>Prop_get_number_as_string()</code></a>
+<dd> Returns the number value as a string (only for compute 
+  types)
+
+<dt> <a href="propAllDet.html#Prop_get_number" TARGET="MAIN"><code>Prop_get_number()</code></a>
+<dd> Returns the number of the property
+
+<dt> <a href="propAllDet.html#Prop_get_scalar_sexp_fsm" TARGET="MAIN"><code>Prop_get_scalar_sexp_fsm()</code></a>
+<dd> Returns the scalar FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_get_status_as_string" TARGET="MAIN"><code>Prop_get_status_as_string()</code></a>
+<dd> Returns the a string associated to a property status
+
+<dt> <a href="propAllDet.html#Prop_get_status" TARGET="MAIN"><code>Prop_get_status()</code></a>
+<dd> Returns the status of the property
+
+<dt> <a href="propAllDet.html#Prop_get_text" TARGET="MAIN"><code>Prop_get_text()</code></a>
+<dd> Returns the property text, with no explicit context
+
+<dt> <a href="propAllDet.html#Prop_get_trace" TARGET="MAIN"><code>Prop_get_trace()</code></a>
+<dd> Returns the trace number associated to a property
+
+<dt> <a href="propAllDet.html#Prop_get_type_as_string" TARGET="MAIN"><code>Prop_get_type_as_string()</code></a>
+<dd> Returns the a string associated to a property type
+
+<dt> <a href="propAllDet.html#Prop_get_type" TARGET="MAIN"><code>Prop_get_type()</code></a>
+<dd> Returns the property type
+
+<dt> <a href="propAllDet.html#Prop_is_game_prop" TARGET="MAIN"><code>Prop_is_game_prop()</code></a>
+<dd> Returns true if the property is a game specifications,
+  i.e. one of REACHTARGET, AVOIDTARGET, REACHDEADLOCK, AVOIDDEADLOCK,
+  BUCHIGAME, GENREACTIVITY.
+
+<dt> <a href="propAllDet.html#Prop_is_psl_ltl" TARGET="MAIN"><code>Prop_is_psl_ltl()</code></a>
+<dd> Returns true if the property is PSL property and it 
+  is LTL compatible
+
+<dt> <a href="propAllDet.html#Prop_is_psl_obe" TARGET="MAIN"><code>Prop_is_psl_obe()</code></a>
+<dd> Returns true if the property is PSL property and it 
+  is CTL compatible
+
+<dt> <a href="propAllDet.html#Prop_master_get_bdd_fsm" TARGET="MAIN"><code>Prop_master_get_bdd_fsm()</code></a>
+<dd> Returns the boolean FSM in BDD
+
+<dt> <a href="propAllDet.html#Prop_master_get_be_fsm" TARGET="MAIN"><code>Prop_master_get_be_fsm()</code></a>
+<dd> Returns the boolean FSM in BE
+
+<dt> <a href="propAllDet.html#Prop_master_get_bool_sexp_fsm" TARGET="MAIN"><code>Prop_master_get_bool_sexp_fsm()</code></a>
+<dd> Returns the boolean FSM in sexp
+
+<dt> <a href="propAllDet.html#Prop_master_get_game_bdd_fsm" TARGET="MAIN"><code>Prop_master_get_game_bdd_fsm()</code></a>
+<dd> Returns the Game boolean FSM in BDD
+
+<dt> <a href="propAllDet.html#Prop_master_get_game_be_fsm" TARGET="MAIN"><code>Prop_master_get_game_be_fsm()</code></a>
+<dd> Returns the Game boolean FSM in BE
+
+<dt> <a href="propAllDet.html#Prop_master_get_game_bool_sexp_fsm" TARGET="MAIN"><code>Prop_master_get_game_bool_sexp_fsm()</code></a>
+<dd> Returns the Game boolean FSM in sexp
+
+<dt> <a href="propAllDet.html#Prop_master_get_game_scalar_sexp_fsm" TARGET="MAIN"><code>Prop_master_get_game_scalar_sexp_fsm()</code></a>
+<dd> Returns the Game scalar FSM
+
+<dt> <a href="propAllDet.html#Prop_master_get_scalar_sexp_fsm" TARGET="MAIN"><code>Prop_master_get_scalar_sexp_fsm()</code></a>
+<dd> Returns the scalar FSM
+
+<dt> <a href="propAllDet.html#Prop_master_set_bdd_fsm" TARGET="MAIN"><code>Prop_master_set_bdd_fsm()</code></a>
+<dd> Set the boolean FSM in BDD
+
+<dt> <a href="propAllDet.html#Prop_master_set_be_fsm" TARGET="MAIN"><code>Prop_master_set_be_fsm()</code></a>
+<dd> Set the boolean FSM in BE
+
+<dt> <a href="propAllDet.html#Prop_master_set_bool_sexp_fsm" TARGET="MAIN"><code>Prop_master_set_bool_sexp_fsm()</code></a>
+<dd> Set the boolean FSM in sexp
+
+<dt> <a href="propAllDet.html#Prop_master_set_game_bdd_fsm" TARGET="MAIN"><code>Prop_master_set_game_bdd_fsm()</code></a>
+<dd> Set the Game boolean FSM in BDD
+
+<dt> <a href="propAllDet.html#Prop_master_set_game_be_fsm" TARGET="MAIN"><code>Prop_master_set_game_be_fsm()</code></a>
+<dd> Set the Game boolean FSM in BE
+
+<dt> <a href="propAllDet.html#Prop_master_set_game_bool_sexp_fsm" TARGET="MAIN"><code>Prop_master_set_game_bool_sexp_fsm()</code></a>
+<dd> Set the Game boolean FSM in sexp
+
+<dt> <a href="propAllDet.html#Prop_master_set_game_scalar_sexp_fsm" TARGET="MAIN"><code>Prop_master_set_game_scalar_sexp_fsm()</code></a>
+<dd> Set the Gamescalar FSM
+
+<dt> <a href="propAllDet.html#Prop_master_set_scalar_sexp_fsm" TARGET="MAIN"><code>Prop_master_set_scalar_sexp_fsm()</code></a>
+<dd> Set the scalar FSM
+
+<dt> <a href="propAllDet.html#Prop_print_db" TARGET="MAIN"><code>Prop_print_db()</code></a>
+<dd> Prints a property with info or its position and status 
+  within the database
+
+<dt> <a href="propAllDet.html#Prop_print" TARGET="MAIN"><code>Prop_print()</code></a>
+<dd> Prints a property
+
+<dt> <a href="propAllDet.html#Prop_set_bdd_fsm" TARGET="MAIN"><code>Prop_set_bdd_fsm()</code></a>
+<dd> Sets the boolean FSM in BDD of a property
+
+<dt> <a href="propAllDet.html#Prop_set_be_fsm" TARGET="MAIN"><code>Prop_set_be_fsm()</code></a>
+<dd> Sets the boolean BE FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_set_bool_sexp_fsm" TARGET="MAIN"><code>Prop_set_bool_sexp_fsm()</code></a>
+<dd> Sets the boolean FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_set_cone" TARGET="MAIN"><code>Prop_set_cone()</code></a>
+<dd> Sets the cone of a property
+
+<dt> <a href="propAllDet.html#Prop_set_ctrace" TARGET="MAIN"><code>Prop_set_ctrace()</code></a>
+<dd> Associates given concrete trace structure to the
+  property
+
+<dt> <a href="propAllDet.html#Prop_set_fsm_to_master" TARGET="MAIN"><code>Prop_set_fsm_to_master()</code></a>
+<dd> Copies master prop FSM data into prop
+
+<dt> <a href="propAllDet.html#Prop_set_game_bdd_fsm" TARGET="MAIN"><code>Prop_set_game_bdd_fsm()</code></a>
+<dd> Sets the Game BDD FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_set_game_be_fsm" TARGET="MAIN"><code>Prop_set_game_be_fsm()</code></a>
+<dd> Sets the Game boolean BE FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_set_game_bool_sexp_fsm" TARGET="MAIN"><code>Prop_set_game_bool_sexp_fsm()</code></a>
+<dd> Sets the Game boolean FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_set_game_scalar_sexp_fsm" TARGET="MAIN"><code>Prop_set_game_scalar_sexp_fsm()</code></a>
+<dd> Sets the Game scalar FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_set_index" TARGET="MAIN"><code>Prop_set_index()</code></a>
+<dd> Sets the index of a property
+
+<dt> <a href="propAllDet.html#Prop_set_number_infinite" TARGET="MAIN"><code>Prop_set_number_infinite()</code></a>
+<dd> Sets the number of the property to INFINITE
+
+<dt> <a href="propAllDet.html#Prop_set_number_undefined" TARGET="MAIN"><code>Prop_set_number_undefined()</code></a>
+<dd> Sets the number of the property to UNDEFINED
+
+<dt> <a href="propAllDet.html#Prop_set_number" TARGET="MAIN"><code>Prop_set_number()</code></a>
+<dd> Sets the number of the property
+
+<dt> <a href="propAllDet.html#Prop_set_scalar_sexp_fsm" TARGET="MAIN"><code>Prop_set_scalar_sexp_fsm()</code></a>
+<dd> Sets the scalar FSM of a property
+
+<dt> <a href="propAllDet.html#Prop_set_status" TARGET="MAIN"><code>Prop_set_status()</code></a>
+<dd> Sets the status of the property
+
+<dt> <a href="propAllDet.html#Prop_set_trace" TARGET="MAIN"><code>Prop_set_trace()</code></a>
+<dd> Sets the trace number
+
+<dt> <a href="propAllDet.html#Prop_verify" TARGET="MAIN"><code>Prop_verify()</code></a>
+<dd> Verifies a given property
+
+<dt> <a href="propAllDet.html#prop_db_get_prop_type_as_parsing_string" TARGET="MAIN"><code>prop_db_get_prop_type_as_parsing_string()</code></a>
+<dd> Returns the parsing type given the property type
+
+<dt> <a href="propAllDet.html#prop_db_prop_parse_from_arg_and_add" TARGET="MAIN"><code>prop_db_prop_parse_from_arg_and_add()</code></a>
+<dd> Add a property to the database from an arg structure 
+  and a type
+
+<dt> <a href="propAllDet.html#prop_deinit" TARGET="MAIN"><code>prop_deinit()</code></a>
+<dd> Destroy the elements of a property
+
+<dt> <a href="propAllDet.html#prop_init" TARGET="MAIN"><code>prop_init()</code></a>
+<dd> Initializes the property
+
+<dt> <a href="propAllDet.html#prop_print" TARGET="MAIN"><code>prop_print()</code></a>
+<dd> Prints a property
+
+<dt> <a href="propAllDet.html#prop_set_bdd_fsm" TARGET="MAIN"><code>prop_set_bdd_fsm()</code></a>
+<dd> 
+
+<dt> <a href="propAllDet.html#prop_set_be_fsm" TARGET="MAIN"><code>prop_set_be_fsm()</code></a>
+<dd> 
+
+<dt> <a href="propAllDet.html#prop_set_bool_sexp_fsm" TARGET="MAIN"><code>prop_set_bool_sexp_fsm()</code></a>
+<dd> 
+
+<dt> <a href="propAllDet.html#prop_set_game_bdd_fsm" TARGET="MAIN"><code>prop_set_game_bdd_fsm()</code></a>
+<dd> 
+
+<dt> <a href="propAllDet.html#prop_set_game_be_fsm" TARGET="MAIN"><code>prop_set_game_be_fsm()</code></a>
+<dd> 
+
+<dt> <a href="propAllDet.html#prop_set_game_bool_sexp_fsm" TARGET="MAIN"><code>prop_set_game_bool_sexp_fsm()</code></a>
+<dd> 
+
+<dt> <a href="propAllDet.html#prop_set_game_scalar_sexp_fsm" TARGET="MAIN"><code>prop_set_game_scalar_sexp_fsm()</code></a>
+<dd> 
+
+<dt> <a href="propAllDet.html#prop_set_scalar_sexp_fsm" TARGET="MAIN"><code>prop_set_scalar_sexp_fsm()</code></a>
+<dd> 
+
+</dl>
+
+<hr>
+
+Last updated on 2007/05/22 18h:36
+</body></html>

@@ -1,0 +1,64 @@
+<HTML>
+<HEAD><TITLE>The  package: files</TITLE></HEAD>
+<BODY>
+
+<DL>
+ <DT> <A HREF="#psl_grammar.y"><CODE>psl_grammar.y</CODE></A>
+ <DD> Grammar (for Yacc and Bison) of PSL specification input
+  language
+ <DT> <A HREF="#psl_input.l"><CODE>psl_input.l</CODE></A>
+ <DD> Lexical analyzer for the PSL specification input language
+ <DT> <A HREF="#psl_conv.c"><CODE>psl_conv.c</CODE></A>
+ <DD> Algorithms and conversions on PslNode structure
+ <DT> <A HREF="#pslExpr.c"><CODE>pslExpr.c</CODE></A>
+ <DD> Implementation of the PSL parser interface
+</DL><HR>
+<A NAME="psl_grammar.y"><H1>psl_grammar.y</H1></A>
+Grammar (for Yacc and Bison) of PSL specification input
+  language <P>
+<B>By: Roberto Cavada</B><P>
+<P><B>See Also</B><A HREF="#psl_input.l"><CODE>psl_input.l</CODE></A>
+<DL>
+</DL>
+<HR>
+<A NAME="psl_input.l"><H1>psl_input.l</H1></A>
+Lexical analyzer for the PSL specification input language <P>
+<B>By: Roberto Cavada</B><P>
+<P><B>See Also</B><A HREF="#psl_grammar.y"><CODE>psl_grammar.y</CODE></A>
+<DL>
+</DL>
+<HR>
+<A NAME="psl_conv.c"><H1>psl_conv.c</H1></A>
+Algorithms and conversions on PslNode structure <P>
+<B>By: Fabio Barbon, Roberto Cavada, Simone Semprini</B><P>
+<P><B>See Also</B><A HREF="#psl_conv.h"><CODE>psl_conv.h</CODE></A>
+<DL>
+</DL>
+<HR>
+<A NAME="pslExpr.c"><H1>pslExpr.c</H1></A>
+Implementation of the PSL parser interface <P>
+<B>By: Roberto Cavada, Marco Roveri</B><P>
+<P><B>See Also</B><A HREF="#pslExpr.h"><CODE>pslExpr.h</CODE></A>
+<DL>
+ <DT> <A HREF="AllDet.html#psl_expr_print_klass" TARGET="MAIN"><CODE>psl_expr_print_klass()</CODE></A>
+ <DD> required
+
+ <DT> <A HREF="AllDet.html#psl_expr_is_boolean" TARGET="MAIN"><CODE>psl_expr_is_boolean()</CODE></A>
+ <DD> Returns 1 if the given node is boolean compatible type, 0
+otherwise
+
+ <DT> <A HREF="AllDet.html#psl_expr_check_klass" TARGET="MAIN"><CODE>psl_expr_check_klass()</CODE></A>
+ <DD> returns 0 if the given psl expr is not compatible with the
+given klass
+
+ <DT> <A HREF="AllDet.html#psl_expr_base_num_to_val" TARGET="MAIN"><CODE>psl_expr_base_num_to_val()</CODE></A>
+ <DD> Converts from base to number: TO BE IMPLEMENTED
+
+ <DT> <A HREF="AllDet.html#psl_expr_require_klass" TARGET="MAIN"><CODE>psl_expr_require_klass()</CODE></A>
+ <DD> Checks that given expression is compatible with the 
+given required syntactic class
+
+</DL>
+<HR>
+Last updated on 2007/05/22 18h:36
+</BODY></HTML>

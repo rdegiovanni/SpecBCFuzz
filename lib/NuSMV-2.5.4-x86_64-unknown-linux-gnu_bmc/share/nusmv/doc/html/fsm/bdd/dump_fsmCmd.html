@@ -1,0 +1,44 @@
+<html>
+<head><title>dump_fsm</title></head>
+<body>
+
+<h3>dump_fsm - Dumps (in DOT format) selected parts of the bdd fsm, with optional expression</h3>
+<hr>
+<code>dump_fsm [-h] -o filename [-i] [-I] [-t] [-f] [-r] [-e expression]</code><p>
+Dumps selected parts of the bdd fsm, with
+  optional expression, in DOT format. At least one among options
+  [iIte] must be specified.
+
+    Command Options:
+
+    <dt> <tt>-o filename</tt>
+    <dd> Dumps to the specified file name.
+
+    <dt> <tt>-i</tt>
+    <dd> Dumps the initial states of the FSM, among with other
+    selected outputs.
+
+    <dt> <tt>-I</tt>
+    <dd> Dumps the invariant states of the FSM, among with other
+    selected outputs.
+
+    <dt> <tt>-t</tt>
+    <dd> Dumps the (monolithic) transition relation of the FSM, among with other
+    selected outputs.
+
+    <dt> <tt>-F</tt>
+    <dd> Dumps the (monolithic) fair states of the FSM, among with other
+    selected outputs.
+
+    <dt> <tt>-r</tt>
+    <dd> Dumps the (monolithic) reachable states of the FSM, among with other
+    selected outputs.
+
+    <dt> <tt>-e</tt>
+    <dd> Dumps the specified expression, among with other
+    selected outputs (see also command dump_expr).
+  </dl>
+
+<HR>
+Last updated on 2011/10/28 15h:48
+</body></html>
