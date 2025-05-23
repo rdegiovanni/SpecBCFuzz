@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+bool h;
+bool m;
+bool p;
+
+
+</declaration>
+	<template>
+		<name x="5" y="5">MinePump</name>
+		<declaration>// Place local declarations here.
+</declaration>
+		<location id="id0" x="-646" y="-297">
+		</location>
+		<init ref="id0"/>
+		<transition id="id1">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-628" y="-310">true</label>
+			<label kind="assignment" x="-628" y="-276">p=1</label>
+			<nail x="-501" y="-255"/>
+			<nail x="-535" y="-204"/>
+		</transition>
+		<transition id="id2">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-628" y="-335">true</label>
+			<label kind="assignment" x="-628" y="-301">p=0</label>
+			<nail x="-510" y="-306"/>
+			<nail x="-518" y="-272"/>
+		</transition>
+		<transition id="id3" controllable="false">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-641" y="-284">true</label>
+			<label kind="assignment" x="-641" y="-250">m=1</label>
+			<nail x="-637" y="-204"/>
+			<nail x="-603" y="-212"/>
+		</transition>
+		<transition id="id4" controllable="false">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-713" y="-305">true</label>
+			<label kind="assignment" x="-713" y="-271">m=0</label>
+			<nail x="-731" y="-246"/>
+			<nail x="-663" y="-204"/>
+		</transition>
+		<transition id="id5" controllable="false">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-628" y="-339">true</label>
+			<label kind="assignment" x="-628" y="-305">h=1</label>
+			<nail x="-544" y="-314"/>
+			<nail x="-586" y="-382"/>
+		</transition>
+		<transition id="id6" controllable="false">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-713" y="-339">true</label>
+			<label kind="assignment" x="-713" y="-305">h=0</label>
+			<nail x="-731" y="-314"/>
+			<nail x="-697" y="-391"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = MinePump();
+// List one or more processes to be composed into a system.
+system Process;
+</system>
+	<queries>
+		<query>
+			<formula>A[]!(h &amp; m) </formula>
+			<comment/>
+			<result outcome="failure" type="quality" timestamp="2023-10-16 15:00:56 +0200">
+			</result>
+		</query>
+	</queries>
+</nta>
