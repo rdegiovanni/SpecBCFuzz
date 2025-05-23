@@ -4,7 +4,7 @@
   <artifactId>fuzzing-ltl-solvers</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
-  	<project.baseDir>workspace/java/SpecBCFuzz</project.baseDir>
+  	<project.baseDir>SpecBCFuzz</project.baseDir>
   </properties>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -46,13 +46,6 @@
    -->
 </repositories>
   <dependencies>
-  	<dependency>
-        <groupId>de.tum.in.model</groupId>
-        <artifactId>owl</artifactId>
-        <scope>system</scope>
-        <version>18.10</version>
-        <systemPath>${project.baseDir}/lib/owl-18.10-snapshot.jar</systemPath>
-    </dependency>
     <dependency>
 	    <groupId>commons-io</groupId>
 	    <artifactId>commons-io</artifactId>
@@ -84,6 +77,12 @@
 	  <artifactId>jmetal-example</artifactId>
 	  <version>5.11</version>
 	</dependency>
+	  <!-- https://mvnrepository.com/artifact/org.uma.jmetal/jmetal-lab -->
+	  <dependency>
+		  <groupId>org.uma.jmetal</groupId>
+		  <artifactId>jmetal-lab</artifactId>
+		  <version>5.11</version>
+	  </dependency>
 	<dependency>
 	  <groupId>org.apache.commons</groupId>
 	  <artifactId>commons-text</artifactId>

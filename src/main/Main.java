@@ -28,8 +28,8 @@ import sat.tool.PLTL;
 import sat.tool.PLTL.PLTL_VERSION;
 import sat.tool.PLTLBDD;
 import sat.tool.Spin;
-import sat.tool.kAllLTLBinary;
-import sat.tool.kAllLTL.KAllLTL;
+//import sat.tool.kAllLTLBinary;
+//import sat.tool.kAllLTL.KAllLTL;
 
 public class Main {
 	
