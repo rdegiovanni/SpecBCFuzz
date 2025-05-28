@@ -1,0 +1,5 @@
+(((G((!req | F(ack))) & G((!go | F(grant))))) U ((G(!go) & G((!req | F(ack))))))
+(req & G((!req | F(ack))) & G((!go | F(grant))))
+((G(!go) & G((!req | F(ack)))) | (G(F(grant)) & G((!req | F(ack)))))
+((((!go | G(grant)) & G((!req | F(ack))))) W ((G(F(ack)) & G((!go | F(grant))))))
+(!req & G((!go | F(grant))))

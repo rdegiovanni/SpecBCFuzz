@@ -1,0 +1,6 @@
+-d='G ((ta -> X(tc)) && (X(tc) -> ta))'
+-d='G (X(cc) -> (ca && go))'
+-g='G (tc -> !cc)'
+-g='G (ta -> !go)'
+-ins='ta,tc,ca,cc'
+-outs='go'

@@ -1,0 +1,5 @@
+-g='G(req -> X (grant || X (grant || X grant)))'
+-g='G(grant -> X !grant)'
+-g='G(cancel -> X (!grant U go))'
+-ins='req,cancel,go'
+-outs='grant'
