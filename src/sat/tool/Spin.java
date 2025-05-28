@@ -187,10 +187,10 @@ public class Spin extends LTLSolver {
 		SolverResult result = SolverResult.UNSAT();
 		try {
 			while ((aux = bufferedreader.readLine()) != null) {
-			    if (aux.contains("is false")) {
+			    if (aux.contains("errors: 1")) {
 			    	result = SolverResult.SAT();
 			    	break;
-			    } else if (aux.contains("is true")) {
+			    } else if (aux.contains("errors: 0")) {
 			    	result = SolverResult.UNSAT();
 			    	break;
 			    }
