@@ -1,0 +1,3 @@
+(!atfloor & F((call & G(!open))))
+(((open & !atfloor & F((call & G(!open))))) W ((call & G(!open))))
+(((!atfloor) W (open)) & F((call & G(!open))))

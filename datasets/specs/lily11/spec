@@ -1,0 +1,3 @@
+-ins='req,go'
+-outs='grant,ack'
+-g='!( G(req -> F ack) && G(go -> F grant) )'

@@ -1,0 +1,5 @@
+(F(req) | F((G(cancel) & G(X(((grant) R (!go)))))) | F(X(X((grant & X(grant))))))
+(req | (cancel & X(((grant) R (!go)))) | F(X((grant & X(grant)))))
+(((cancel & ((grant) R (!go)))) W ((req | F((grant & X(grant))))))
+(F(req) | F((cancel & X(((!go) R (grant))))) | F(X((grant & X(grant)))))
+(F(req) | F((cancel & X(((grant) R (!go))))))

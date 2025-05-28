@@ -1,0 +1,5 @@
+-ins='r,s'
+-outs='p,q'
+-d='G (q -> s)'
+-g='G (p -> F (q))'
+-g='G (r -> G(!s))'

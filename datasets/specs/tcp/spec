@@ -1,0 +1,4 @@
+-ins='delivered,ack'
+-outs='send'
+-g='G(send -> (!ack U delivered))'
+-g='G (delivered -> (!send U ack))'
