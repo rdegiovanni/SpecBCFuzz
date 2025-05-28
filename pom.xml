@@ -46,6 +46,13 @@
    -->
 </repositories>
   <dependencies>
+	  <dependency>
+		  <groupId>owl</groupId>
+		  <artifactId>owl-18.10-snapshot</artifactId>
+		  <version>18.10</version>
+		  <scope>system</scope>
+		  <systemPath>${project.basedir}/lib/owl-18.10-snapshot.jar</systemPath>
+	  </dependency>
     <dependency>
 	    <groupId>commons-io</groupId>
 	    <artifactId>commons-io</artifactId>
