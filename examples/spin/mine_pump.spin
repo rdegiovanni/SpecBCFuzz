@@ -25,6 +25,4 @@ init
 ltl {
 <>(h && m)
 }
-ltl {
 
-}

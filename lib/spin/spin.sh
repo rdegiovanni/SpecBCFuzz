@@ -3,7 +3,7 @@ spin_dir=spin651_linux64/
 model_file=$1
 # spec=$2
 
-cp $model_file $spin_dir/specs/trap_formula.spin
+cp $model_file $spin_dir/trap_formula.spin
 pushd $spin_dir > /dev/null
 
 # echo 'ltl {' >> trap_formula.spin
