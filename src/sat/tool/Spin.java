@@ -112,8 +112,7 @@ public class Spin extends LTLSolver {
 	}
 	
 	protected String libraryPath() {
-		return this.binPath.getParentFile().getParentFile().getParentFile().getAbsolutePath() + File.separator + "nusmv" +
-				File.pathSeparator + "$LD_LIBRARY_PATH";
+		return "$LD_LIBRARY_PATH";
 	}
 	
 	@Override

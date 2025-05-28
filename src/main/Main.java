@@ -203,6 +203,8 @@ public class Main {
 		//final double BOOLEAN_CONSTANT_PROBABILITY = 0.01;
 		//final int MAX_NONTERMINAL = 30;
 
+		File spinBin_v651 = null;
+
 		File aaltaBin_v2 = null;
 		File aaltaBin_v1 = null;
 		
@@ -254,8 +256,8 @@ public class Main {
 		File blackMathsatTmpRunner_v052;
 		File blackCryptominisatTmpRunner_v052;
 
-		File ltl2ba_v13;
-		
+		SATSolver spin_v651 = null;
+
 		SATSolver aalta = null;
 		SATSolver aalta_v1 = null;
 					
@@ -307,6 +309,11 @@ public class Main {
 			//ltl2ba13 = new Spin(ltl2ba_v13, MAX_LITERAL, "v1.3", new File("/Users/luiz.carvalho/Downloads/ltl2ba-1.3/input"));
 			//PLTL_tableau = new PLTL(PLTLBin_tableau, MAX_LITERAL, PLTL_VERSION.tableau_graph);
 		} else if (os.equals("linux")) {
+			/*
+			 * Spin
+			 */
+			spinBin_v651 = new File(lib.getAbsoluteFile() + File.separator + "spin" + File.separator + "spin.sh");
+
 			/*
 			 * Aalta
 			 */
@@ -378,6 +385,8 @@ public class Main {
 			//Fuzzer fuzzer = new GrammarFuzzer(grammar, new Random(), TERMINAL_PROBABILITY, MAX_NONTERMINAL);
 
 			//SOLVERS
+			spin_v651 = new Spin(spinBin_v651, MAX_LITERAL, "v651");
+
 			aalta = new Aalta(aaltaBin_v2, MAX_LITERAL, "v2");
 			aalta_v1 = new Aalta(aaltaBin_v1, MAX_LITERAL, "v1");
 			
@@ -439,61 +448,66 @@ public class Main {
 		
 		if (os.equals("linux")) {
 			/*
-			 * Aalta
+			 * Spin
 			 */
-			solvers.add(aalta);
-			
-			/*
-			 * NuSMV - libreadline.so.8
-			 */
-			solvers.add(nuSMV_v260);
-			solvers.add(nuSMVbmc_v260);
-			
-			/*
-			 * PLTL
-			 */
-			solvers.add(PLTL_tableau);
-			
-			/*
-			 * Black
-			 */
-			solvers.add(blackZ3_v074);
-			solvers.add(blackMathSAT_v074);
-			solvers.add(blackCryptoMiniSAT_v074);	
-			
-			solvers.add(blackZ3_v092);
-			solvers.add(blackMathSAT_v092);
-			solvers.add(blackCryptoMiniSAT_v092);
-			solvers.add(blackCVC5_v092);
-			//solvers.add(blackMiniSAT_v092);
-			
-			solvers.add(blackZ3_v052);
-			solvers.add(blackMathSAT_v052);
-			solvers.add(blackCryptoMiniSAT_v052);
-			//solvers.add(blackCVC5_v092);
-			//solvers.add(blackMiniSAT_v092);
-			
-			/*
-			 * Aalta
-			 */
-			solvers.add(aalta_v1);
-			
-			/*
-			 * NuSMV 
-			 */
-			//libreadline.so.6
-			solvers.add(nuSMV_v254);
-			solvers.add(nuSMVbmc_v254);
-			
-			//libreadline.so.4
-			solvers.add(nuSMV_v243);
-			solvers.add(nuSMVbmc_v243);
-			
-			/*
-			 * PLTL
-			 */
-			solvers.add(PLTL_BDD);
-			solvers.add(PLTL_multipass);
+			solvers.add(spin_v651);
+
+//			/*
+//			 * Aalta
+//			 */
+//			solvers.add(aalta);
+//
+//			/*
+//			 * NuSMV - libreadline.so.8
+//			 */
+//			solvers.add(nuSMV_v260);
+//			solvers.add(nuSMVbmc_v260);
+//
+//			/*
+//			 * PLTL
+//			 */
+//			solvers.add(PLTL_tableau);
+//
+//			/*
+//			 * Black
+//			 */
+//			solvers.add(blackZ3_v074);
+//			solvers.add(blackMathSAT_v074);
+//			solvers.add(blackCryptoMiniSAT_v074);
+//
+//			solvers.add(blackZ3_v092);
+//			solvers.add(blackMathSAT_v092);
+//			solvers.add(blackCryptoMiniSAT_v092);
+//			solvers.add(blackCVC5_v092);
+//			//solvers.add(blackMiniSAT_v092);
+//
+//			solvers.add(blackZ3_v052);
+//			solvers.add(blackMathSAT_v052);
+//			solvers.add(blackCryptoMiniSAT_v052);
+//			//solvers.add(blackCVC5_v092);
+//			//solvers.add(blackMiniSAT_v092);
+//
+//			/*
+//			 * Aalta
+//			 */
+//			solvers.add(aalta_v1);
+//
+//			/*
+//			 * NuSMV
+//			 */
+//			//libreadline.so.6
+//			solvers.add(nuSMV_v254);
+//			solvers.add(nuSMVbmc_v254);
+//
+//			//libreadline.so.4
+//			solvers.add(nuSMV_v243);
+//			solvers.add(nuSMVbmc_v243);
+//
+//			/*
+//			 * PLTL
+//			 */
+//			solvers.add(PLTL_BDD);
+//			solvers.add(PLTL_multipass);
 			
 			//libreadline.so.4
 			//solvers.add(nuSMV_v225);
