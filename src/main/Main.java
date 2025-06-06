@@ -460,7 +460,7 @@ public class Main {
 //			/*
 //			 * NuSMV - libreadline.so.8
 //			 */
-//			solvers.add(nuSMV_v260);
+			solvers.add(nuSMV_v260);
 //			solvers.add(nuSMVbmc_v260);
 //
 //			/*
