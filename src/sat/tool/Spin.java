@@ -221,7 +221,7 @@ public class Spin extends LTLSolver {
 	}
 
 	public String getBaseName() {
-		return "NUSMV";
+		return "SPIN";
 	}
 	
 	@Override
