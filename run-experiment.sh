@@ -63,7 +63,7 @@ echo $PATH
 echo $(java -version)
 echo $(javac -version)
 
-#mvn assembly:assembly
+mvn assembly:assembly
 
 mkdir -p $SLURM_DIR
 mkdir -p $LOG_DIR
@@ -91,7 +91,8 @@ do
     ID_JOB=`expr $ID_JOB \\* $END_TMP`
     ID_JOB=`expr $ID_JOB + $K`
     echo "ID: $ID_JOB"
-    nohup ./SpecBCFuzz.sh -log=$LOG_DIR-$ID_JOB -lib=$LIB_DIR -id=$ID_JOB -run=$N_RUN -sattimeout=$SAT_TIMEOUT -experiment=$EXPERIMENT -enableThreads -popSize=100 -maxNumOfInd=1000 -specs=${SPECS[$K]} 1> $SLURM_DIR/$ID_JOB-ltl-fuzzer.out 2> $SLURM_DIR/$ID_JOB-ltl-fuzzer.err
+    ./SpecBCFuzz.sh -log=$LOG_DIR-$ID_JOB -lib=$LIB_DIR -id=$ID_JOB -run=$N_RUN -sattimeout=$SAT_TIMEOUT -experiment=$EXPERIMENT -enableThreads -popSize=100 -maxNumOfInd=1000 -specs=${SPECS[$K]} 1> $SLURM_DIR/$ID_JOB-ltl-fuzzer.out 2> $SLURM_DIR/$ID_JOB-ltl-fuzzer.err
+
     K=`expr $K + 1`
     if [ "$K" == "$END" ] && [ "$START_REPET_JOBS" -lt "$END_REPET_JOBS" ]
     then
