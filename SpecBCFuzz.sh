@@ -20,4 +20,4 @@ JOB_ID=common
 #-Xmx5G
 
 #java -Xmx15g -Djava.library.path=/usr/local/lib -cp target/classes/.:lib_tmp/lib_$JOB_ID/* -jar target/fuzzing-ltl-solvers-0.0.1-SNAPSHOT.jar "$@"
-java -Xmx8g -Djava.library.path=/usr/local/lib -cp target/classes/.:lib_tmp/lib_$JOB_ID/* -jar target/fuzzing-ltl-solvers-0.0.1-SNAPSHOT.jar "$@"
+java -Xmx8g -Djava.library.path=/usr/local/lib -cp target/classes/.:$BASEDIR/lib/* -jar target/fuzzing-ltl-solvers-0.0.1-SNAPSHOT.jar "$@"
