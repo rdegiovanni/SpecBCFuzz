@@ -46,8 +46,8 @@ public class Spin extends LTLSolver {
 	protected String formulaToString(Formula formula) {
 		List<String> lAtomicPropositions = getAtomicPropositions();
 		String result = PrintVisitor.toString(formula, lAtomicPropositions, true);
-		result = result.replace("false", "FALSE");
-		result = result.replace("true", "TRUE");
+		result = result.replace("G", "[]");
+		result = result.replace("F", "<>");
 		//System.out.println(result);
 		return result;
 	}
@@ -82,8 +82,9 @@ public class Spin extends LTLSolver {
 			}
 		};
 		Formula result = formula.accept(operatorReplacer);
-		//System.out.println(result);
 		result = result.accept(operatorReplacer);
+		System.err.print("Spin formula: ");
+		System.err.println(result);
 		//System.out.println(result);
 		//assert(result.toString().equals(formula.accept(operatorReplacer).toString()));
 		/*
@@ -108,6 +109,8 @@ public class Spin extends LTLSolver {
 		//String callBin = prefix + "ld.so --library-path " + libraryPath() + " " + call;
 		//MacOS
 		String callBin = prefix + " " + call;
+		System.err.print("Calling as...");
+		System.err.println(callBin);
 		return callBin;
 	}
 	
@@ -182,22 +185,24 @@ public class Spin extends LTLSolver {
 	@Override
 	protected SolverResult outputAnalysis(InputStream in) {
 		InputStreamReader inread = new InputStreamReader(in);
-    	BufferedReader bufferedreader = new BufferedReader(inread);
+    		BufferedReader bufferedreader = new BufferedReader(inread);
 		String aux;
 		SolverResult result = SolverResult.UNSAT();
 		try {
 			while ((aux = bufferedreader.readLine()) != null) {
-			    if (aux.contains("errors: 1")) {
+			    System.err.println("SPIN output analysis: " + aux);
+			    if (aux.contains("assertion violated")) {
 			    	result = SolverResult.SAT();
 			    	break;
-			    } else if (aux.contains("errors: 0")) {
-			    	result = SolverResult.UNSAT();
+			    } else if (aux.contains("Search not completed")) {
+			    	result = SolverResult.TIMEOUT();
 			    	break;
 			    }
 			}
-	    	bufferedreader.close();
-	    	inread.close();
-	    	in.close();
+			// result = SolverResult.UNSAT();
+	    		bufferedreader.close();
+	    		inread.close();
+	    		in.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			return SolverResult.ERROR();
@@ -233,15 +238,16 @@ public class Spin extends LTLSolver {
 		return baseName;
 	}
 	
-	/**
+	
 	@Override
 	protected boolean errorAnalysis(InputStream err) {
-		boolean error = super.errorAnalysis(err);
-		if (error) {
-			return error;
-		}
-		return error;
+		return false;
+		//boolean error = super.errorAnalysis(err);
+		//if (error) {
+		//	return error;
+		//}
+		//return error;
 	}
-	**/
+
 }
 	
