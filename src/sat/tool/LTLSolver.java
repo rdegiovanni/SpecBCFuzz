@@ -338,14 +338,17 @@ public abstract class LTLSolver implements SATSolver {
 					//Input stream
 					InputStream out = p.getInputStream();
 					result = outputAnalysis(out);
+					System.err.println("LTL Solver out. analysis: " + result);
 			    	//Error stream
 					InputStream err = p.getErrorStream();
 			    	if (errorAnalysis(err) == true) {
 			    		result = SolverResult.ERROR();
 			    	}
 				    //Process failure
-					if (p.waitFor() != 0) {
+					int pWait = p.waitFor();
+					if (pWait != 0) {
 						result = SolverResult.ERROR();
+						System.err.println("LTL Solverp.waitFor() != 0!!!: " + pWait);
 					}
 					time = executionTime();
 				}

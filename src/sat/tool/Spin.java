@@ -48,6 +48,8 @@ public class Spin extends LTLSolver {
 		String result = PrintVisitor.toString(formula, lAtomicPropositions, true);
 		result = result.replace("G", "[]");
 		result = result.replace("F", "<>");
+		result = result.replace("|", "||");
+		result = result.replace("&", "&&");
 		//System.out.println(result);
 		return result;
 	}
@@ -187,19 +189,20 @@ public class Spin extends LTLSolver {
 		InputStreamReader inread = new InputStreamReader(in);
     		BufferedReader bufferedreader = new BufferedReader(inread);
 		String aux;
-		SolverResult result = SolverResult.UNSAT();
+		SolverResult result = SolverResult.TIMEOUT();
 		try {
 			while ((aux = bufferedreader.readLine()) != null) {
 			    System.err.println("SPIN output analysis: " + aux);
-			    if (aux.contains("assertion violated")) {
-			    	result = SolverResult.SAT();
+			    if (aux.contains("errors: 0")) {
+				System.err.println("SPIN errors zero found");
+			    	result = SolverResult.UNSAT();
 			    	break;
-			    } else if (aux.contains("Search not completed")) {
-			    	result = SolverResult.TIMEOUT();
+			    } else if (aux.contains("errors: 1")) {
+				System.err.println("SPIN errors one found");
+			    	result = SolverResult.SAT();
 			    	break;
 			    }
 			}
-			// result = SolverResult.UNSAT();
 	    		bufferedreader.close();
 	    		inread.close();
 	    		in.close();
@@ -207,6 +210,7 @@ public class Spin extends LTLSolver {
 			e.printStackTrace();
 			return SolverResult.ERROR();
 		}
+		System.err.println("SPIN final result: " + result);
 		return result;
 		/*
 		try {
