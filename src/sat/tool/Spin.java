@@ -105,7 +105,7 @@ public class Spin extends LTLSolver {
 		String call = this.binPath.getAbsolutePath();
 		if (isPerformance(Performance.POSIX)) {
 			//time = "/usr/bin/time -p";
-			prefix = "time -p ";
+			prefix = "time -p timeout 5m";
 		}
 		//Linux
 		//String callBin = prefix + "ld.so --library-path " + libraryPath() + " " + call;

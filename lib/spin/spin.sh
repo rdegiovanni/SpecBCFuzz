@@ -1,3 +1,4 @@
+#!/bin/bash
 spin_dir=spin651_linux64/
 #echo "Running Spin!"
 model_file=$1
