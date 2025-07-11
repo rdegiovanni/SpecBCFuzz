@@ -1,0 +1,323 @@
+-- Updated for SPIN Version 3.3 ---
+
+(See README.old in this directory for test results
+ that apply to older Spin versions 3.1-3.2.
+ Generally the numbers reported for 3.3 are lower
+ than those for the older versions of Spin.)
+
+Perform tests test0 to test5 in the order listed, and
+make sure you get the same results.
+The next four tests are to assess the effect of
+partial order reductions.  In exhaustive mode, they
+may not all be executable within the bounds of your
+system - with reduction turned on, though, they should
+all run as specified.
+The last test checks the use of execution priorities
+during random simulations.
+
+The file called 'pathfinder' illustrates the use of
+'provided' clauses (using as inspiration the bug in
+the control software of the Mars pathfinder that
+spotted an otherwise perfect mission in July 1997)
+
+	You can always check valid options of spin
+	by typing: spin --
+
+	Similarly, you can check valid options of
+	the compiled verifiers by typing: pan --
+
+test 0	check that spin exists, is executable, and is
+	the version that you expect
+
+	$ spin -V
+	Spin Version 3.3.0 -- 1 June 1999
+
+test 1	check that you can run a simulation
+
+	$ spin hello
+	passed first test!
+	1 processes created
+
+test 2	a basic reachability check (safety)
+
+	$ spin -a loops              # generate c-verifier
+	$ cc -DNOREDUCE -o pan pan.c # no reduction (test)
+	$ pan                        # default run
+	hint: this search is more efficient if pan.c is compiled -DSAFETY
+	(Spin Version 3.3.0 -- 1 June 1999)
+
+	Full statespace search for:
+	        never-claim             - (none specified)
+	        assertion violations    +
+	        acceptance   cycles     - (not selected)
+	        invalid endstates       +
+	
+	State-vector 12 byte, depth reached 8, errors: 0
+	      12 states, stored
+	       4 states, matched
+	      16 transitions (= stored+matched)
+	       0 atomic steps
+	hash conflicts: 0 (resolved)
+	(max size 2^18 states)
+	
+	1.493     memory usage (Mbyte)
+	
+	unreached in proctype loop
+	        (0 of 12 states)
+
+test 3	cycle detection check (liveness):
+
+	$ pan -a		# search for acceptance cycles
+	pan: acceptance cycle (at depth 0)
+	pan: wrote loops.trail
+	(Spin Version 3.3.0 -- 1 June 1999)
+	Warning: Search not completed
+	
+	Full statespace search for:
+	        never-claim             - (none specified)
+	        assertion violations    +
+>	        acceptance   cycles     + (fairness disabled)
+	        invalid endstates       +
+	
+	State-vector 12 byte, depth reached 8, errors: 1
+	       9 states, stored (16 visited)
+	       2 states, matched
+	      13 transitions (= visited+matched)
+	       0 atomic steps
+	hash conflicts: 0 (resolved)
+	(max size 2^18 states)
+	
+	1.493     memory usage (Mbyte)
+
+test 4	guided simulation check (playback the error trail found in test 3)
+
+	$ spin -t -p loops	# guided simulation for the error-cycle
+	<<<<<START OF CYCLE>>>>>
+	  1:    proc  0 (loop) line   5 "loops" (state 1)       [a = ((a+1)%3)]
+	  2:    proc  0 (loop) line   7 "loops" (state 2)       [b = (2*a)]
+	  3:    proc  0 (loop) line   7 "loops" (state 3)       [(1)]
+	  3:    proc  0 (loop) line  10 "loops" (state 8)       [b = (b-1)]
+	  4:    proc  0 (loop) line   5 "loops" (state 1)       [a = ((a+1)%3)]
+	  5:    proc  0 (loop) line   7 "loops" (state 2)       [b = (2*a)]
+	  6:    proc  0 (loop) line   7 "loops" (state 3)       [(1)]
+	  6:    proc  0 (loop) line  10 "loops" (state 8)       [b = (b-1)]
+	  7:    proc  0 (loop) line   5 "loops" (state 1)       [a = ((a+1)%3)]
+	  8:    proc  0 (loop) line   8 "loops" (state 4)       [b = (2*a)]
+	  9:    proc  0 (loop) line   8 "loops" (state 5)       [(1)]
+	  9:    proc  0 (loop) line  10 "loops" (state 8)       [b = (b-1)]
+	spin: trail ends after 9 steps
+	#processes: 1
+	  9:    proc  0 (loop) line   4 "loops" (state 9)
+	1 processes created
+
+test 5	try to find a cycle that avoids the progress labels
+	(there are none)
+
+	$ cc -DNP -DNOREDUCE -o pan pan.c # add support for non-progress
+	$ pan -l		# search for non-progress cycles
+	(Spin Version 3.3.0 -- 1 June 1999)
+	
+	Full statespace search for:
+	        never-claim             +	# i.e., an implicit claim 
+	        assertion violations    +
+>	        non-progress cycles     + (fairness disabled)
+	        invalid endstates       - (disabled by never-claim)
+	
+	State-vector 16 byte, depth reached 17, errors: 0
+	      21 states, stored (30 visited)
+	      10 states, matched
+	      40 transitions (= visited+matched)
+	       0 atomic steps
+	hash conflicts: 0 (resolved)
+	(max size 2^18 states)
+	
+	1.493   memory usage (Mbyte)
+
+	unreached in proctype loop
+	        (0 of 12 states)
+
+test 6:	check partial order reduction algorithm -- first disable it
+
+	$ spin -a leader (or snoopy, pftp, sort)
+	$ cc -DSAFETY -DNOREDUCE -DNOCLAIM -o pan pan.c	# safety only
+	$ pan -c0 -n                # exhaustive, -c0 = ignore errors
+	(Spin Version 3.3.0 -- 1 June 1999)
+	
+	Full statespace search for:
+	        never-claim             - (not selected)
+	        assertion violations    +
+	        cycle checks            - (disabled by -DSAFETY)
+	        invalid endstates       +
+	
+	State-vector 196 byte, depth reached 107, errors: 0
+	   15779 states, stored
+	   42402 states, matched
+	   58181 transitions (= stored+matched)
+	      11 atomic steps
+	hash conflicts: 6243 (resolved)
+	(max size 2^18 states)
+	
+	Stats on memory usage (in Megabytes):
+	3.156   equivalent memory usage for states (stored*(State-vector + overhead))
+	2.662   actual memory usage for states (compression: 84.36%)
+	        State-vector as stored = 165 byte + 4 byte overhead
+	1.049   memory used for hash-table (-w18)
+	0.200   memory used for DFS stack (-m10000)
+	4.013   total actual memory usage
+
+test 6b: now leave p.o. reduction enabled (i.e., do not disable it)
+
+	$ cc -DSAFETY -DNOCLAIM -o pan pan.c  # safety only, reduced search
+	$ pan -c0 -n                # -n = no dead code listing
+	(Spin Version 3.3.0 -- 1 June 1999)
+	        + Partial Order Reduction
+	
+	Full statespace search for:
+	        never-claim             - (not selected)
+	        assertion violations    +
+	        cycle checks            - (disabled by -DSAFETY)
+	        invalid endstates       +
+	
+	State-vector 196 byte, depth reached 107, errors: 0
+	      97 states, stored
+	       0 states, matched
+	      97 transitions (= stored+matched)
+	      11 atomic steps
+	hash conflicts: 0 (resolved)
+	(max size 2^18 states)
+	
+	1.493   memory usage (Mbyte)
+
+	If compiled as above, the results should match the results
+	from the table below. 
+	The numbers in the first two columns of the table
+	should match exactly.  (Note, the leader election algorithm
+	that is in the current distribution was extended slightly
+	compared to the one that was there before version 2.9.1)
+	The numbers in the third column should match approximately
+	(how well it matches depends only on the properties of
+	the C-compiler and the speed of the hardware you use to
+	run the tests.)
+	The first line for each test is for the exhaustive run,
+	the second line is for the default reduced run.
+	The times given are for an SGI system, with a 250 MHz 
+	MIPS R10000 Cpu and 1 Gigabyte of main memory.
+
+	States Stored	Transitions	Memory Used	Time (s)
+leader
+	S=   15779      T=   58181	M= 4.013 Mb	t= 1.5
+	S=      97      T=      97	M= 1.493 Mb	t= <0.1
+
+snoopy
+	S=   61619	T=  211398	M= 7.29 Mb	t= 3.5
+	S=    9343	T=   12706	M= 2.42 Mb	t= 0.3
+
+pftp
+	S=  144813	T=  397948	M= 18.76 Mb	t= 8.2
+	S=   47356	T=   64970	M=  7.33 Mb	t= 1.7
+
+sort
+	S=  107713	T=  512419	M= 18.66 Mb	t= 11.4
+	S=     135	T=     135	M=  1.49 Mb	t= <0.1
+
+
+test 7	check random number generator
+
+	$ spin -p -g priorities		# will not terminate
+	....
+	3510:   proc  3 (A) line   5 "priorities" (state 3)  \
+		[printf('%d\\n',_pid)]
+	                a[0] = 0
+	                a[1] = 116
+	                a[2] = 234
+	                a[3] = 344
+	                a[4] = 474
+	....
+
+	Interrupt the run after it executes for a while.
+	Note: the numbers in the array should tend to the ratio
+	1:2:3:4 if the random number generator works properly.
+	array index 0 remains unused (it's the pid of the init
+	process)
+
+test 8	test the generation of never claims from LTL formulae:
+
+	$ spin -f "[] ( p U ( <> q ))"
+
+	never {    /* [] ( p U ( <> q )) */
+	T0_init:
+	        if
+	        :: ((q)) -> goto accept_S1
+	        :: (1) -> goto T0_S25
+	        :: ((p)) -> goto T0_S35
+	        fi;
+	accept_S1:
+	        if
+	        :: ((q)) -> goto T0_init
+	        :: (1) -> goto T0_S25
+	        :: ((p)) -> goto T0_S35
+	        fi;
+	accept_S25:
+	        if
+	        :: ((q)) -> goto T0_init
+	        :: (((p) || (q))) -> goto T0_S25
+	        :: ((p) && (q)) -> goto T0_S35
+	        fi;
+	accept_S35:
+	        if
+	        :: ((q)) -> goto T0_init
+	        :: (((p) || (q))) -> goto T0_S25
+	        :: ((p)) -> goto T0_S35
+	        fi;
+	T0_S25:
+	        if
+	        :: ((q)) -> goto accept_S1
+	        :: ((p)) -> goto T0_S25
+	        :: ((p) && (q)) -> goto accept_S35
+	        :: ((q)) -> goto accept_S25
+	        fi;
+	T0_S35:
+	        if
+	        :: ((q)) -> goto accept_S1
+	        :: ((p)) -> goto T0_S25
+	        :: ((p) && (q)) -> goto accept_S35
+	        :: ((q)) -> goto accept_S25
+	        :: ((p)) -> goto T0_S35
+	        fi;
+	accept_all:
+	        skip
+	}
+
+test 9	read a never claim from a file (works only with 3.1.2 and later)
+
+	$ spin -a -N leader.ltl leader	# the claim is in file leader.ltl
+	$ cc -o pan pan.c		# the default compilation
+	$ pan -a			# search for acceptance cycles
+	warning: for p.o. reduction to be valid the never claim must be stutter-closed
+	(never claims generated from LTL formulae are stutter-closed)
+	(Spin Version 3.3.0 -- 1 June 1999)
+	        + Partial Order Reduction
+	
+	Full statespace search for:
+	        never-claim             +
+	        assertion violations    + (if within scope of claim)
+	        acceptance   cycles     + (fairness disabled)
+	        invalid endstates       - (disabled by never-claim)
+	
+	State-vector 204 byte, depth reached 204, errors: 0
+	     181 states, stored (360 visited)
+	     251 states, matched
+	     611 transitions (= visited+matched)
+	      22 atomic steps
+	hash conflicts: 0 (resolved)
+	(max size 2^18 states)
+	
+	1.493   memory usage (Mbyte)
+	
+	unreached in proctype node
+	        line 53, state 28, "out!two,nr"
+	        (1 of 49 states)
+	unreached in proctype :init:
+	        (0 of 11 states)
+
+end of tests

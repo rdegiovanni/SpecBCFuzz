@@ -1,0 +1,28 @@
+#!/bin/sh
+# SPIN - Verification Software - Version 4.3.0 - June 2007
+#
+# Tool documentation: http://spinroot.com/
+# bug-reports: bugs@spinroot.com            
+
+# This script is for compiling Spin on a PC with a unix shell
+# It requires 3 things to be installed on your system:
+#	cygwin (for sh, bison yacc, echo, mv, and rm)
+#	either gcc or the Visual C++ compiler (cl)
+# On a 2.5GHz system everything compiles in under 1 second.
+# See also makefile for compiling Spin on a standard Unix system.
+
+#CC="gcc"
+#CFLAGS="-DPC -DNXT -O1 -Wall -ansi -w -o spin.exe"
+
+CC="cl"
+CFLAGS="-DPC -DNXT -DWIN32 -D_CONSOLE -O2 -Zp4 -nologo -wd4996 -Wp64 -Fespin.exe"
+
+yacc -v -d spin.y
+
+$CC $CFLAGS *.c
+
+rm -f *.o *.obj
+rm -f y?tab.? y.output
+
+echo "mv spin.exe /usr/bin"
+mv spin.exe /usr/bin
