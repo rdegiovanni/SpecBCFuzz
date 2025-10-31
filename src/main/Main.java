@@ -204,6 +204,10 @@ public class Main {
 		//final int MAX_NONTERMINAL = 30;
 
 		File spinBin_v651 = null;
+		File spinBin_v338 = null;
+		File spinBin_v339 = null;
+		File spinBin_v3310 = null;
+		File spinBin_v340 = null;
 
 		File aaltaBin_v2 = null;
 		File aaltaBin_v1 = null;
@@ -257,6 +261,10 @@ public class Main {
 		File blackCryptominisatTmpRunner_v052;
 
 		SATSolver spin_v651 = null;
+		SATSolver spin_v338 = null;
+		SATSolver spin_v339 = null;
+		SATSolver spin_v3310 = null;
+		SATSolver spin_v340 = null;
 
 		SATSolver aalta = null;
 		SATSolver aalta_v1 = null;
@@ -312,7 +320,11 @@ public class Main {
 			/*
 			 * Spin
 			 */
-			spinBin_v651 = new File(lib.getAbsoluteFile() + File.separator + "spin" + File.separator + "spin.sh");
+			spinBin_v651 = new File(lib.getAbsoluteFile() + File.separator + "spin" + File.separator + "spin651.sh");
+			spinBin_v338 = new File(lib.getAbsoluteFile() + File.separator + "spin" + File.separator + "spin338.sh");
+			spinBin_v339 = new File(lib.getAbsoluteFile() + File.separator + "spin" + File.separator + "spin339.sh");
+			spinBin_v3310 = new File(lib.getAbsoluteFile() + File.separator + "spin" + File.separator + "spin3310.sh");
+			spinBin_v340 = new File(lib.getAbsoluteFile() + File.separator + "spin" + File.separator + "spin340.sh");
 
 			/*
 			 * Aalta
@@ -386,6 +398,10 @@ public class Main {
 
 			//SOLVERS
 			spin_v651 = new Spin(spinBin_v651, MAX_LITERAL, "v651");
+			spin_v338 = new Spin(spinBin_v338, MAX_LITERAL, "v338");
+			spin_v339 = new Spin(spinBin_v339, MAX_LITERAL, "v339");
+			spin_v3310 = new Spin(spinBin_v3310, MAX_LITERAL, "v3310");
+			spin_v340 = new Spin(spinBin_v340, MAX_LITERAL, "v340");
 
 			aalta = new Aalta(aaltaBin_v2, MAX_LITERAL, "v2");
 			aalta_v1 = new Aalta(aaltaBin_v1, MAX_LITERAL, "v1");
@@ -451,7 +467,10 @@ public class Main {
 			 * Spin
 			 */
 			solvers.add(spin_v651);
-
+			solvers.add(spin_v338);
+			solvers.add(spin_v339);
+			solvers.add(spin_v3310);
+			solvers.add(spin_v340);
 //			/*
 //			 * Aalta
 //			 */
@@ -460,7 +479,7 @@ public class Main {
 //			/*
 //			 * NuSMV - libreadline.so.8
 //			 */
-			solvers.add(nuSMV_v260);
+//			solvers.add(nuSMV_v260);
 //			solvers.add(nuSMVbmc_v260);
 //
 //			/*
