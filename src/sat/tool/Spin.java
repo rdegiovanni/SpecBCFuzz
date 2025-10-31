@@ -170,7 +170,7 @@ public class Spin extends LTLSolver {
 					"}\n";
 //			content += "ltl {!(" + exp + ")}\n";
 			FileUtils.write(this.inputTmp, content, "UTF-8");
-			FileUtils.write(this.formulaTmp, "!(" + exp + ")", "UTF-8");
+			FileUtils.write(this.formulaTmp, "X!(" + exp + ")", "UTF-8");
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
