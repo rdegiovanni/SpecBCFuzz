@@ -8,6 +8,7 @@ model_file=$1
 DIR=$(dirname "$model_file")
  
 cp $model_file $DIR/$spin_dir/trap_formula.spin
+cp $model_file'_formula' $DIR/$spin_dir/formula.spin
  
 pushd $DIR/$spin_dir
 #cd $spin_dir
@@ -18,11 +19,11 @@ pushd $DIR/$spin_dir
  
 echo '--------->>>>Script Start SPIN'
  
-$DIR/$spin_dir/spin651_linux64 -a $DIR/$spin_dir/trap_formula.spin
-gcc  -w -o pan -DNOREDUCE -DNXT $DIR/$spin_dir/pan.c
+./spin651_linux64 -F formula.spin -a trap_formula.spin
+gcc  -w -o pan -DNOREDUCE -DNXT pan.c
  
  
-$DIR/$spin_dir/pan -a -m1000000 -w27
+./pan -a -m1000000 -w24
 echo '-------->>>>>Script End SPIN'
 popd
 exit 0

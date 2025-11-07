@@ -26,12 +26,14 @@ import sat.SyntaxOperatorReplacer;
 public class Spin extends LTLSolver {
 
 	private final File inputTmp;
+	private final File formulaTmp;
 	private String version;
 	//private final File outputTmp;
 
 	public Spin(File binPath, int maxAtomicPropositions) {
 		super(binPath, maxAtomicPropositions);
 		this.inputTmp = new File(binPath.getParentFile(),"tmpin");
+		this.formulaTmp = new File(binPath.getParentFile(),"tmpin_formula");
 		this.version = "";
 		//this.outputTmp = new File(binPath.getParentFile(),"tmpout");
 	}
@@ -126,7 +128,11 @@ public class Spin extends LTLSolver {
 			if (this.inputTmp.exists()) {
 				FileUtils.delete(this.inputTmp);
 			}
-			this.inputTmp.createNewFile();	
+			this.inputTmp.createNewFile();
+			if (this.formulaTmp.exists()) {
+				FileUtils.delete(this.formulaTmp);
+			}
+			this.inputTmp.createNewFile();
 			//FileUtils.delete(this.outputTmp);
 			//this.outputTmp.createNewFile();
 		} catch (IOException e) {
@@ -162,8 +168,9 @@ public class Spin extends LTLSolver {
 			content += "\t}\n" +
 					"\tod;\n" +
 					"}\n";
-			content += "ltl {!(" + exp + ")}\n";
+//			content += "ltl {!(" + exp + ")}\n";
 			FileUtils.write(this.inputTmp, content, "UTF-8");
+			FileUtils.write(this.formulaTmp, "X!(" + exp + ")", "UTF-8");
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
