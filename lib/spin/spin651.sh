@@ -19,7 +19,7 @@ pushd $DIR/$spin_dir
  
 echo '--------->>>>Script Start SPIN'
  
-./spin651_linux64 -a trap_formula.spin -F formula.spin
+./spin651_linux64 -F formula.spin -a trap_formula.spin
 gcc  -w -o pan -DNOREDUCE -DNXT pan.c
  
  

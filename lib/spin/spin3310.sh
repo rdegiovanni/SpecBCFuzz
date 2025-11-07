@@ -19,11 +19,11 @@ pushd $DIR/$spin_dir
  
 echo '--------->>>>Script Start SPIN'
  
-./spin3310_linux64 -a trap_formula.spin -F formula.spin
+./spin3310_linux64 -F formula.spin -a trap_formula.spin
 gcc  -w -o pan -DNOREDUCE -DNXT pan.c
  
  
-./pan -e -m1000000 -w24
+./pan -a -m1000000 -w24
 echo '-------->>>>>Script End SPIN'
 popd
 exit 0
